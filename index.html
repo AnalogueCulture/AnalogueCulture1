@@ -2,151 +2,102 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AnalogueCulture — Go Somewhere. Find Something.</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AnalogueCulture — Find Something</title>
 
 <style>
-
 :root{
-  --paper:#eee9df;
+  --paper:#eeeae1;
   --ink:#11110f;
   --muted:#77736b;
-  --line:#c9c2b5;
-  --accent:#d94832;
-  --white:#f8f5ee;
+  --line:#c8c1b5;
+  --accent:#d94b35;
+  --dark:#151513;
+  --soft:#e1dbcf;
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   background:var(--paper);
   color:var(--ink);
   font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
 }
 
-button,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-
-/* ---------------- NAV ---------------- */
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
 
 .nav{
   position:fixed;
+  z-index:100;
   top:0;
-  left:0;
   width:100%;
-  height:70px;
-  padding:0 30px;
+  height:68px;
+  padding:0 28px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  border-bottom:1px solid rgba(17,17,15,.25);
-  background:rgba(238,233,223,.94);
+  background:rgba(238,234,225,.95);
   backdrop-filter:blur(12px);
-  z-index:100;
+  border-bottom:1px solid var(--line);
 }
 
 .logo{
   font-size:20px;
   font-weight:800;
-  letter-spacing:-1.2px;
+  letter-spacing:-1.3px;
 }
 
-.logo span{
-  font-weight:400;
-}
+.logo span{font-weight:400}
 
-.nav-right{
+.nav-actions{
   display:flex;
+  gap:10px;
   align-items:center;
-  gap:25px;
 }
 
-.nav-link{
-  border:0;
-  background:none;
+.nav-btn{
+  border:1px solid var(--ink);
+  background:transparent;
+  padding:9px 13px;
+  font-size:9px;
   text-transform:uppercase;
   letter-spacing:1.2px;
-  font-size:10px;
 }
 
-.day-button{
-  border:1px solid var(--ink);
+.nav-btn.dark{
   background:var(--ink);
   color:var(--paper);
-  padding:10px 15px;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:1px;
 }
-
-.day-button:hover{
-  background:var(--accent);
-  border-color:var(--accent);
-}
-
-
-/* ---------------- HERO ---------------- */
 
 .hero{
-  min-height:100vh;
-  padding:130px 5vw 60px;
+  min-height:92vh;
+  padding:125px 5vw 55px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
 }
 
-.hero-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-}
-
 .kicker{
+  font-size:9px;
   text-transform:uppercase;
   letter-spacing:2px;
-  font-size:10px;
   font-weight:bold;
 }
 
-.hero-location{
-  font-size:11px;
-  color:var(--muted);
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.hero-title{
-  max-width:1100px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(65px,11vw,160px);
-  line-height:.83;
-  font-weight:400;
+.hero h1{
+  max-width:1200px;
+  font-family:Georgia,serif;
+  font-size:clamp(70px,11vw,165px);
+  line-height:.79;
   letter-spacing:-9px;
+  font-weight:400;
 }
 
-.hero-title em{
+.hero h1 em{
   color:var(--accent);
   font-style:normal;
 }
@@ -160,98 +111,117 @@ a{
 
 .hero-copy{
   max-width:430px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:21px;
-  line-height:1.35;
+  font-family:Georgia,serif;
+  font-size:20px;
+  line-height:1.4;
 }
 
-.hero-select{
-  border:1px solid var(--ink);
+.controls{
+  display:flex;
+  gap:8px;
+}
+
+.select{
   background:transparent;
-  padding:14px 45px 14px 15px;
-  min-width:230px;
-  font-size:12px;
+  border:1px solid var(--ink);
+  padding:14px 40px 14px 14px;
+  min-width:220px;
+  font-size:10px;
   text-transform:uppercase;
   letter-spacing:1px;
 }
 
-
-/* ---------------- INTRO STRIP ---------------- */
-
-.intro-strip{
-  background:var(--ink);
-  color:var(--paper);
-  padding:18px 5vw;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:1.5px;
-}
-
-.intro-strip span:last-child{
-  color:#aaa69d;
-}
-
-
-/* ---------------- CITY ---------------- */
-
-.city{
-  padding:100px 5vw;
+.section{
+  padding:95px 5vw;
   max-width:1500px;
   margin:auto;
 }
 
-.city-heading{
+.dark-section{
+  background:var(--dark);
+  color:var(--paper);
+  max-width:none;
+}
+
+.section-head{
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
-  border-bottom:1px solid var(--ink);
-  padding-bottom:25px;
-  margin-bottom:50px;
+  border-bottom:1px solid currentColor;
+  padding-bottom:22px;
+  margin-bottom:32px;
 }
 
-.city-name{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(65px,9vw,125px);
-  font-weight:400;
-  letter-spacing:-6px;
+.section-title{
+  font-family:Georgia,serif;
+  font-size:clamp(60px,8vw,110px);
   line-height:.8;
+  letter-spacing:-6px;
+  font-weight:400;
 }
 
-.city-description{
-  max-width:390px;
-  font-family:Georgia,"Times New Roman",serif;
+.section-copy{
+  max-width:360px;
+  font-family:Georgia,serif;
   font-size:17px;
   line-height:1.4;
 }
 
+.search{
+  width:100%;
+  border:1px solid var(--line);
+  background:transparent;
+  padding:15px;
+  font-size:12px;
+  margin-bottom:15px;
+}
+
 .filters{
   display:flex;
-  gap:8px;
+  gap:7px;
   flex-wrap:wrap;
-  margin-bottom:35px;
+  margin-bottom:30px;
 }
 
 .filter{
   border:1px solid var(--line);
   background:transparent;
-  padding:9px 13px;
+  padding:9px 12px;
   font-size:9px;
   text-transform:uppercase;
-  letter-spacing:1.2px;
+  letter-spacing:1px;
 }
 
 .filter.active,
 .filter:hover{
   background:var(--ink);
-  border-color:var(--ink);
   color:var(--paper);
+  border-color:var(--ink);
 }
 
+.neighbourhoods{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:15px;
+  margin-bottom:20px;
+}
 
-/* ---------------- PLACES ---------------- */
+.neighbourhood{
+  white-space:nowrap;
+  border:1px solid var(--line);
+  padding:8px 12px;
+  background:transparent;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.neighbourhood.active{
+  background:var(--accent);
+  color:white;
+  border-color:var(--accent);
+}
 
 .places{
   display:grid;
@@ -261,8 +231,8 @@ a{
 }
 
 .place{
-  min-height:390px;
-  padding:25px;
+  min-height:370px;
+  padding:24px;
   border-right:1px solid var(--ink);
   border-bottom:1px solid var(--ink);
   display:flex;
@@ -271,63 +241,59 @@ a{
   transition:.2s;
 }
 
-.place:hover{
-  background:#e2dbce;
-}
-
-.place.hidden{
-  display:none;
-}
+.place:hover{background:var(--soft)}
 
 .place-top{
   display:flex;
   justify-content:space-between;
-  align-items:flex-start;
-}
-
-.place-number{
-  font-size:10px;
-  color:var(--muted);
 }
 
 .place-type{
+  color:var(--accent);
   font-size:9px;
   text-transform:uppercase;
-  letter-spacing:1.5px;
-  color:var(--accent);
+  letter-spacing:1.4px;
   font-weight:bold;
 }
 
 .place h3{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:34px;
-  font-weight:400;
-  line-height:.95;
-  max-width:300px;
   margin-top:30px;
+  font-family:Georgia,serif;
+  font-size:33px;
+  line-height:.95;
+  font-weight:400;
 }
 
 .place-location{
-  margin-top:12px;
-  font-size:10px;
+  margin-top:9px;
+  color:var(--muted);
+  font-size:9px;
   text-transform:uppercase;
   letter-spacing:1px;
-  color:var(--muted);
 }
 
-.place-description{
-  margin-top:25px;
+.place-desc{
+  margin-top:22px;
   max-width:330px;
-  color:#5e5a53;
+  color:#625e56;
   font-size:13px;
-  line-height:1.55;
+  line-height:1.5;
+}
+
+.distance{
+  margin-top:12px;
+  color:var(--accent);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-weight:bold;
 }
 
 .place-bottom{
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
-  margin-top:35px;
+  gap:10px;
 }
 
 .tags{
@@ -343,728 +309,530 @@ a{
   text-transform:uppercase;
 }
 
-.add-place{
+.add{
+  border:0;
   background:var(--ink);
   color:var(--paper);
-  border:0;
-  padding:11px 12px;
+  padding:11px;
   font-size:9px;
   text-transform:uppercase;
   letter-spacing:1px;
 }
 
-.add-place:hover{
+.add:hover{background:var(--accent)}
+
+.added{
   background:var(--accent);
 }
 
-.add-place.added{
-  background:var(--accent);
+.cluster-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #444;
+  border-left:1px solid #444;
 }
 
+.cluster{
+  padding:28px;
+  min-height:240px;
+  border-right:1px solid #444;
+  border-bottom:1px solid #444;
+}
 
-/* ---------------- DAY BUILDER ---------------- */
+.cluster h3{
+  font-family:Georgia,serif;
+  font-size:32px;
+  font-weight:400;
+}
+
+.cluster p{
+  color:#99958d;
+  margin-top:10px;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.cluster button{
+  margin-top:35px;
+  background:none;
+  border:1px solid #777;
+  color:var(--paper);
+  padding:9px 12px;
+  font-size:9px;
+  text-transform:uppercase;
+}
 
 .builder{
-  background:#d9d0c1;
-  padding:110px 5vw;
+  background:#d9d1c4;
+  padding:100px 5vw;
 }
 
-.builder-inner{
-  max-width:1500px;
-  margin:auto;
+.builder-inner{max-width:1500px;margin:auto}
+
+.builder-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:start;
 }
 
-.builder-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:50px;
-  margin-bottom:55px;
-}
-
-.builder-kicker{
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:10px;
-  font-weight:bold;
-  margin-bottom:20px;
-}
-
-.builder-title{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(60px,8vw,115px);
+.builder h2{
+  font-family:Georgia,serif;
+  font-size:clamp(65px,8vw,115px);
   line-height:.8;
   letter-spacing:-6px;
   font-weight:400;
 }
 
-.builder-copy{
-  max-width:330px;
-  font-size:14px;
-  line-height:1.5;
-  color:#625d55;
+.preference-box{
+  border-top:1px solid var(--ink);
+  margin-top:35px;
 }
 
+.preference{
+  padding:16px 0;
+  border-bottom:1px solid var(--ink);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.preference label{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.preference select{
+  background:transparent;
+  border:1px solid var(--ink);
+  padding:8px;
+  font-size:10px;
+}
+
+.day{
+  border-top:1px solid var(--ink);
+}
+
+.day-item{
+  display:grid;
+  grid-template-columns:70px 1fr auto;
+  gap:20px;
+  align-items:center;
+  padding:20px 0;
+  border-bottom:1px solid var(--ink);
+}
+
+.day-time{
+  font-family:Georgia,serif;
+  font-size:22px;
+}
+
+.day-name{
+  font-family:Georgia,serif;
+  font-size:25px;
+}
+
+.day-meta{
+  color:var(--muted);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-top:4px;
+}
+
+.day-distance{
+  color:var(--accent);
+  font-size:9px;
+  margin-top:5px;
+  text-transform:uppercase;
+}
+
+.day-actions{
+  display:flex;
+  gap:4px;
+}
+
+.icon{
+  width:31px;
+  height:31px;
+  border:1px solid var(--ink);
+  background:transparent;
+}
+
+.build-btn{
+  margin-top:30px;
+  width:100%;
+  padding:18px;
+  border:0;
+  background:var(--ink);
+  color:var(--paper);
+  text-transform:uppercase;
+  letter-spacing:1.4px;
+  font-size:10px;
+}
+
+.build-btn:hover{background:var(--accent)}
+
 .empty{
-  border:1px dashed #9d9589;
-  padding:60px;
+  padding:45px;
+  border:1px dashed #999;
+  color:#716c63;
   text-align:center;
-  color:#777067;
 }
 
 .empty strong{
   display:block;
   font-family:Georgia,serif;
+  color:var(--ink);
+  font-size:28px;
+  font-weight:400;
+  margin-bottom:8px;
+}
+
+.recommendations{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--line);
+}
+
+.rec{
+  background:var(--paper);
+  padding:28px;
+  min-height:280px;
+}
+
+.rec small{
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-size:8px;
+  font-weight:bold;
+}
+
+.rec h3{
+  font-family:Georgia,serif;
   font-size:30px;
   font-weight:400;
-  margin-bottom:10px;
+  margin-top:18px;
 }
 
-.itinerary{
-  display:flex;
-  flex-direction:column;
-  border-top:1px solid var(--ink);
-}
-
-.itinerary-item{
-  display:grid;
-  grid-template-columns:90px 1fr auto;
-  gap:25px;
-  align-items:center;
-  padding:22px 0;
-  border-bottom:1px solid var(--ink);
-}
-
-.itinerary-time{
-  font-family:Georgia,serif;
-  font-size:24px;
-}
-
-.itinerary-info h4{
-  font-family:Georgia,serif;
-  font-size:27px;
-  font-weight:400;
-}
-
-.itinerary-info p{
-  font-size:10px;
+.rec p{
   color:var(--muted);
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin-top:5px;
+  font-size:12px;
+  line-height:1.5;
+  margin-top:12px;
 }
 
-.itinerary-actions{
-  display:flex;
-  gap:5px;
-}
-
-.small-button{
-  width:32px;
-  height:32px;
-  border:1px solid var(--ink);
-  background:transparent;
-  font-size:13px;
-}
-
-.small-button:hover{
-  background:var(--ink);
-  color:var(--paper);
-}
-
-.builder-footer{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:30px;
-}
-
-.clear-day{
-  border:0;
-  background:none;
-  text-decoration:underline;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.save-day{
+.rec button{
+  margin-top:25px;
   background:var(--ink);
   color:var(--paper);
   border:0;
-  padding:15px 22px;
+  padding:10px;
+  font-size:9px;
   text-transform:uppercase;
-  letter-spacing:1px;
-  font-size:10px;
 }
-
-.save-day:hover{
-  background:var(--accent);
-}
-
-
-/* ---------------- CITIES ---------------- */
-
-.cities{
-  padding:110px 5vw;
-  background:var(--ink);
-  color:var(--paper);
-}
-
-.cities-inner{
-  max-width:1500px;
-  margin:auto;
-}
-
-.cities-title{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(60px,8vw,110px);
-  font-weight:400;
-  line-height:.8;
-  letter-spacing:-6px;
-  margin-bottom:70px;
-}
-
-.city-list{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-}
-
-.city-choice{
-  border-top:1px solid #444;
-  padding:30px 0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-right:50px;
-}
-
-.city-choice:nth-child(odd){
-  border-right:1px solid #444;
-  padding-right:50px;
-}
-
-.city-choice button{
-  border:0;
-  background:none;
-  color:var(--paper);
-  font-family:Georgia,serif;
-  font-size:35px;
-}
-
-.city-choice span{
-  color:#777;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.city-choice:hover button{
-  color:var(--accent);
-}
-
-
-/* ---------------- ABOUT ---------------- */
-
-.about{
-  padding:120px 5vw;
-  max-width:1500px;
-  margin:auto;
-}
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:100px;
-}
-
-.about h2{
-  font-family:Georgia,serif;
-  font-size:clamp(55px,7vw,95px);
-  line-height:.82;
-  font-weight:400;
-  letter-spacing:-5px;
-}
-
-.about-copy{
-  max-width:500px;
-}
-
-.about-copy p{
-  font-family:Georgia,serif;
-  font-size:21px;
-  line-height:1.45;
-  margin-bottom:25px;
-}
-
-
-/* ---------------- MODAL ---------------- */
 
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(17,17,15,.72);
+  background:rgba(0,0,0,.7);
   display:none;
   align-items:center;
   justify-content:center;
-  padding:25px;
+  padding:20px;
   z-index:200;
 }
 
-.modal.open{
-  display:flex;
-}
+.modal.open{display:flex}
 
 .modal-box{
   background:var(--paper);
-  width:min(850px,100%);
+  width:min(800px,100%);
   max-height:90vh;
   overflow:auto;
   padding:45px;
   position:relative;
 }
 
-.modal-close{
+.close{
   position:absolute;
-  top:20px;
   right:20px;
+  top:20px;
   border:0;
   background:none;
-  font-size:22px;
+  font-size:24px;
 }
 
 .modal-type{
   color:var(--accent);
+  font-size:9px;
   text-transform:uppercase;
   letter-spacing:2px;
-  font-size:10px;
   font-weight:bold;
 }
 
 .modal h2{
   font-family:Georgia,serif;
-  font-size:70px;
+  font-size:65px;
   line-height:.85;
   font-weight:400;
   letter-spacing:-4px;
   margin:20px 0;
 }
 
-.modal-location{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  color:var(--muted);
-}
-
-.modal-description{
+.modal p{
   max-width:600px;
   font-family:Georgia,serif;
-  font-size:20px;
+  font-size:19px;
   line-height:1.45;
-  margin:40px 0;
+  margin:35px 0;
 }
 
-.modal-actions{
+.modal-buttons{
   display:flex;
-  gap:10px;
+  gap:8px;
 }
 
-.modal-add{
+.modal-buttons button,
+.modal-buttons a{
+  padding:13px 16px;
+  border:1px solid var(--ink);
   background:var(--ink);
   color:var(--paper);
-  border:0;
-  padding:14px 18px;
-  font-size:10px;
+  font-size:9px;
   text-transform:uppercase;
   letter-spacing:1px;
 }
-
-.modal-map{
-  border:1px solid var(--ink);
-  padding:14px 18px;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-
-/* ---------------- FOOTER ---------------- */
 
 footer{
-  border-top:1px solid var(--ink);
   padding:25px 5vw;
+  border-top:1px solid var(--ink);
   display:flex;
   justify-content:space-between;
   font-size:9px;
   text-transform:uppercase;
-  letter-spacing:1px;
   color:var(--muted);
 }
 
-
-/* ---------------- MOBILE ---------------- */
-
-@media(max-width:850px){
-
-  .nav{
-    padding:0 18px;
-  }
-
-  .nav-link{
-    display:none;
-  }
-
-  .hero{
-    padding:110px 22px 45px;
-    min-height:90vh;
-  }
-
-  .hero-top{
-    margin-bottom:70px;
-  }
-
-  .hero-title{
-    font-size:64px;
-    letter-spacing:-4px;
-  }
-
-  .hero-bottom{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .hero-copy{
-    font-size:18px;
-  }
-
-  .city{
-    padding:75px 22px;
-  }
-
-  .city-heading{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:30px;
-  }
-
-  .city-name{
-    font-size:70px;
-  }
-
-  .places{
-    grid-template-columns:1fr;
-  }
-
-  .place{
-    min-height:330px;
-  }
-
-  .builder{
-    padding:75px 22px;
-  }
-
-  .builder-top{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .builder-title{
-    font-size:65px;
-  }
-
-  .itinerary-item{
-    grid-template-columns:60px 1fr;
-  }
-
-  .itinerary-actions{
-    grid-column:2;
-  }
-
-  .builder-footer{
-    flex-direction:column;
-    gap:20px;
-    align-items:flex-start;
-  }
-
-  .city-list{
-    grid-template-columns:1fr;
-  }
-
-  .city-choice,
-  .city-choice:nth-child(odd){
-    margin-right:0;
-    padding-right:0;
-    border-right:0;
-  }
-
-  .about{
-    padding:80px 22px;
-  }
-
-  .about-grid{
-    grid-template-columns:1fr;
-    gap:60px;
-  }
-
-  .modal-box{
-    padding:30px 22px;
-  }
-
-  .modal h2{
-    font-size:55px;
-  }
-
-  footer{
-    flex-direction:column;
-    gap:10px;
-  }
-
+@media(max-width:900px){
+  .places{grid-template-columns:1fr}
+  .cluster-grid{grid-template-columns:1fr 1fr}
+  .recommendations{grid-template-columns:1fr}
+  .builder-grid{grid-template-columns:1fr}
 }
 
+@media(max-width:600px){
+  .nav{padding:0 15px}
+  .nav-btn:first-child{display:none}
+  .hero{padding:110px 20px 45px}
+  .hero h1{font-size:65px;letter-spacing:-4px}
+  .hero-bottom{flex-direction:column;align-items:flex-start}
+  .section{padding:75px 20px}
+  .section-head{flex-direction:column;align-items:flex-start;gap:25px}
+  .cluster-grid{grid-template-columns:1fr}
+  .builder{padding:75px 20px}
+  .day-item{grid-template-columns:55px 1fr}
+  .day-actions{grid-column:2}
+  .modal-box{padding:30px 22px}
+  .modal h2{font-size:52px}
+  footer{flex-direction:column;gap:10px}
+}
 </style>
 </head>
 
 <body>
 
-
-<!-- NAV -->
-
 <header class="nav">
+  <div class="logo">Analogue<span>Culture</span></div>
 
-  <div class="logo">
-    Analogue<span>Culture</span>
+  <div class="nav-actions">
+    <button class="nav-btn" onclick="go('explore')">Explore</button>
+    <button class="nav-btn" onclick="go('clusters')">Areas</button>
+    <button class="nav-btn dark" onclick="go('builder')">
+      My Day <span id="count">0</span>
+    </button>
   </div>
-
-  <div class="nav-right">
-
-    <button class="nav-link"
-      onclick="scrollToSection('city')">
-      Explore
-    </button>
-
-    <button class="nav-link"
-      onclick="scrollToSection('cities')">
-      Cities
-    </button>
-
-    <button class="day-button"
-      onclick="scrollToSection('builder')">
-
-      My Day
-      <span id="dayCount">0</span>
-
-    </button>
-
-  </div>
-
 </header>
 
 
-<!-- HERO -->
-
 <section class="hero">
 
-  <div class="hero-top">
-
-    <div class="kicker">
-      The global guide to analogue culture
-    </div>
-
-    <div class="hero-location">
-      08 / 2026
-    </div>
-
+  <div class="kicker">
+    A guide to analogue culture around the world
   </div>
 
-
-  <h1 class="hero-title">
-
+  <h1>
     Go somewhere.<br>
-
     <em>Find something.</em>
-
   </h1>
-
 
   <div class="hero-bottom">
 
     <p class="hero-copy">
-
-      Film labs. Record shops. Listening bars.
-      Camera stores. Photo walks. Small places
-      worth leaving the hotel for.
-
+      Record shops. Film labs. Listening bars.
+      Camera stores. Independent cinemas.
+      Coffee. Food. Events. Places worth
+      leaving the hotel for.
     </p>
 
-
-    <select
-      class="hero-select"
-      id="citySelect"
-      onchange="changeCity()">
-
-      <option value="tokyo">Tokyo, Japan</option>
-      <option value="paris">Paris, France</option>
-      <option value="london">London, United Kingdom</option>
-      <option value="berlin">Berlin, Germany</option>
-      <option value="melbourne">Melbourne, Australia</option>
-      <option value="newyork">New York, USA</option>
-      <option value="barcelona">Barcelona, Spain</option>
-      <option value="lisbon">Lisbon, Portugal</option>
-
-    </select>
+    <div class="controls">
+      <select class="select" id="city" onchange="changeCity()">
+        <option value="tokyo">Tokyo</option>
+        <option value="paris">Paris</option>
+        <option value="london">London</option>
+        <option value="berlin">Berlin</option>
+        <option value="melbourne">Melbourne</option>
+        <option value="newyork">New York</option>
+        <option value="barcelona">Barcelona</option>
+        <option value="lisbon">Lisbon</option>
+      </select>
+    </div>
 
   </div>
 
 </section>
 
 
-<div class="intro-strip">
+<section class="section" id="explore">
 
-  <span>
-    Currently exploring: <strong id="stripCity">Tokyo</strong>
-  </span>
+  <div class="section-head">
 
-  <span>
-    Don't see the city. Experience it.
-  </span>
-
-</div>
-
-
-<!-- CITY -->
-
-<section class="city" id="city">
-
-  <div class="city-heading">
-
-    <div class="city-name" id="cityName">
-      Tokyo
+    <div>
+      <div class="kicker">Explore</div>
+      <h2 class="section-title" id="cityTitle">Tokyo</h2>
     </div>
 
-    <p class="city-description" id="cityDescription">
-
-      A city where film, records, jazz kissas,
-      tiny bars and obsessive craftsmanship
-      sit comfortably alongside each other.
-
+    <p class="section-copy" id="cityCopy">
+      A city built for digging, listening, shooting and wandering.
     </p>
 
   </div>
 
 
+  <input
+    class="search"
+    id="search"
+    placeholder="Search places, neighbourhoods, genres..."
+    oninput="render()"
+  >
+
+
   <div class="filters">
 
-    <button class="filter active"
-      onclick="filterPlaces('all',this)">
-      Everything
-    </button>
-
-    <button class="filter"
-      onclick="filterPlaces('film',this)">
-      Film
-    </button>
-
-    <button class="filter"
-      onclick="filterPlaces('vinyl',this)">
-      Vinyl
-    </button>
-
-    <button class="filter"
-      onclick="filterPlaces('listening',this)">
-      Listening
-    </button>
-
-    <button class="filter"
-      onclick="filterPlaces('photo',this)">
-      Photography
-    </button>
-
-    <button class="filter"
-      onclick="filterPlaces('events',this)">
-      Events
-    </button>
+    <button class="filter active" onclick="setFilter('all',this)">Everything</button>
+    <button class="filter" onclick="setFilter('film',this)">Film</button>
+    <button class="filter" onclick="setFilter('vinyl',this)">Vinyl</button>
+    <button class="filter" onclick="setFilter('listening',this)">Listening</button>
+    <button class="filter" onclick="setFilter('photo',this)">Photography</button>
+    <button class="filter" onclick="setFilter('food',this)">Food</button>
+    <button class="filter" onclick="setFilter('coffee',this)">Coffee</button>
+    <button class="filter" onclick="setFilter('events',this)">Events</button>
 
   </div>
 
+
+  <div class="neighbourhoods" id="areas"></div>
 
   <div class="places" id="places"></div>
 
 </section>
 
 
-<!-- DAY BUILDER -->
+<section class="dark-section" id="clusters">
+
+  <div class="section">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">Geographic discovery</div>
+        <h2 class="section-title">Go local.</h2>
+      </div>
+
+      <p class="section-copy">
+        Instead of crossing a city all day,
+        explore one neighbourhood properly.
+      </p>
+
+    </div>
+
+    <div class="cluster-grid" id="clusterGrid"></div>
+
+  </div>
+
+</section>
+
 
 <section class="builder" id="builder">
 
   <div class="builder-inner">
 
-    <div class="builder-top">
+    <div class="builder-grid">
 
       <div>
 
-        <div class="builder-kicker">
-          Your itinerary
+        <div class="kicker">Personalised itinerary</div>
+
+        <h2>
+          Build<br>
+          my day.
+        </h2>
+
+        <div class="preference-box">
+
+          <div class="preference">
+            <label>Time available</label>
+            <select id="hours">
+              <option value="3">3 hours</option>
+              <option value="5">5 hours</option>
+              <option value="7" selected>7 hours</option>
+              <option value="10">All day</option>
+            </select>
+          </div>
+
+          <div class="preference">
+            <label>Interest</label>
+            <select id="interest">
+              <option value="mixed">A bit of everything</option>
+              <option value="vinyl">Vinyl</option>
+              <option value="film">Film</option>
+              <option value="listening">Listening</option>
+              <option value="photo">Photography</option>
+              <option value="food">Food</option>
+              <option value="coffee">Coffee</option>
+            </select>
+          </div>
+
+          <div class="preference">
+            <label>Pace</label>
+            <select id="pace">
+              <option value="slow">Slow</option>
+              <option value="balanced" selected>Balanced</option>
+              <option value="packed">Packed</option>
+            </select>
+          </div>
+
         </div>
 
-        <h2 class="builder-title">
-          Build<br>
-          your day.
-        </h2>
+        <button class="build-btn" onclick="buildDay()">
+          Build my day →
+        </button>
 
       </div>
 
 
-      <p class="builder-copy">
+      <div>
 
-        Add places you like while exploring.
-        They'll appear here. Move them around
-        until you've built a day worth remembering.
+        <div class="kicker" style="margin-bottom:25px">
+          <span id="dayCity">Tokyo</span> · Your day
+        </div>
 
-      </p>
+        <div class="day" id="day"></div>
 
-    </div>
-
-
-    <div id="emptyState" class="empty">
-
-      <strong>
-        Nothing planned yet.
-      </strong>
-
-      Start exploring and add somewhere
-      you'd like to go.
-
-    </div>
-
-
-    <div
-      class="itinerary"
-      id="itinerary">
-    </div>
-
-
-    <div
-      class="builder-footer"
-      id="builderFooter"
-      style="display:none">
-
-      <button
-        class="clear-day"
-        onclick="clearDay()">
-
-        Clear my day
-
-      </button>
-
-
-      <button
-        class="save-day"
-        onclick="saveDay()">
-
-        Save my day
-
-      </button>
+      </div>
 
     </div>
 
@@ -1073,125 +841,52 @@ footer{
 </section>
 
 
-<!-- CITIES -->
+<section class="section">
 
-<section class="cities" id="cities">
+  <div class="section-head">
 
-  <div class="cities-inner">
-
-    <h2 class="cities-title">
-      Eight cities.<br>
-      Infinite ways<br>
-      to wander.
-    </h2>
-
-
-    <div class="city-list" id="cityList"></div>
-
-  </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section class="about">
-
-  <div class="about-grid">
-
-    <h2>
-      Travel for<br>
-      the culture.
-    </h2>
-
-
-    <div class="about-copy">
-
-      <p>
-        AnalogueCulture is a guide to the places
-        that make a city feel alive.
-      </p>
-
-      <p>
-        Not the obvious tourist itinerary.
-        The record shop down the side street.
-        The tiny listening bar. The film lab.
-        The cinema showing something you've
-        never heard of.
-      </p>
-
-      <p>
-        Find something interesting.
-        Then build a day around it.
-      </p>
-
+    <div>
+      <div class="kicker">Personalised discovery</div>
+      <h2 class="section-title">For you.</h2>
     </div>
 
+    <p class="section-copy">
+      Recommendations become more useful the more
+      you explore and save.
+    </p>
+
   </div>
+
+  <div class="recommendations" id="recommendations"></div>
 
 </section>
 
 
 <footer>
-
-  <span>
-    © 2026 AnalogueCulture
-  </span>
-
-  <span>
-    Go somewhere. Find something.
-  </span>
-
+  <span>© 2026 AnalogueCulture</span>
+  <span>Go somewhere. Find something.</span>
 </footer>
 
 
-<!-- PLACE MODAL -->
+<div class="modal" id="modal" onclick="closeModal(event)">
 
-<div
-  class="modal"
-  id="modal"
-  onclick="closeModal(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
 
-  <div
-    class="modal-box"
-    onclick="event.stopPropagation()">
+    <button class="close" onclick="closeModal()">×</button>
 
-    <button
-      class="modal-close"
-      onclick="closeModal()">
-      ×
-    </button>
+    <div class="modal-type" id="mType"></div>
+    <h2 id="mName"></h2>
 
-    <div
-      class="modal-type"
-      id="modalType">
-    </div>
+    <div id="mLocation"></div>
 
-    <h2 id="modalTitle"></h2>
+    <p id="mDescription"></p>
 
-    <div
-      class="modal-location"
-      id="modalLocation">
-    </div>
+    <div class="modal-buttons">
 
-    <p
-      class="modal-description"
-      id="modalDescription">
-    </p>
+      <button id="mAdd"></button>
 
-    <div class="modal-actions">
-
-      <button
-        class="modal-add"
-        id="modalAdd">
-        Add to my day
-      </button>
-
-      <a
-        class="modal-map"
-        id="modalMap"
-        target="_blank">
-        Open maps
+      <a id="mMap" target="_blank">
+        Open Maps
       </a>
 
     </div>
@@ -1203,667 +898,689 @@ footer{
 
 <script>
 
+/* =========================================================
+   DATA
+   ========================================================= */
 
-/* =====================================================
-   ANALOGUECULTURE DATA
-   ===================================================== */
-
-
-const cities = {
+const cityInfo = {
 
   tokyo:{
     name:"Tokyo",
-    country:"Japan",
-    description:
-      "A city where film, records, jazz kissas, tiny bars and obsessive craftsmanship sit comfortably alongside each other."
+    copy:"A city built for digging, listening, shooting and wandering."
   },
 
   paris:{
     name:"Paris",
-    country:"France",
-    description:
-      "Film, photography, records, independent culture and neighbourhoods made for wandering."
+    copy:"Film, records, photography, food and independent culture."
   },
 
   london:{
     name:"London",
-    country:"United Kingdom",
-    description:
-      "A sprawling ecosystem of film labs, record shops, listening bars, independent cinemas and music culture."
+    copy:"A sprawling ecosystem of music, photography, film and independent culture."
   },
 
   berlin:{
     name:"Berlin",
-    country:"Germany",
-    description:
-      "Electronic music, vinyl, experimental culture, photography and places that stay interesting after dark."
+    copy:"Electronic music, vinyl, experimental culture and photography."
   },
 
   melbourne:{
     name:"Melbourne",
-    country:"Australia",
-    description:
-      "A city built around independent music, coffee, film photography, records and creative culture."
+    copy:"Coffee, records, film photography and independent creative culture."
   },
 
   newyork:{
     name:"New York",
-    country:"USA",
-    description:
-      "Film, vinyl, independent cinema, photography and music culture packed into neighbourhoods worth exploring."
+    copy:"Music, photography, cinema, food and culture packed into neighbourhoods."
   },
 
   barcelona:{
     name:"Barcelona",
-    country:"Spain",
-    description:
-      "Mediterranean streets, analogue photography, independent music and a culture built around being outside."
+    copy:"Mediterranean wandering, analogue photography, records and independent culture."
   },
 
   lisbon:{
     name:"Lisbon",
-    country:"Portugal",
-    description:
-      "A slower city of photography, records, small bars, music and neighbourhoods made for getting lost."
+    copy:"A slower city of records, photography, food, coffee and music."
   }
 
 };
 
 
+/*
+ IMPORTANT:
+
+ Coordinates are what allow AnalogueCulture to calculate
+ approximate distance between places.
+
+ For the next database pass we can replace/add hundreds
+ of precisely verified coordinates.
+*/
+
 const places = [
 
-/* TOKYO */
+/* ================= TOKYO ================= */
 
 {
- id:"tokyo-sourball",
+ id:"face",
  city:"tokyo",
- type:"film",
- category:"Film Lab",
- name:"Sourball Film Lab",
- location:"Takadanobaba · Tokyo",
- description:"Independent film processing and scanning for photographers who still shoot on film.",
- tags:["Film","Processing"],
- map:"https://www.google.com/maps/search/?api=1&query=Sourball+Film+Lab+Tokyo"
-},
-
-{
- id:"tokyo-face",
- city:"tokyo",
+ name:"Face Records",
  type:"vinyl",
  category:"Record Shop",
- name:"Face Records",
- location:"Shibuya · Tokyo",
- description:"A Tokyo institution for digging through soul, jazz, funk and Japanese pressings.",
- tags:["Vinyl","Jazz","Soul"],
- map:"https://www.google.com/maps/search/?api=1&query=Face+Records+Shibuya+Tokyo"
+ area:"Shibuya",
+ lat:35.6596,
+ lng:139.6994,
+ tags:["Vinyl","Jazz","Soul","Japanese"],
+ desc:"A Tokyo favourite for soul, jazz, funk and Japanese pressings.",
+ map:"https://www.google.com/maps/search/?api=1&query=Face+Records+Shibuya"
 },
 
 {
- id:"tokyo-map",
+ id:"tower",
  city:"tokyo",
+ name:"Tower Records",
+ type:"vinyl",
+ category:"Record Shop",
+ area:"Shibuya",
+ lat:35.6618,
+ lng:139.6984,
+ tags:["Vinyl","Music","Books"],
+ desc:"Seven floors of music culture in the heart of Shibuya.",
+ map:"https://www.google.com/maps/search/?api=1&query=Tower+Records+Shibuya"
+},
+
+{
+ id:"technique",
+ city:"tokyo",
+ name:"Technique",
+ type:"vinyl",
+ category:"Record Shop",
+ area:"Shibuya",
+ lat:35.6609,
+ lng:139.6975,
+ tags:["Techno","House","Disco","Electronic"],
+ desc:"A serious destination for techno, house, disco and experimental electronic music.",
+ map:"https://www.google.com/maps/search/?api=1&query=Technique+Shibuya"
+},
+
+{
+ id:"mapcamera",
+ city:"tokyo",
+ name:"Map Camera",
  type:"photo",
  category:"Camera Shop",
- name:"Map Camera",
- location:"Shinjuku · Tokyo",
- description:"One of Tokyo's great destinations for new and used cameras, lenses and photography equipment.",
- tags:["Cameras","Film"],
+ area:"Shinjuku",
+ lat:35.6927,
+ lng:139.7006,
+ tags:["Cameras","Film","Leica","Photography"],
+ desc:"One of Tokyo's great used-camera destinations.",
  map:"https://www.google.com/maps/search/?api=1&query=Map+Camera+Shinjuku"
 },
 
 {
- id:"tokyo-tower",
+ id:"diskunionjazz",
  city:"tokyo",
+ name:"Disk Union Jazz",
  type:"vinyl",
  category:"Record Shop",
- name:"Tower Vinyl",
- location:"Shibuya · Tokyo",
- description:"A huge vinyl destination with Japanese releases and an enormous range of genres.",
- tags:["Vinyl","Shibuya"],
- map:"https://www.google.com/maps/search/?api=1&query=Tower+Vinyl+Shibuya"
+ area:"Shinjuku",
+ lat:35.6919,
+ lng:139.7031,
+ tags:["Jazz","Vinyl","J-Jazz"],
+ desc:"A specialist destination for jazz digging.",
+ map:"https://www.google.com/maps/search/?api=1&query=Disk+Union+Jazz+Shinjuku"
 },
 
 {
- id:"tokyo-pass",
+ id:"diskunionshimokitazawa",
  city:"tokyo",
- type:"listening",
- category:"Listening Bar",
- name:"PASS",
- location:"Shibuya · Tokyo",
- description:"A contemporary Tokyo listening space where the music is the point.",
- tags:["Hi-Fi","Music"],
- map:"https://www.google.com/maps/search/?api=1&query=PASS+Shibuya+Tokyo"
+ name:"Disk Union Shimokitazawa",
+ type:"vinyl",
+ category:"Record Shop",
+ area:"Shimokitazawa",
+ lat:35.6616,
+ lng:139.6673,
+ tags:["Vinyl","Rock","Soul"],
+ desc:"One of the best areas in Tokyo for a dedicated record crawl.",
+ map:"https://www.google.com/maps/search/?api=1&query=Disk+Union+Shimokitazawa"
 },
 
 {
- id:"tokyo-rootdown",
+ id:"ccc",
  city:"tokyo",
- type:"listening",
- category:"Listening Bar",
- name:"ROOT DOWN",
- location:"Tokyo",
- description:"A serious listening bar built around sound, records and cocktails.",
- tags:["Hi-Fi","Vinyl"],
- map:"https://www.google.com/maps/search/?api=1&query=ROOT+DOWN+Tokyo"
+ name:"City Country City",
+ type:"vinyl",
+ category:"Record Shop + Bar",
+ area:"Shimokitazawa",
+ lat:35.6610,
+ lng:139.6678,
+ tags:["Vinyl","Bar","House","Ambient"],
+ desc:"Record shop, café and bar with a broad selection spanning rock, ambient, house and rare groove.",
+ map:"https://www.google.com/maps/search/?api=1&query=City+Country+City+Shimokitazawa"
 },
 
-
-/* PARIS */
+{
+ id:"ella",
+ city:"tokyo",
+ name:"ELLA RECORDS VINTAGE",
+ type:"vinyl",
+ category:"Vintage Record Showroom",
+ area:"Shimokitazawa",
+ lat:35.6597,
+ lng:139.6687,
+ tags:["Vinyl","Vintage","Soul"],
+ desc:"A vintage record showroom in Kitazawa.",
+ map:"https://www.google.com/maps/search/?api=1&query=ELLA+RECORDS+VINTAGE+Tokyo"
+},
 
 {
- id:"paris-film",
- city:"paris",
+ id:"sourball",
+ city:"tokyo",
+ name:"Sourball Film Lab",
  type:"film",
- category:"Film",
- name:"Paris Film Lab",
- location:"Paris · France",
- description:"A destination for analogue photographers looking for film processing and scanning.",
- tags:["Film","Processing"],
- map:"https://www.google.com/maps/search/?api=1&query=Paris+Film+Lab"
+ category:"Film Lab",
+ area:"Takadanobaba",
+ lat:35.7135,
+ lng:139.7034,
+ tags:["Film","C41","Scanning"],
+ desc:"Film processing and scanning for analogue photographers.",
+ map:"https://www.google.com/maps/search/?api=1&query=Sourball+Film+Lab+Tokyo"
 },
 
 {
- id:"paris-sound",
- city:"paris",
+ id:"judgment",
+ city:"tokyo",
+ name:"JUDGMENT! RECORDS lounge",
  type:"listening",
- category:"Listening / Coffee",
+ category:"Listening Bar",
+ area:"Nishi-Ogikubo",
+ lat:35.7036,
+ lng:139.5998,
+ tags:["Jazz","Vinyl","Coffee","Whisky"],
+ desc:"A listening café/bar built around records, sound and a relaxed atmosphere.",
+ map:"https://www.google.com/maps/search/?api=1&query=JUDGMENT+RECORDS+Lounge+Tokyo"
+},
+
+{
+ id:"kankyo",
+ city:"tokyo",
+ name:"Kankyō Records",
+ type:"listening",
+ category:"Home Listening Room",
+ area:"Sangenjaya",
+ lat:35.6369,
+ lng:139.6701,
+ tags:["Hi-Fi","Vinyl","Design"],
+ desc:"A carefully designed home-listening environment focused on acoustics, records and interiors.",
+ map:"https://www.google.com/maps/search/?api=1&query=Kankyo+Records+Tokyo"
+},
+
+{
+ id:"yomukiku",
+ city:"tokyo",
+ name:"Yom-Kiku-Nomu",
+ type:"listening",
+ category:"Bookshop + Record Bar",
+ area:"Harajuku",
+ lat:35.6749,
+ lng:139.7145,
+ tags:["Vinyl","Books","Zines","Alternative"],
+ desc:"An alternative culture shop combining records, independent books, drinks and serious audio.",
+ map:"https://www.google.com/maps/search/?api=1&query=Yom+Kiku+Nomu+Tokyo"
+},
+
+{
+ id:"soundscape",
+ city:"tokyo",
+ name:"SOUNDSCAPE",
+ type:"listening",
+ category:"Listening Rock Bar",
+ area:"Nihonbashi",
+ lat:35.6826,
+ lng:139.7850,
+ tags:["Rock","Listening","Bar"],
+ desc:"A dedicated listening rock bar in central Tokyo.",
+ map:"https://www.google.com/maps/search/?api=1&query=SOUNDSCAPE+Tokyo"
+},
+
+{
+ id:"recofan",
+ city:"tokyo",
+ name:"Recofan Shibuya",
+ type:"vinyl",
+ category:"Record Shop",
+ area:"Shibuya",
+ lat:35.6592,
+ lng:139.6989,
+ tags:["Vinyl","Jazz","Rock"],
+ desc:"Large-format record digging with particularly strong jazz and rock sections.",
+ map:"https://www.google.com/maps/search/?api=1&query=Recofan+Shibuya"
+},
+
+{
+ id:"tokyoradio",
+ city:"tokyo",
+ name:"Tokyo Radio Department Store",
+ type:"photo",
+ category:"Electronics + Camera",
+ area:"Akihabara",
+ lat:35.6984,
+ lng:139.7725,
+ tags:["Camera","Electronics","Vintage"],
+ desc:"A dense cluster of specialist electronics and camera-related shops.",
+ map:"https://www.google.com/maps/search/?api=1&query=Tokyo+Radio+Department+Store"
+},
+
+{
+ id:"kompakt",
+ city:"tokyo",
+ name:"Kompakt Record Bar Tokyo",
+ type:"listening",
+ category:"Record Bar",
+ area:"Ikejiri",
+ lat:35.6508,
+ lng:139.6848,
+ tags:["Electronic","Vinyl","Bar"],
+ desc:"A contemporary record bar connecting electronic music, records and drinks.",
+ map:"https://www.google.com/maps/search/?api=1&query=Kompakt+Record+Bar+Tokyo"
+},
+
+{
+ id:"bar-martha",
+ city:"tokyo",
+ name:"Bar Martha",
+ type:"listening",
+ category:"Listening Bar",
+ area:"Ebisu",
+ lat:35.6477,
+ lng:139.7084,
+ tags:["Vinyl","Soul","Jazz","Bar"],
+ desc:"An intimate record-bar experience built around attentive listening.",
+ map:"https://www.google.com/maps/search/?api=1&query=Bar+Martha+Tokyo"
+},
+
+/* ================= PARIS ================= */
+
+{
+ id:"betino",
+ city:"paris",
+ name:"Betino's Record Shop",
+ type:"vinyl",
+ category:"Record Shop",
+ area:"Oberkampf",
+ lat:48.864,
+ lng:2.378,
+ tags:["Soul","Funk","Jazz","Vinyl"],
+ desc:"Independent Paris digging for soul, funk, jazz and electronic music.",
+ map:"https://www.google.com/maps/search/?api=1&query=Betino's+Record+Shop+Paris"
+},
+
+{
+ id:"soundcoffee",
+ city:"paris",
  name:"Sound & Coffee",
- location:"Paris · France",
- description:"A place where vinyl, hi-fi and coffee meet in a distinctly Parisian setting.",
- tags:["Vinyl","Hi-Fi"],
+ type:"listening",
+ category:"Hi-Fi + Coffee",
+ area:"Paris",
+ lat:48.86,
+ lng:2.35,
+ tags:["Hi-Fi","Coffee","Vinyl"],
+ desc:"A place where coffee, records and serious listening come together.",
  map:"https://www.google.com/maps/search/?api=1&query=Sound+%26+Coffee+Paris"
 },
 
-{
- id:"paris-vinyl",
- city:"paris",
- type:"vinyl",
- category:"Record Shop",
- name:"Betino's Record Shop",
- location:"Paris · France",
- description:"Independent record digging across soul, funk, jazz and electronic music.",
- tags:["Vinyl","Soul"],
- map:"https://www.google.com/maps/search/?api=1&query=Betino%27s+Record+Shop+Paris"
-},
-
-
-/* LONDON */
+/* ================= LONDON ================= */
 
 {
- id:"london-film",
+ id:"phonica",
  city:"london",
- type:"film",
- category:"Film Lab",
- name:"London Film Lab",
- location:"London · UK",
- description:"Film processing and scanning for C41, black & white, E6 and other analogue formats.",
- tags:["C41","B&W","E6"],
- map:"https://www.google.com/maps/search/?api=1&query=London+Film+Lab"
-},
-
-{
- id:"london-phonica",
- city:"london",
- type:"vinyl",
- category:"Record Shop",
  name:"Phonica Records",
- location:"Soho · London",
- description:"Essential London digging for electronic music, house, techno and beyond.",
+ type:"vinyl",
+ category:"Record Shop",
+ area:"Soho",
+ lat:51.514,
+ lng:-0.132,
  tags:["House","Techno","Vinyl"],
+ desc:"One of London's essential electronic music record shops.",
  map:"https://www.google.com/maps/search/?api=1&query=Phonica+Records+London"
 },
 
 {
- id:"london-brilliant",
+ id:"brilliant",
  city:"london",
+ name:"Brilliant Corners",
  type:"listening",
  category:"Listening Bar",
- name:"Brilliant Corners",
- location:"Dalston · London",
- description:"A restaurant and bar with a serious vinyl listening culture and an exceptional sound system.",
+ area:"Dalston",
+ lat:51.548,
+ lng:-0.075,
  tags:["Jazz","Vinyl","Hi-Fi"],
+ desc:"Restaurant and listening space with a serious sound system.",
  map:"https://www.google.com/maps/search/?api=1&query=Brilliant+Corners+London"
 },
 
-{
- id:"london-nextdoor",
- city:"london",
- type:"events",
- category:"Records + Events",
- name:"Next Door Records",
- location:"London · UK",
- description:"Record shop, café, bar, venue and creative hangout.",
- tags:["Vinyl","Events"],
- map:"https://www.google.com/maps/search/?api=1&query=Next+Door+Records+London"
-},
-
-
-/* BERLIN */
+/* ================= BERLIN ================= */
 
 {
- id:"berlin-hhv",
+ id:"hhv",
  city:"berlin",
+ name:"HHV",
  type:"vinyl",
  category:"Record Shop",
- name:"HHV",
- location:"Friedrichshain · Berlin",
- description:"A huge independent destination covering electronic music, hip hop, jazz and experimental records.",
- tags:["Electronic","Hip Hop"],
- map:"https://www.google.com/maps/search/?api=1&query=HHV+Records+Berlin"
+ area:"Friedrichshain",
+ lat:52.51,
+ lng:13.45,
+ tags:["Electronic","Hip Hop","Jazz"],
+ desc:"One of Berlin's major independent music destinations.",
+ map:"https://www.google.com/maps/search/?api=1&query=HHV+Berlin"
 },
 
 {
- id:"berlin-unkompress",
+ id:"unkompress",
  city:"berlin",
+ name:"Unkompress",
  type:"listening",
  category:"Listening Bar",
- name:"Unkompress",
- location:"Berlin · Germany",
- description:"A vinyl-focused listening space built around careful sound and considered music selection.",
- tags:["Vinyl","Hi-Fi"],
+ area:"Berlin",
+ lat:52.52,
+ lng:13.40,
+ tags:["Hi-Fi","Vinyl","Listening"],
+ desc:"A vinyl-focused listening space built around careful sound.",
  map:"https://www.google.com/maps/search/?api=1&query=Unkompress+Berlin"
 },
 
-{
- id:"berlin-pastiche",
- city:"berlin",
- type:"events",
- category:"Culture / Events",
- name:"Pastiche",
- location:"Neukölln · Berlin",
- description:"A cultural space bringing together music, records, food and events.",
- tags:["Music","Events"],
- map:"https://www.google.com/maps/search/?api=1&query=Pastiche+Berlin"
-},
-
-
-/* MELBOURNE */
+/* ================= MELBOURNE ================= */
 
 {
- id:"mel-filmneverdie",
+ id:"filmneverdies",
  city:"melbourne",
- type:"film",
- category:"Film / Camera",
  name:"FilmNeverDie",
- location:"Melbourne · Australia",
- description:"Film cameras, analogue photography and a community built around shooting film.",
- tags:["Film","Cameras"],
+ type:"film",
+ category:"Film + Cameras",
+ area:"Melbourne",
+ lat:-37.81,
+ lng:144.96,
+ tags:["Film","Cameras","Photography"],
+ desc:"Film cameras and analogue photography culture.",
  map:"https://www.google.com/maps/search/?api=1&query=FilmNeverDie+Melbourne"
 },
 
 {
- id:"mel-irohas",
+ id:"rocksteady",
  city:"melbourne",
- type:"film",
- category:"Film Lab",
- name:"Irohas Photo Lab",
- location:"Melbourne · Australia",
- description:"Film processing and scanning for analogue photographers.",
- tags:["C41","Film"],
- map:"https://www.google.com/maps/search/?api=1&query=Irohas+Photo+Lab+Melbourne"
-},
-
-{
- id:"mel-rocksteady",
- city:"melbourne",
+ name:"Rocksteady Records",
  type:"vinyl",
  category:"Record Shop",
- name:"Rocksteady Records",
- location:"Melbourne · Australia",
- description:"Independent Melbourne record digging with a deep catalogue and local following.",
+ area:"Melbourne",
+ lat:-37.81,
+ lng:144.96,
  tags:["Vinyl","Independent"],
+ desc:"Independent Melbourne record digging.",
  map:"https://www.google.com/maps/search/?api=1&query=Rocksteady+Records+Melbourne"
 },
 
-
-/* NEW YORK */
+/* ================= NEW YORK ================= */
 
 {
- id:"ny-bh",
+ id:"humanhead",
  city:"newyork",
+ name:"Human Head Records",
  type:"vinyl",
  category:"Record Shop",
- name:"Human Head Records",
- location:"Brooklyn · New York",
- description:"Independent Brooklyn record culture spanning electronic, experimental and leftfield music.",
- tags:["Vinyl","Brooklyn"],
+ area:"Brooklyn",
+ lat:40.713,
+ lng:-73.95,
+ tags:["Electronic","Experimental","Vinyl"],
+ desc:"Independent Brooklyn record culture.",
  map:"https://www.google.com/maps/search/?api=1&query=Human+Head+Records+Brooklyn"
 },
 
-{
- id:"ny-roughtrade",
- city:"newyork",
- type:"events",
- category:"Records + Events",
- name:"Rough Trade NYC",
- location:"New York · USA",
- description:"Records, live music, releases and events in one of the city's best-known music spaces.",
- tags:["Vinyl","Events"],
- map:"https://www.google.com/maps/search/?api=1&query=Rough+Trade+NYC"
-},
+/* ================= BARCELONA ================= */
 
 {
- id:"ny-kinokuniya",
- city:"newyork",
- type:"photo",
- category:"Books / Photography",
- name:"Kinokuniya",
- location:"Bryant Park · New York",
- description:"Japanese books, photography publications, magazines and visual culture.",
- tags:["Books","Photography"],
- map:"https://www.google.com/maps/search/?api=1&query=Kinokuniya+New+York"
-},
-
-
-/* BARCELONA */
-
-{
- id:"barcelona-revelab",
+ id:"revelab",
  city:"barcelona",
+ name:"REVELAB Studio",
  type:"film",
  category:"Film Lab",
- name:"REVELAB Studio",
- location:"Barcelona · Spain",
- description:"Development, scanning, film sales, printing and analogue photography workshops.",
- tags:["35mm","120","Workshops"],
- map:"https://www.google.com/maps/search/?api=1&query=REVELAB+Studio+Barcelona"
+ area:"Barcelona",
+ lat:41.39,
+ lng:2.16,
+ tags:["Film","Scanning","Workshops"],
+ desc:"Film development, scanning, printing, sales and workshops.",
+ map:"https://www.google.com/maps/search/?api=1&query=REVELAB+Barcelona"
 },
 
 {
- id:"barcelona-vinyl",
+ id:"revolver",
  city:"barcelona",
+ name:"Discos Revolver",
  type:"vinyl",
  category:"Record Shop",
- name:"Discos Revolver",
- location:"Barcelona · Spain",
- description:"A Barcelona record institution with a broad selection and plenty of digging potential.",
+ area:"Barcelona",
+ lat:41.383,
+ lng:2.175,
  tags:["Vinyl","Independent"],
+ desc:"A long-running Barcelona destination for record digging.",
  map:"https://www.google.com/maps/search/?api=1&query=Discos+Revolver+Barcelona"
 },
 
-{
- id:"barcelona-photo",
- city:"barcelona",
- type:"photo",
- category:"Photography",
- name:"The Folio Club",
- location:"Barcelona · Spain",
- description:"Photography books, exhibitions and visual culture.",
- tags:["Photography","Books"],
- map:"https://www.google.com/maps/search/?api=1&query=The+Folio+Club+Barcelona"
-},
-
-
-/* LISBON */
+/* ================= LISBON ================= */
 
 {
- id:"lisbon-colorfoto",
+ id:"flur",
  city:"lisbon",
- type:"film",
- category:"Film Lab",
- name:"Colorfoto",
- location:"Lisbon · Portugal",
- description:"A long-running destination for photography, printing and analogue processing.",
- tags:["Film","Photography"],
- map:"https://www.google.com/maps/search/?api=1&query=Colorfoto+Lisbon"
-},
-
-{
- id:"lisbon-discomundo",
- city:"lisbon",
- type:"vinyl",
- category:"Record Shop",
- name:"Disco Móvel",
- location:"Lisbon · Portugal",
- description:"Independent record digging in one of Europe's great slow-travel cities.",
- tags:["Vinyl","Local"],
- map:"https://www.google.com/maps/search/?api=1&query=Disco+Movel+Lisbon"
-},
-
-{
- id:"lisbon-flur",
- city:"lisbon",
- type:"vinyl",
- category:"Record Shop",
  name:"Flur Discos",
- location:"Lisbon · Portugal",
- description:"A Lisbon institution for electronic, experimental and independent music.",
- tags:["Electronic","Vinyl"],
+ type:"vinyl",
+ category:"Record Shop",
+ area:"Lisbon",
+ lat:38.71,
+ lng:-9.14,
+ tags:["Electronic","Experimental","Vinyl"],
+ desc:"Independent Lisbon digging for electronic and experimental music.",
  map:"https://www.google.com/maps/search/?api=1&query=Flur+Discos+Lisbon"
 }
 
 ];
 
 
-/* =====================================================
+/* =========================================================
    STATE
-   ===================================================== */
+   ========================================================= */
+
+let currentCity =
+  localStorage.getItem("ac-city") || "tokyo";
+
+let filter = "all";
+let areaFilter = "all";
+
+let myDay =
+  JSON.parse(
+    localStorage.getItem("ac-day") || "[]"
+  );
 
 
-let currentCity = "tokyo";
+/* =========================================================
+   DISTANCE
+   ========================================================= */
 
-let currentFilter = "all";
+function distanceKm(a,b){
 
-let myDay = [];
+  const R=6371;
 
-let selectedPlace = null;
+  const dLat =
+    (b.lat-a.lat)*Math.PI/180;
 
+  const dLon =
+    (b.lng-a.lng)*Math.PI/180;
 
-/* =====================================================
-   RENDER CITY
-   ===================================================== */
+  const x =
+    Math.sin(dLat/2)**2 +
+    Math.cos(a.lat*Math.PI/180) *
+    Math.cos(b.lat*Math.PI/180) *
+    Math.sin(dLon/2)**2;
 
+  return R*2*Math.atan2(
+    Math.sqrt(x),
+    Math.sqrt(1-x)
+  );
 
-function renderCity(){
+}
 
-  const city = cities[currentCity];
+function walkingDistance(a,b){
 
-  document.getElementById("cityName").textContent =
-    city.name;
+  const km=distanceKm(a,b);
 
-  document.getElementById("stripCity").textContent =
-    city.name;
+  /*
+    Approximation for prototype.
+    Real walking directions will be added
+    when we connect a routing API.
+  */
 
-  document.getElementById("cityDescription").textContent =
-    city.description;
-
-  renderPlaces();
-
-  renderCities();
+  return Math.max(
+    1,
+    Math.round(km*12)
+  );
 
 }
 
 
-/* =====================================================
-   RENDER PLACES
-   ===================================================== */
-
-
-function renderPlaces(){
-
-  const container =
-    document.getElementById("places");
-
-  container.innerHTML = "";
-
-  const filtered = places.filter(place => {
-
-    return place.city === currentCity &&
-      (currentFilter === "all" ||
-       place.type === currentFilter);
-
-  });
-
-
-  filtered.forEach((place,index)=>{
-
-    const article =
-      document.createElement("article");
-
-    article.className = "place";
-
-    const alreadyAdded =
-      myDay.includes(place.id);
-
-
-    article.innerHTML = `
-
-      <div>
-
-        <div class="place-top">
-
-          <span class="place-number">
-            ${String(index+1).padStart(2,"0")}
-          </span>
-
-          <span class="place-type">
-            ${place.category}
-          </span>
-
-        </div>
-
-        <h3>
-          ${place.name}
-        </h3>
-
-        <div class="place-location">
-          ${place.location}
-        </div>
-
-        <p class="place-description">
-          ${place.description}
-        </p>
-
-      </div>
-
-
-      <div class="place-bottom">
-
-        <div class="tags">
-
-          ${place.tags.map(tag =>
-            `<span class="tag">${tag}</span>`
-          ).join("")}
-
-        </div>
-
-
-        <button
-          class="add-place ${alreadyAdded ? "added" : ""}"
-          onclick="addToDay('${place.id}')">
-
-          ${alreadyAdded
-            ? "✓ Added"
-            : "+ My Day"}
-
-        </button>
-
-      </div>
-
-    `;
-
-
-    article.addEventListener("click",(event)=>{
-
-      if(event.target.tagName === "BUTTON") return;
-
-      openPlace(place.id);
-
-    });
-
-
-    container.appendChild(article);
-
-  });
-
-
-  if(filtered.length === 0){
-
-    container.innerHTML = `
-      <div class="empty" style="grid-column:1/-1">
-        <strong>No places yet.</strong>
-        We're still building this part of the city.
-      </div>
-    `;
-
-  }
-
-}
-
-
-/* =====================================================
-   CITY SELECTOR
-   ===================================================== */
-
+/* =========================================================
+   CITY
+   ========================================================= */
 
 function changeCity(){
 
   currentCity =
-    document.getElementById("citySelect").value;
+    document.getElementById("city").value;
 
-  currentFilter = "all";
+  localStorage.setItem(
+    "ac-city",
+    currentCity
+  );
+
+  filter="all";
+  areaFilter="all";
 
   document
     .querySelectorAll(".filter")
-    .forEach((button,index)=>{
-      button.classList.toggle(
+    .forEach((x,i)=>{
+      x.classList.toggle(
         "active",
-        index === 0
+        i===0
       );
     });
 
-  renderCity();
+  render();
 
-  document
-    .getElementById("city")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
+  go("explore");
 
 }
 
 
-function selectCity(city){
-
-  currentCity = city;
-
-  document.getElementById("citySelect").value =
-    city;
-
-  currentFilter = "all";
-
-  document
-    .querySelectorAll(".filter")
-    .forEach((button,index)=>{
-      button.classList.toggle(
-        "active",
-        index === 0
-      );
-    });
-
-  renderCity();
-
-  document
-    .getElementById("city")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-/* =====================================================
+/* =========================================================
    FILTER
-   ===================================================== */
+   ========================================================= */
 
+function setFilter(type,button){
 
-function filterPlaces(type,button){
-
-  currentFilter = type;
+  filter=type;
 
   document
     .querySelectorAll(".filter")
-    .forEach(b=>{
-      b.classList.remove("active");
+    .forEach(x=>{
+      x.classList.remove("active");
+    });
+
+  button.classList.add("active");
+
+  render();
+
+}
+
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+
+function render(){
+
+  const info =
+    cityInfo[currentCity];
+
+  document.getElementById("cityTitle")
+    .textContent=info.name;
+
+  document.getElementById("dayCity")
+    .textContent=info.name;
+
+  document.getElementById("cityCopy")
+    .textContent=info.copy;
+
+
+  renderAreas();
+
+  renderPlaces();
+
+  renderClusters();
+
+  renderRecommendations();
+
+  renderDay();
+
+  updateCount();
+
+}
+
+
+function renderAreas(){
+
+  const box=
+    document.getElementById("areas");
+
+  const areas=[
+    ...new Set(
+      places
+        .filter(p=>p.city===currentCity)
+        .map(p=>p.area)
+    )
+  ];
+
+  box.innerHTML=
+    `<button
+      class="neighbourhood active"
+      onclick="setArea('all',this)">
+      All areas
+    </button>`;
+
+  areas.forEach(area=>{
+
+    const b=
+      document.createElement("button");
+
+    b.className="neighbourhood";
+
+    b.textContent=area;
+
+    b.onclick=()=>{
+      setArea(area,b);
+    };
+
+    box.appendChild(b);
+
+  });
+
+}
+
+
+function setArea(area,button){
+
+  areaFilter=area;
+
+  document
+    .querySelectorAll(".neighbourhood")
+    .forEach(x=>{
+      x.classList.remove("active");
     });
 
   button.classList.add("active");
@@ -1873,129 +1590,411 @@ function filterPlaces(type,button){
 }
 
 
-/* =====================================================
-   MY DAY
-   ===================================================== */
+function renderPlaces(){
+
+  const box=
+    document.getElementById("places");
+
+  const query=
+    document.getElementById("search")
+      .value
+      .toLowerCase();
+
+  let list=
+    places.filter(p=>{
+
+      if(p.city!==currentCity)
+        return false;
+
+      if(filter!=="all" &&
+         p.type!==filter)
+        return false;
+
+      if(areaFilter!=="all" &&
+         p.area!==areaFilter)
+        return false;
+
+      if(query){
+
+        const text=
+          [
+            p.name,
+            p.area,
+            p.category,
+            ...p.tags
+          ]
+          .join(" ")
+          .toLowerCase();
+
+        if(!text.includes(query))
+          return false;
+
+      }
+
+      return true;
+
+    });
 
 
-function addToDay(id){
+  /*
+    If user already has places in their day,
+    show places near their latest stop first.
+  */
 
-  const index =
-    myDay.indexOf(id);
+  if(myDay.length){
 
-  if(index === -1){
+    const last=
+      places.find(
+        p=>p.id===myDay[myDay.length-1]
+      );
 
-    myDay.push(id);
+    if(last){
 
-  }else{
+      list.sort(
+        (a,b)=>
+          distanceKm(a,last) -
+          distanceKm(b,last)
+      );
 
-    myDay.splice(index,1);
+    }
 
   }
 
-  localStorage.setItem(
-    "analogueculture-day",
-    JSON.stringify(myDay)
-  );
+
+  box.innerHTML="";
+
+
+  list.forEach((p,index)=>{
+
+    const added=
+      myDay.includes(p.id);
+
+    let distance="";
+
+    if(myDay.length){
+
+      const last=
+        places.find(
+          x=>x.id===myDay[myDay.length-1]
+        );
+
+      if(last && last.id!==p.id){
+
+        const mins=
+          walkingDistance(last,p);
+
+        distance=
+          `<div class="distance">
+            ${mins} min approx. from your last stop
+          </div>`;
+
+      }
+
+    }
+
+
+    const el=
+      document.createElement("article");
+
+    el.className="place";
+
+    el.innerHTML=`
+
+      <div>
+
+        <div class="place-top">
+
+          <span>
+            ${String(index+1).padStart(2,"0")}
+          </span>
+
+          <span class="place-type">
+            ${p.category}
+          </span>
+
+        </div>
+
+        <h3>${p.name}</h3>
+
+        <div class="place-location">
+          ${p.area} · ${p.city}
+        </div>
+
+        <p class="place-desc">
+          ${p.desc}
+        </p>
+
+        ${distance}
+
+      </div>
+
+      <div class="place-bottom">
+
+        <div class="tags">
+          ${p.tags.map(
+            t=>`<span class="tag">${t}</span>`
+          ).join("")}
+        </div>
+
+        <button
+          class="add ${added?"added":""}"
+          onclick="toggleDay('${p.id}')">
+
+          ${added?"✓ Added":"+ My Day"}
+
+        </button>
+
+      </div>
+    `;
+
+
+    el.onclick=(e)=>{
+
+      if(e.target.tagName==="BUTTON")
+        return;
+
+      openModal(p.id);
+
+    };
+
+
+    box.appendChild(el);
+
+  });
+
+
+  if(!list.length){
+
+    box.innerHTML=`
+      <div class="empty" style="grid-column:1/-1">
+        <strong>Nothing here yet.</strong>
+        We're still building this area.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =========================================================
+   CLUSTERS
+   ========================================================= */
+
+function renderClusters(){
+
+  const box=
+    document.getElementById("clusterGrid");
+
+  const grouped={};
+
+  places
+    .filter(p=>p.city===currentCity)
+    .forEach(p=>{
+
+      if(!grouped[p.area])
+        grouped[p.area]=[];
+
+      grouped[p.area].push(p);
+
+    });
+
+
+  box.innerHTML="";
+
+
+  Object.entries(grouped)
+    .forEach(([area,list])=>{
+
+      const el=
+        document.createElement("div");
+
+      el.className="cluster";
+
+      const types=
+        [...new Set(
+          list.map(x=>x.type)
+        )];
+
+      el.innerHTML=`
+
+        <h3>${area}</h3>
+
+        <p>
+          ${list.length} places ·
+          ${types.length} cultures
+        </p>
+
+        <button onclick="chooseArea('${area}')">
+          Explore area →
+        </button>
+
+      `;
+
+      box.appendChild(el);
+
+    });
+
+}
+
+
+function chooseArea(area){
+
+  areaFilter=area;
+
+  renderAreas();
 
   renderPlaces();
 
-  renderDay();
+  go("explore");
 
-  updateDayCount();
+}
+
+
+/* =========================================================
+   MY DAY
+   ========================================================= */
+
+function toggleDay(id){
+
+  if(myDay.includes(id)){
+
+    myDay=
+      myDay.filter(x=>x!==id);
+
+  }else{
+
+    myDay.push(id);
+
+  }
+
+  save();
+
+  render();
+
+}
+
+
+function save(){
+
+  localStorage.setItem(
+    "ac-day",
+    JSON.stringify(myDay)
+  );
+
+}
+
+
+function updateCount(){
+
+  document.getElementById("count")
+    .textContent=myDay.length;
 
 }
 
 
 function renderDay(){
 
-  const itinerary =
-    document.getElementById("itinerary");
+  const box=
+    document.getElementById("day");
 
-  const empty =
-    document.getElementById("emptyState");
+  if(!myDay.length){
 
-  const footer =
-    document.getElementById("builderFooter");
-
-
-  itinerary.innerHTML = "";
-
-
-  if(myDay.length === 0){
-
-    empty.style.display = "block";
-
-    footer.style.display = "none";
+    box.innerHTML=`
+      <div class="empty">
+        <strong>Your day is empty.</strong>
+        Add places above or let AnalogueCulture
+        build a route for you.
+      </div>
+    `;
 
     return;
 
   }
 
 
-  empty.style.display = "none";
-
-  footer.style.display = "flex";
+  box.innerHTML="";
 
 
   myDay.forEach((id,index)=>{
 
-    const place =
-      places.find(p => p.id === id);
+    const p=
+      places.find(x=>x.id===id);
 
-    if(!place) return;
+    if(!p)return;
 
 
-    const item =
+    const previous=
+      index>0
+        ? places.find(
+            x=>x.id===myDay[index-1]
+          )
+        : null;
+
+
+    let distance="";
+
+    if(previous){
+
+      distance=
+        `${walkingDistance(previous,p)} min approx.`;
+
+    }
+
+
+    const hour=
+      10+
+      Math.floor(index*2);
+
+
+    const item=
       document.createElement("div");
 
-    item.className =
-      "itinerary-item";
+    item.className="day-item";
 
+    item.innerHTML=`
 
-    const hour =
-      10 + (index * 2);
-
-    const time =
-      String(hour).padStart(2,"0") + ":00";
-
-
-    item.innerHTML = `
-
-      <div class="itinerary-time">
-        ${time}
+      <div class="day-time">
+        ${String(hour).padStart(2,"0")}:00
       </div>
 
-      <div class="itinerary-info">
+      <div>
 
-        <h4>
-          ${place.name}
-        </h4>
+        <div class="day-name">
+          ${p.name}
+        </div>
 
-        <p>
-          ${place.category} · ${place.location}
-        </p>
+        <div class="day-meta">
+          ${p.category} · ${p.area}
+        </div>
+
+        ${
+          distance
+          ? `<div class="day-distance">
+              ↓ ${distance} from previous stop
+             </div>`
+          : ""
+        }
 
       </div>
 
-
-      <div class="itinerary-actions">
+      <div class="day-actions">
 
         <button
-          class="small-button"
-          onclick="moveItem(${index},-1)">
+          class="icon"
+          onclick="move(${index},-1)">
           ↑
         </button>
 
         <button
-          class="small-button"
-          onclick="moveItem(${index},1)">
+          class="icon"
+          onclick="move(${index},1)">
           ↓
         </button>
 
         <button
-          class="small-button"
-          onclick="removeFromDay(${index})">
+          class="icon"
+          onclick="removeDay(${index})">
           ×
         </button>
 
@@ -2003,163 +2002,302 @@ function renderDay(){
 
     `;
 
-
-    itinerary.appendChild(item);
+    box.appendChild(item);
 
   });
 
 }
 
 
-function moveItem(index,direction){
+function move(index,direction){
 
-  const newIndex =
-    index + direction;
+  const next=
+    index+direction;
 
-  if(
-    newIndex < 0 ||
-    newIndex >= myDay.length
-  ) return;
+  if(next<0 ||
+     next>=myDay.length)
+    return;
 
+  [
+    myDay[index],
+    myDay[next]
+  ]=[
+    myDay[next],
+    myDay[index]
+  ];
 
-  const temp =
-    myDay[index];
+  save();
 
-  myDay[index] =
-    myDay[newIndex];
-
-  myDay[newIndex] =
-    temp;
-
-
-  saveState();
-
-  renderDay();
-
-  renderPlaces();
+  render();
 
 }
 
 
-function removeFromDay(index){
+function removeDay(index){
 
   myDay.splice(index,1);
 
-  saveState();
+  save();
 
-  renderDay();
-
-  renderPlaces();
-
-  updateDayCount();
+  render();
 
 }
 
 
-function clearDay(){
+/* =========================================================
+   AUTO BUILD
+   ========================================================= */
 
-  if(myDay.length === 0) return;
+function buildDay(){
 
-  if(
-    !confirm("Clear your entire day?")
-  ) return;
+  const interest=
+    document.getElementById("interest").value;
 
-  myDay = [];
+  const hours=
+    Number(
+      document.getElementById("hours").value
+    );
 
-  saveState();
+  const pace=
+    document.getElementById("pace").value;
 
-  renderDay();
 
-  renderPlaces();
+  let candidates=
+    places.filter(
+      p=>p.city===currentCity
+    );
 
-  updateDayCount();
+
+  if(interest!=="mixed"){
+
+    const matching=
+      candidates.filter(
+        p=>p.type===interest ||
+        p.tags.some(
+          t=>t.toLowerCase()
+           .includes(interest)
+        )
+      );
+
+    if(matching.length)
+      candidates=matching;
+
+  }
+
+
+  /*
+    Preference learning:
+
+    Previously saved categories are
+    given a slight boost.
+  */
+
+  const preferenceCounts={};
+
+  myDay.forEach(id=>{
+
+    const p=
+      places.find(x=>x.id===id);
+
+    if(p)
+      preferenceCounts[p.type]=
+        (preferenceCounts[p.type]||0)+1;
+
+  });
+
+
+  candidates.sort((a,b)=>{
+
+    const aScore=
+      (preferenceCounts[a.type]||0)*3;
+
+    const bScore=
+      (preferenceCounts[b.type]||0)*3;
+
+    return bScore-aScore;
+
+  });
+
+
+  const target=
+    pace==="slow"
+      ? Math.min(3,candidates.length)
+      : pace==="packed"
+        ? Math.min(6,candidates.length)
+        : Math.min(4,candidates.length);
+
+
+  myDay=
+    candidates
+      .slice(0,target)
+      .map(p=>p.id);
+
+
+  save();
+
+  render();
+
+  go("builder");
 
 }
 
 
-function saveDay(){
+/* =========================================================
+   RECOMMENDATIONS
+   ========================================================= */
 
-  localStorage.setItem(
-    "analogueculture-saved",
-    new Date().toISOString()
-  );
+function renderRecommendations(){
 
-  alert(
-    "Your day has been saved on this device."
-  );
+  const box=
+    document.getElementById(
+      "recommendations"
+    );
+
+  const current=
+    places.filter(
+      p=>p.city===currentCity
+    );
+
+
+  /*
+    Recommend things sharing tags
+    with places the user has saved.
+  */
+
+  const saved=
+    places.filter(
+      p=>myDay.includes(p.id)
+    );
+
+
+  const tags=
+    new Set(
+      saved.flatMap(
+        p=>p.tags
+      )
+    );
+
+
+  let recs=
+    current
+      .filter(
+        p=>!myDay.includes(p.id)
+      )
+      .map(p=>{
+
+        let score=0;
+
+        p.tags.forEach(t=>{
+          if(tags.has(t))
+            score++;
+        });
+
+        return {p,score};
+
+      })
+      .sort(
+        (a,b)=>b.score-a.score
+      )
+      .slice(0,3);
+
+
+  if(!recs.length){
+
+    recs=
+      current
+        .slice(0,3)
+        .map(p=>({p,score:0}));
+
+  }
+
+
+  box.innerHTML="";
+
+
+  recs.forEach(({p,score})=>{
+
+    const el=
+      document.createElement("div");
+
+    el.className="rec";
+
+    el.innerHTML=`
+
+      <small>
+        ${
+          score
+          ? "Because you like similar places"
+          : "Curated for Tokyo"
+        }
+      </small>
+
+      <h3>${p.name}</h3>
+
+      <p>
+        ${p.category} · ${p.area}
+        <br><br>
+        ${p.desc}
+      </p>
+
+      <button
+        onclick="toggleDay('${p.id}')">
+
+        + Add to my day
+
+      </button>
+
+    `;
+
+    box.appendChild(el);
+
+  });
 
 }
 
 
-function saveState(){
+/* =========================================================
+   MODAL
+   ========================================================= */
 
-  localStorage.setItem(
-    "analogueculture-day",
-    JSON.stringify(myDay)
-  );
+function openModal(id){
 
-}
+  const p=
+    places.find(x=>x.id===id);
 
+  if(!p)return;
 
-function updateDayCount(){
+  document.getElementById("mType")
+    .textContent=p.category;
 
-  document.getElementById("dayCount")
-    .textContent = myDay.length;
+  document.getElementById("mName")
+    .textContent=p.name;
 
-}
+  document.getElementById("mLocation")
+    .textContent=
+      `${p.area} · ${p.city}`;
 
+  document.getElementById("mDescription")
+    .textContent=p.desc;
 
-/* =====================================================
-   PLACE MODAL
-   ===================================================== */
+  document.getElementById("mMap")
+    .href=p.map;
 
+  const add=
+    document.getElementById("mAdd");
 
-function openPlace(id){
-
-  const place =
-    places.find(p=>p.id===id);
-
-  if(!place) return;
-
-  selectedPlace = id;
-
-  document.getElementById("modalType")
-    .textContent = place.category;
-
-  document.getElementById("modalTitle")
-    .textContent = place.name;
-
-  document.getElementById("modalLocation")
-    .textContent = place.location;
-
-  document.getElementById("modalDescription")
-    .textContent = place.description;
-
-  document.getElementById("modalMap")
-    .href = place.map;
-
-
-  const addButton =
-    document.getElementById("modalAdd");
-
-
-  addButton.textContent =
+  add.textContent=
     myDay.includes(id)
-      ? "✓ Added to my day"
+      ? "✓ Added"
       : "+ Add to my day";
 
+  add.onclick=()=>{
+    toggleDay(id);
 
-  addButton.onclick = function(){
-
-    addToDay(id);
-
-    addButton.textContent =
+    add.textContent=
       myDay.includes(id)
-        ? "✓ Added to my day"
+        ? "✓ Added"
         : "+ Add to my day";
-
   };
-
 
   document
     .getElementById("modal")
@@ -2172,7 +2310,8 @@ function closeModal(event){
 
   if(
     !event ||
-    event.target === document.getElementById("modal")
+    event.target===
+      document.getElementById("modal")
   ){
 
     document
@@ -2184,58 +2323,11 @@ function closeModal(event){
 }
 
 
-/* =====================================================
-   CITIES LIST
-   ===================================================== */
+/* =========================================================
+   NAV
+   ========================================================= */
 
-
-function renderCities(){
-
-  const container =
-    document.getElementById("cityList");
-
-  container.innerHTML = "";
-
-
-  Object.entries(cities)
-    .forEach(([key,city])=>{
-
-      const row =
-        document.createElement("div");
-
-      row.className =
-        "city-choice";
-
-
-      row.innerHTML = `
-
-        <button
-          onclick="selectCity('${key}')">
-
-          ${city.name}
-
-        </button>
-
-        <span>
-          ${city.country}
-        </span>
-
-      `;
-
-
-      container.appendChild(row);
-
-    });
-
-}
-
-
-/* =====================================================
-   NAVIGATION
-   ===================================================== */
-
-
-function scrollToSection(id){
+function go(id){
 
   document
     .getElementById(id)
@@ -2246,48 +2338,14 @@ function scrollToSection(id){
 }
 
 
-/* =====================================================
-   LOAD
-   ===================================================== */
+/* =========================================================
+   START
+   ========================================================= */
 
+document.getElementById("city")
+  .value=currentCity;
 
-function loadSavedDay(){
-
-  try{
-
-    const saved =
-      JSON.parse(
-        localStorage.getItem(
-          "analogueculture-day"
-        )
-      );
-
-    if(Array.isArray(saved)){
-
-      myDay =
-        saved.filter(id =>
-          places.some(p=>p.id===id)
-        );
-
-    }
-
-  }catch(error){
-
-    myDay = [];
-
-  }
-
-}
-
-
-loadSavedDay();
-
-renderCity();
-
-renderDay();
-
-updateDayCount();
-
+render();
 
 </script>
 
