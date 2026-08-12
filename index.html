@@ -1,0 +1,747 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AnalogueCulture — Film Labs Around the World</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f0e8;
+      color: #171717;
+      line-height: 1.5;
+    }
+
+    header {
+      border-bottom: 1px solid #171717;
+      padding: 22px 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f4f0e8;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      font-weight: 400;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 90px 5vw 70px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(52px, 8vw, 105px);
+      font-weight: 400;
+      line-height: 0.92;
+      letter-spacing: -5px;
+      max-width: 950px;
+      margin-bottom: 35px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      max-width: 620px;
+      color: #555;
+    }
+
+    .search-section {
+      padding: 0 5vw 70px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .search-box {
+      display: flex;
+      border: 1px solid #171717;
+      background: #fffdf8;
+      height: 64px;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 0 22px;
+      font-size: 16px;
+      background: transparent;
+    }
+
+    .search-box button {
+      width: 130px;
+      border: none;
+      border-left: 1px solid #171717;
+      background: #171717;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .search-box button:hover {
+      background: #333;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .filter {
+      border: 1px solid #aaa;
+      background: transparent;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .filter.active,
+    .filter:hover {
+      background: #171717;
+      color: white;
+      border-color: #171717;
+    }
+
+    .directory {
+      background: #171717;
+      color: white;
+      padding: 75px 5vw 100px;
+    }
+
+    .directory-inner {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .directory-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 35px;
+      gap: 20px;
+    }
+
+    .directory-header h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .count {
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .labs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid #555;
+    }
+
+    .lab {
+      padding: 28px 0;
+      border-bottom: 1px solid #555;
+      cursor: pointer;
+    }
+
+    .lab:nth-child(odd) {
+      padding-right: 40px;
+      border-right: 1px solid #555;
+    }
+
+    .lab:nth-child(even) {
+      padding-left: 40px;
+    }
+
+    .lab:hover .lab-name {
+      text-decoration: underline;
+    }
+
+    .lab-location {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .lab-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+
+    .lab-description {
+      color: #aaa;
+      font-size: 14px;
+      max-width: 480px;
+    }
+
+    .lab-tags {
+      margin-top: 16px;
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border: 1px solid #555;
+      padding: 4px 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .about {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 5vw;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .about h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 58px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .about p {
+      color: #555;
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      border-top: 1px solid #171717;
+      padding: 25px 5vw;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 18px 20px;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .hero,
+      .search-section,
+      .about {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      h1 {
+        font-size: 60px;
+        letter-spacing: -3px;
+      }
+
+      .directory {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .labs {
+        grid-template-columns: 1fr;
+      }
+
+      .lab:nth-child(odd) {
+        padding-right: 0;
+        border-right: none;
+      }
+
+      .lab:nth-child(even) {
+        padding-left: 0;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Analogue<span>Culture</span></div>
+
+  <nav>
+    <a href="#directory">Directory</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+
+<section class="hero">
+
+  <div class="eyebrow">The global film lab directory</div>
+
+  <h1>Find somewhere to develop your film.</h1>
+
+  <p>
+    A curated directory of independent film labs, developers,
+    scanners and analogue photography stores around the world.
+  </p>
+
+</section>
+
+
+<section class="search-section">
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search a city, country or lab..."
+    />
+
+    <button onclick="searchLabs()">SEARCH</button>
+
+  </div>
+
+  <div class="filters">
+
+    <button class="filter active" onclick="filterLabs('all', this)">
+      All
+    </button>
+
+    <button class="filter" onclick="filterLabs('Europe', this)">
+      Europe
+    </button>
+
+    <button class="filter" onclick="filterLabs('Asia', this)">
+      Asia
+    </button>
+
+    <button class="filter" onclick="filterLabs('North America', this)">
+      North America
+    </button>
+
+    <button class="filter" onclick="filterLabs('Australia', this)">
+      Australia
+    </button>
+
+  </div>
+
+</section>
+
+
+<section class="directory" id="directory">
+
+  <div class="directory-inner">
+
+    <div class="directory-header">
+
+      <h2>Film Labs</h2>
+
+      <div class="count">
+        <span id="labCount">8</span> places
+      </div>
+
+    </div>
+
+
+    <div class="labs" id="labList">
+
+
+      <article class="lab"
+        data-region="Europe"
+        data-search="dublin ireland the darkroom film lab">
+
+        <div class="lab-location">
+          Dublin · Ireland
+        </div>
+
+        <div class="lab-name">
+          The Darkroom
+        </div>
+
+        <div class="lab-description">
+          Film developing and scanning for photographers in Dublin.
+        </div>
+
+        <div class="lab-tags">
+          <span class="tag">35mm</span>
+          <span class="tag">120</span>
+          <span class="tag">Scan</span>
+        </div>
+
+      </article>
+
+
+      <article class="lab"
+        data-region="Europe"
+        data-search="london uk film lab analogue wonderland">
+
+        <div class="lab-location">
+          London · United Kingdom
+        </div>
+
+        <div class="lab-name">
+          Analogue Wonderland
+        </div>
+
+        <div class="lab-description">
+          Film photography specialists with developing and analogue supplies.
+        </div>
+
+        <div class="lab-tags">
+          <span class="tag">35mm</span>
+          <span class="tag">120</span>
+          <span class="tag">C-41</span>
+        </div>
+
+      </article>
+
+
+      <article class="lab"
+        data-region="Europe"
+        data-search="paris france negatif plus">
+
+        <div class="lab-location">
+          Paris · France
+        </div>
+
+        <div class="lab-name">
+          Negatif+
+        </div>
+
+        <div class="lab-description">
+          Professional film processing and scanning in the heart of Paris.
+        </div>
+
+        <div class="lab-tags">
+          <span class="tag">35mm</span>
+          <span class="tag">120</span>
+          <span class="tag">E-6</span>
+        </div>
+
+      </article>
+
+
+      <article class="lab"
+        data-region="Europe"
+        data-search="berlin germany safelight">
+
+        <div class="lab-location">
+          Berlin · Germany
+        </div>
+
+        <div class="lab-name">
+          Safelight Berlin
+        </div>
+
+        <div class="lab-description">
+          Independent film processing and scanning for Berlin photographers.
+        </div>
+
+        <div class="lab-tags">
+          <span class="tag">35mm</span>
+          <span class="tag">120</span>
+          <span class="tag">B&W</span>
+        </div>
+
+      </article>
+
+
+      <article class="lab"
+        data-region="Asia"
+        data-search="tokyo japan popeye camera film">
+
+        <div class="lab-location">
+          Tokyo · Japan
+        </div>
+
+        <div class="lab-name">
+          Popeye Camera
+        </div>
+
+        <div class="lab-description">
+          Tokyo destination for film cameras, photography and processing.
+        </div>
+
+        <div class="lab-tags">
+          <span class="tag">35mm</span>
+          <span class="tag">120</span>
+          <span class="tag">Camera</span>
+        </div>
+
+      </article>
+
+
+      <article class="lab"
+        data-region="Asia"
+        data-search="hong kong china film lab">
+
+        <div class="lab-location">
+          Hong Kong
+        </div>
+
+        <div class="lab-name">
+          The Film Lab
+        </div>
+
+        <div class="lab-description">
+          Local processing and scanning for analogue photographers.
+        </div>
+
+        <div class="lab-tags">
+          <span class="tag">35mm</span>
+          <span class="tag">120</span>
+          <span class="tag">Scan</span>
+        </div>
+
+      </article>
+
+
+      <article class="lab"
+        data-region="Australia"
+        data-search="melbourne australia film lab">
+
+        <div class="lab-location">
+          Melbourne · Australia
+        </div>
+
+        <div class="lab-name">
+          Film Never Die
+        </div>
+
+        <div class="lab-description">
+          Film processing, scanning and analogue photography culture.
+        </div>
+
+        <div class="lab-tags">
+          <span class="tag">35mm</span>
+          <span class="tag">120</span>
+          <span class="tag">Scan</span>
+        </div>
+
+      </article>
+
+
+      <article class="lab"
+        data-region="North America"
+        data-search="new york usa bleeker camera">
+
+        <div class="lab-location">
+          New York · USA
+        </div>
+
+        <div class="lab-name">
+          Bleeker Camera
+        </div>
+
+        <div class="lab-description">
+          Long-running New York destination for film photography.
+        </div>
+
+        <div class="lab-tags">
+          <span class="tag">35mm</span>
+          <span class="tag">120</span>
+          <span class="tag">B&W</span>
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="about" id="about">
+
+  <div class="about-grid">
+
+    <h2>
+      Made for people who still shoot film.
+    </h2>
+
+    <div>
+
+      <p>
+        AnalogueCulture is an independent guide to the places
+        keeping analogue photography alive.
+      </p>
+
+      <p>
+        Whether you're travelling with a roll in your camera,
+        looking for somewhere to develop old negatives, or simply
+        hunting for the best photography shops in a new city,
+        this is where you start.
+      </p>
+
+      <p>
+        More cities. More labs. More analogue culture.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div>
+    © 2026 AnalogueCulture
+  </div>
+
+  <div>
+    Shoot film. Go somewhere.
+  </div>
+
+</footer>
+
+
+<script>
+
+  const labs = document.querySelectorAll(".lab");
+
+  function searchLabs() {
+
+    const query =
+      document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    let visible = 0;
+
+    labs.forEach(lab => {
+
+      const searchable =
+        lab.dataset.search.toLowerCase();
+
+      if (searchable.includes(query)) {
+
+        lab.style.display = "";
+
+        visible++;
+
+      } else {
+
+        lab.style.display = "none";
+
+      }
+
+    });
+
+    document.getElementById("labCount").textContent = visible;
+
+  }
+
+
+  document
+    .getElementById("searchInput")
+    .addEventListener("keyup", searchLabs);
+
+
+  function filterLabs(region, button) {
+
+    document
+      .querySelectorAll(".filter")
+      .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    let visible = 0;
+
+    labs.forEach(lab => {
+
+      if (
+        region === "all" ||
+        lab.dataset.region === region
+      ) {
+
+        lab.style.display = "";
+
+        visible++;
+
+      } else {
+
+        lab.style.display = "none";
+
+      }
+
+    });
+
+    document.getElementById("labCount").textContent = visible;
+
+  }
+
+</script>
+
+</body>
+</html>
+```
