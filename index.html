@@ -2,390 +2,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AnalogueCulture — Film Labs Around the World</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<title>AnalogueCulture — A Guide to the Good Stuff</title>
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f0e8;
-      color: #171717;
-      line-height: 1.5;
-    }
+<style>
 
-    header {
-      border-bottom: 1px solid #171717;
-      padding: 22px 5vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #f4f0e8;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    .logo {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
+body {
+  background:#f2eee5;
+  color:#151515;
+  font-family:Arial, Helvetica, sans-serif;
+}
 
-    .logo span {
-      font-weight: 400;
-    }
+header {
+  height:76px;
+  border-bottom:1px solid #151515;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5vw;
+  position:sticky;
+  top:0;
+  background:#f2eee5;
+  z-index:20;
+}
 
-    nav {
-      display: flex;
-      gap: 28px;
-      font-size: 14px;
-    }
+.logo {
+  font-size:21px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
 
-    nav a {
-      color: inherit;
-      text-decoration: none;
-    }
+.logo span {
+  font-weight:400;
+}
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+nav {
+  display:flex;
+  gap:28px;
+}
 
-    .hero {
-      padding: 90px 5vw 70px;
-      max-width: 1200px;
-      margin: auto;
-    }
+nav a {
+  color:#151515;
+  text-decoration:none;
+  font-size:13px;
+}
 
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 11px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
+nav a:hover {
+  text-decoration:underline;
+}
 
-    h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(52px, 8vw, 105px);
-      font-weight: 400;
-      line-height: 0.92;
-      letter-spacing: -5px;
-      max-width: 950px;
-      margin-bottom: 35px;
-    }
 
-    .hero p {
-      font-size: 19px;
-      max-width: 620px;
-      color: #555;
-    }
+/* HERO */
 
-    .search-section {
-      padding: 0 5vw 70px;
-      max-width: 1200px;
-      margin: auto;
-    }
+.hero {
+  max-width:1250px;
+  margin:auto;
+  padding:100px 5vw 85px;
+}
 
-    .search-box {
-      display: flex;
-      border: 1px solid #171717;
-      background: #fffdf8;
-      height: 64px;
-    }
+.eyebrow {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:25px;
+  font-weight:bold;
+}
 
-    .search-box input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 0 22px;
-      font-size: 16px;
-      background: transparent;
-    }
+.hero h1 {
+  font-family:Georgia, serif;
+  font-weight:400;
+  font-size:clamp(58px,8vw,115px);
+  line-height:.88;
+  letter-spacing:-6px;
+  max-width:1000px;
+}
 
-    .search-box button {
-      width: 130px;
-      border: none;
-      border-left: 1px solid #171717;
-      background: #171717;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.hero p {
+  margin-top:40px;
+  font-size:19px;
+  line-height:1.5;
+  max-width:600px;
+  color:#5c5c5c;
+}
 
-    .search-box button:hover {
-      background: #333;
-    }
 
-    .filters {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
+/* SEARCH */
 
-    .filter {
-      border: 1px solid #aaa;
-      background: transparent;
-      padding: 8px 14px;
-      cursor: pointer;
-      font-size: 13px;
-    }
+.search-area {
+  max-width:1250px;
+  margin:auto;
+  padding:0 5vw 80px;
+}
 
-    .filter.active,
-    .filter:hover {
-      background: #171717;
-      color: white;
-      border-color: #171717;
-    }
+.search {
+  height:68px;
+  border:1px solid #151515;
+  display:flex;
+  background:#fffdf8;
+}
 
-    .directory {
-      background: #171717;
-      color: white;
-      padding: 75px 5vw 100px;
-    }
+.search input {
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  padding:0 22px;
+  font-size:16px;
+}
 
-    .directory-inner {
-      max-width: 1200px;
-      margin: auto;
-    }
+.search button {
+  width:150px;
+  border:0;
+  border-left:1px solid #151515;
+  background:#151515;
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-    .directory-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      margin-bottom: 35px;
-      gap: 20px;
-    }
+.search button:hover {
+  background:#333;
+}
 
-    .directory-header h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 48px;
-      font-weight: 400;
-      line-height: 1;
-    }
 
-    .count {
-      color: #aaa;
-      font-size: 13px;
-    }
+/* CATEGORY NAV */
 
-    .labs {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      border-top: 1px solid #555;
-    }
+.categories {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:18px;
+}
 
-    .lab {
-      padding: 28px 0;
-      border-bottom: 1px solid #555;
-      cursor: pointer;
-    }
+.category {
+  border:1px solid #aaa;
+  padding:9px 14px;
+  background:transparent;
+  cursor:pointer;
+  font-size:12px;
+}
 
-    .lab:nth-child(odd) {
-      padding-right: 40px;
-      border-right: 1px solid #555;
-    }
+.category.active,
+.category:hover {
+  background:#151515;
+  color:white;
+  border-color:#151515;
+}
 
-    .lab:nth-child(even) {
-      padding-left: 40px;
-    }
 
-    .lab:hover .lab-name {
-      text-decoration: underline;
-    }
+/* FEATURE */
 
-    .lab-location {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #999;
-      margin-bottom: 8px;
-    }
+.feature {
+  background:#151515;
+  color:white;
+  padding:85px 5vw;
+}
 
-    .lab-name {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 29px;
-      margin-bottom: 8px;
-    }
+.feature-inner {
+  max-width:1250px;
+  margin:auto;
+}
 
-    .lab-description {
-      color: #aaa;
-      font-size: 14px;
-      max-width: 480px;
-    }
+.feature-label {
+  color:#aaa;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:11px;
+  margin-bottom:20px;
+}
 
-    .lab-tags {
-      margin-top: 16px;
-      display: flex;
-      gap: 7px;
-      flex-wrap: wrap;
-    }
+.feature h2 {
+  font-family:Georgia,serif;
+  font-weight:400;
+  font-size:clamp(45px,6vw,80px);
+  line-height:.95;
+  max-width:800px;
+}
 
-    .tag {
-      border: 1px solid #555;
-      padding: 4px 8px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+.feature p {
+  color:#aaa;
+  max-width:600px;
+  margin-top:25px;
+  font-size:17px;
+}
 
-    .about {
-      max-width: 1200px;
-      margin: auto;
-      padding: 100px 5vw;
-    }
+.city-search {
+  margin-top:40px;
+  display:flex;
+  gap:10px;
+}
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-    }
+.city-search input {
+  height:54px;
+  width:300px;
+  padding:0 15px;
+  border:1px solid #555;
+  background:#222;
+  color:white;
+}
 
-    .about h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 58px;
-      font-weight: 400;
-      line-height: 1;
-    }
+.city-search button {
+  height:54px;
+  padding:0 25px;
+  background:white;
+  color:#151515;
+  border:0;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .about p {
-      color: #555;
-      font-size: 17px;
-      margin-bottom: 20px;
-    }
 
-    footer {
-      border-top: 1px solid #171717;
-      padding: 25px 5vw;
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #666;
-    }
+/* DISCOVER */
 
-    @media (max-width: 700px) {
-      header {
-        padding: 18px 20px;
-      }
+.discover {
+  max-width:1250px;
+  margin:auto;
+  padding:90px 5vw;
+}
 
-      nav {
-        gap: 12px;
-      }
+.section-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:35px;
+}
 
-      .hero,
-      .search-section,
-      .about {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
+.section-head h2 {
+  font-family:Georgia,serif;
+  font-size:50px;
+  font-weight:400;
+}
 
-      .hero {
-        padding-top: 60px;
-      }
+.section-head span {
+  font-size:12px;
+  color:#777;
+}
 
-      h1 {
-        font-size: 60px;
-        letter-spacing: -3px;
-      }
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #151515;
+  border-left:1px solid #151515;
+}
 
-      .directory {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
+.card {
+  min-height:260px;
+  padding:27px;
+  border-right:1px solid #151515;
+  border-bottom:1px solid #151515;
+  cursor:pointer;
+  transition:.15s;
+}
 
-      .labs {
-        grid-template-columns: 1fr;
-      }
+.card:hover {
+  background:#e5dfd2;
+}
 
-      .lab:nth-child(odd) {
-        padding-right: 0;
-        border-right: none;
-      }
+.card-type {
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:#777;
+  margin-bottom:25px;
+}
 
-      .lab:nth-child(even) {
-        padding-left: 0;
-      }
+.card h3 {
+  font-family:Georgia,serif;
+  font-weight:400;
+  font-size:29px;
+  margin-bottom:8px;
+}
 
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
+.card-location {
+  font-size:12px;
+  margin-bottom:20px;
+}
 
-      footer {
-        flex-direction: column;
-        gap: 8px;
-      }
-    }
-  </style>
+.card p {
+  color:#666;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.tags {
+  margin-top:22px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.tag {
+  border:1px solid #aaa;
+  padding:4px 7px;
+  font-size:9px;
+  text-transform:uppercase;
+}
+
+
+/* PLANNER */
+
+.planner {
+  background:#ded7c9;
+  padding:90px 5vw;
+}
+
+.planner-inner {
+  max-width:1250px;
+  margin:auto;
+}
+
+.planner h2 {
+  font-family:Georgia,serif;
+  font-size:65px;
+  font-weight:400;
+  line-height:.95;
+  max-width:700px;
+}
+
+.planner-intro {
+  max-width:580px;
+  margin-top:25px;
+  color:#555;
+}
+
+.planner-grid {
+  margin-top:55px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:#151515;
+  border:1px solid #151515;
+}
+
+.day-card {
+  background:#ded7c9;
+  min-height:260px;
+  padding:25px;
+}
+
+.time {
+  font-size:11px;
+  color:#777;
+  margin-bottom:10px;
+}
+
+.day-card h3 {
+  font-family:Georgia,serif;
+  font-size:25px;
+  font-weight:400;
+  margin-bottom:10px;
+}
+
+.day-card p {
+  font-size:13px;
+  color:#666;
+}
+
+.add {
+  margin-top:25px;
+  border:1px solid #151515;
+  padding:8px 12px;
+  background:transparent;
+  cursor:pointer;
+  font-size:11px;
+}
+
+.add:hover {
+  background:#151515;
+  color:white;
+}
+
+
+/* PHILOSOPHY */
+
+.about {
+  max-width:1250px;
+  margin:auto;
+  padding:110px 5vw;
+}
+
+.about-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:100px;
+}
+
+.about h2 {
+  font-family:Georgia,serif;
+  font-size:60px;
+  font-weight:400;
+  line-height:.95;
+}
+
+.about p {
+  color:#555;
+  font-size:17px;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+
+/* FOOTER */
+
+footer {
+  border-top:1px solid #151515;
+  padding:25px 5vw;
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  color:#666;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px) {
+
+  nav {
+    gap:12px;
+  }
+
+  .hero {
+    padding-top:65px;
+  }
+
+  .hero h1 {
+    letter-spacing:-3px;
+    font-size:62px;
+  }
+
+  .grid {
+    grid-template-columns:1fr;
+  }
+
+  .planner-grid {
+    grid-template-columns:1fr;
+  }
+
+  .about-grid {
+    grid-template-columns:1fr;
+    gap:45px;
+  }
+
+  .about h2 {
+    font-size:50px;
+  }
+
+  .city-search {
+    flex-direction:column;
+  }
+
+  .city-search input {
+    width:100%;
+  }
+
+  footer {
+    flex-direction:column;
+    gap:10px;
+  }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
+
 <header>
-  <div class="logo">Analogue<span>Culture</span></div>
+
+  <div class="logo">
+    Analogue<span>Culture</span>
+  </div>
 
   <nav>
-    <a href="#directory">Directory</a>
+    <a href="#discover">Discover</a>
+    <a href="#planner">Day Planner</a>
     <a href="#about">About</a>
   </nav>
+
 </header>
+
 
 
 <section class="hero">
 
-  <div class="eyebrow">The global film lab directory</div>
+  <div class="eyebrow">
+    A guide to the good stuff
+  </div>
 
-  <h1>Find somewhere to develop your film.</h1>
+  <h1>
+    Go somewhere.<br>
+    Find something.
+  </h1>
 
   <p>
-    A curated directory of independent film labs, developers,
-    scanners and analogue photography stores around the world.
+    AnalogueCulture is a global guide to film, music,
+    independent shops, listening bars, events and the
+    places worth discovering when you're somewhere new.
   </p>
 
 </section>
 
 
-<section class="search-section">
 
-  <div class="search-box">
+<section class="search-area">
+
+  <div class="search">
 
     <input
-      type="text"
-      id="searchInput"
-      placeholder="Search a city, country or lab..."
-    />
+      id="search"
+      placeholder="Where are you going?"
+    >
 
-    <button onclick="searchLabs()">SEARCH</button>
+    <button onclick="searchCity()">
+      EXPLORE
+    </button>
 
   </div>
 
-  <div class="filters">
 
-    <button class="filter active" onclick="filterLabs('all', this)">
-      All
+  <div class="categories">
+
+    <button class="category active"
+      onclick="filter('all',this)">
+      Everything
     </button>
 
-    <button class="filter" onclick="filterLabs('Europe', this)">
-      Europe
+    <button class="category"
+      onclick="filter('film',this)">
+      Film Labs
     </button>
 
-    <button class="filter" onclick="filterLabs('Asia', this)">
-      Asia
+    <button class="category"
+      onclick="filter('records',this)">
+      Record Shops
     </button>
 
-    <button class="filter" onclick="filterLabs('North America', this)">
-      North America
+    <button class="category"
+      onclick="filter('listening',this)">
+      Listening Bars
     </button>
 
-    <button class="filter" onclick="filterLabs('Australia', this)">
-      Australia
+    <button class="category"
+      onclick="filter('events',this)">
+      Events
+    </button>
+
+    <button class="category"
+      onclick="filter('photo',this)">
+      Photo Spots
     </button>
 
   </div>
@@ -393,222 +568,540 @@
 </section>
 
 
-<section class="directory" id="directory">
 
-  <div class="directory-inner">
+<section class="feature">
 
-    <div class="directory-header">
+  <div class="feature-inner">
 
-      <h2>Film Labs</h2>
+    <div class="feature-label">
+      Your city, differently
+    </div>
 
-      <div class="count">
-        <span id="labCount">8</span> places
+    <h2>
+      Don't just visit a city.<br>
+      Get into it.
+    </h2>
+
+    <p>
+      Find the places that don't necessarily appear
+      on a standard tourist itinerary.
+    </p>
+
+    <div class="city-search">
+
+      <input
+        id="city"
+        placeholder="Try Tokyo, Paris, Melbourne..."
+      >
+
+      <button onclick="exploreCity()">
+        EXPLORE CITY
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section class="discover" id="discover">
+
+  <div class="section-head">
+
+    <h2>
+      Discover
+    </h2>
+
+    <span id="resultCount">
+      12 places
+    </span>
+
+  </div>
+
+
+  <div class="grid" id="cards">
+
+
+    <article class="card"
+      data-type="film"
+      data-city="dublin">
+
+      <div class="card-type">
+        Film Lab
       </div>
 
+      <h3>
+        The Darkroom
+      </h3>
+
+      <div class="card-location">
+        Dublin · Ireland
+      </div>
+
+      <p>
+        Develop and scan your rolls before
+        heading back out into the city.
+      </p>
+
+      <div class="tags">
+        <span class="tag">35mm</span>
+        <span class="tag">120</span>
+        <span class="tag">Scan</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="records"
+      data-city="tokyo">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        City Crate Dig
+      </h3>
+
+      <div class="card-location">
+        Tokyo · Japan
+      </div>
+
+      <p>
+        Dig through Japanese pressings,
+        jazz, rock and forgotten records.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Jazz</span>
+        <span class="tag">Rock</span>
+        <span class="tag">Vinyl</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="listening"
+      data-city="london">
+
+      <div class="card-type">
+        Listening Bar
+      </div>
+
+      <h3>
+        The Listening Room
+      </h3>
+
+      <div class="card-location">
+        London · United Kingdom
+      </div>
+
+      <p>
+        Vinyl, cocktails and a serious sound
+        system. Come to listen.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Hi-Fi</span>
+        <span class="tag">Vinyl</span>
+        <span class="tag">Cocktails</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="photo"
+      data-city="paris">
+
+      <div class="card-type">
+        Photo Spot
+      </div>
+
+      <h3>
+        Canal Saint-Martin
+      </h3>
+
+      <div class="card-location">
+        Paris · France
+      </div>
+
+      <p>
+        Bridges, reflections, old façades and
+        plenty of reasons to keep your camera out.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Street</span>
+        <span class="tag">35mm</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="records"
+      data-city="melbourne">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        Melbourne Crate Dig
+      </h3>
+
+      <div class="card-location">
+        Melbourne · Australia
+      </div>
+
+      <p>
+        Independent record shops, listening rooms
+        and a serious vinyl culture.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Indie</span>
+        <span class="tag">Soul</span>
+        <span class="tag">Rock</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="listening"
+      data-city="tokyo">
+
+      <div class="card-type">
+        Listening Bar
+      </div>
+
+      <h3>
+        Tokyo Jazz Kissa
+      </h3>
+
+      <div class="card-location">
+        Tokyo · Japan
+      </div>
+
+      <p>
+        Sit down. Order a drink. Put your phone
+        away. Listen to the record.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Jazz</span>
+        <span class="tag">Hi-Fi</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="events"
+      data-city="london">
+
+      <div class="card-type">
+        Event
+      </div>
+
+      <h3>
+        Record Fair
+      </h3>
+
+      <div class="card-location">
+        London · United Kingdom
+      </div>
+
+      <p>
+        Spend the afternoon digging through
+        crates and meeting other collectors.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Vinyl</span>
+        <span class="tag">Saturday</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="film"
+      data-city="melbourne">
+
+      <div class="card-type">
+        Film Lab
+      </div>
+
+      <h3>
+        Film Never Die
+      </h3>
+
+      <div class="card-location">
+        Melbourne · Australia
+      </div>
+
+      <p>
+        Processing, scanning and analogue
+        photography culture.
+      </p>
+
+      <div class="tags">
+        <span class="tag">35mm</span>
+        <span class="tag">120</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="photo"
+      data-city="tokyo">
+
+      <div class="card-type">
+        Photo Spot
+      </div>
+
+      <h3>
+        Shimokitazawa
+      </h3>
+
+      <div class="card-location">
+        Tokyo · Japan
+      </div>
+
+      <p>
+        Vintage shops, tiny bars, record stores
+        and endless street photography.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Street</span>
+        <span class="tag">Culture</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="records"
+      data-city="barcelona">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        Barcelona Dig
+      </h3>
+
+      <div class="card-location">
+        Barcelona · Spain
+      </div>
+
+      <p>
+        Independent record shops and deep crates
+        away from the obvious tourist route.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Electronic</span>
+        <span class="tag">Funk</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="events"
+      data-city="tokyo">
+
+      <div class="card-type">
+        Event
+      </div>
+
+      <h3>
+        Vinyl Night
+      </h3>
+
+      <div class="card-location">
+        Tokyo · Japan
+      </div>
+
+      <p>
+        Selector-led evening built around
+        records and proper sound.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Vinyl</span>
+        <span class="tag">DJ</span>
+      </div>
+
+    </article>
+
+
+
+    <article class="card"
+      data-type="photo"
+      data-city="melbourne">
+
+      <div class="card-type">
+        Photo Spot
+      </div>
+
+      <h3>
+        Brunswick
+      </h3>
+
+      <div class="card-location">
+        Melbourne · Australia
+      </div>
+
+      <p>
+        Cafés, independent shops, music culture
+        and streets worth wandering.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Street</span>
+        <span class="tag">Culture</span>
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+
+<section class="planner" id="planner">
+
+  <div class="planner-inner">
+
+    <div class="feature-label">
+      AnalogueCulture Planner
     </div>
 
+    <h2>
+      Build a day<br>
+      worth remembering.
+    </h2>
 
-    <div class="labs" id="labList">
+    <p class="planner-intro">
+      Pick a city and build your own analogue day —
+      coffee, cameras, records, food, photography,
+      drinks, music and everything in between.
+    </p>
 
 
-      <article class="lab"
-        data-region="Europe"
-        data-search="dublin ireland the darkroom film lab">
+    <div class="planner-grid">
 
-        <div class="lab-location">
-          Dublin · Ireland
+
+      <div class="day-card">
+
+        <div class="time">
+          10:00
         </div>
 
-        <div class="lab-name">
-          The Darkroom
+        <h3>
+          Start slowly.
+        </h3>
+
+        <p>
+          Find a good coffee and walk around
+          the neighbourhood.
+        </p>
+
+        <button class="add">
+          + ADD PLACE
+        </button>
+
+      </div>
+
+
+      <div class="day-card">
+
+        <div class="time">
+          12:00
         </div>
 
-        <div class="lab-description">
-          Film developing and scanning for photographers in Dublin.
+        <h3>
+          Go digging.
+        </h3>
+
+        <p>
+          Find the independent record shop,
+          camera store or bookshop.
+        </p>
+
+        <button class="add">
+          + ADD PLACE
+        </button>
+
+      </div>
+
+
+      <div class="day-card">
+
+        <div class="time">
+          15:00
         </div>
 
-        <div class="lab-tags">
-          <span class="tag">35mm</span>
-          <span class="tag">120</span>
-          <span class="tag">Scan</span>
+        <h3>
+          Get lost.
+        </h3>
+
+        <p>
+          Put a roll in the camera and explore
+          somewhere you've never been.
+        </p>
+
+        <button class="add">
+          + ADD PLACE
+        </button>
+
+      </div>
+
+
+      <div class="day-card">
+
+        <div class="time">
+          20:00
         </div>
 
-      </article>
+        <h3>
+          Listen.
+        </h3>
 
+        <p>
+          Finish the day at a listening bar,
+          gig or tiny neighbourhood bar.
+        </p>
 
-      <article class="lab"
-        data-region="Europe"
-        data-search="london uk film lab analogue wonderland">
+        <button class="add">
+          + ADD PLACE
+        </button>
 
-        <div class="lab-location">
-          London · United Kingdom
-        </div>
-
-        <div class="lab-name">
-          Analogue Wonderland
-        </div>
-
-        <div class="lab-description">
-          Film photography specialists with developing and analogue supplies.
-        </div>
-
-        <div class="lab-tags">
-          <span class="tag">35mm</span>
-          <span class="tag">120</span>
-          <span class="tag">C-41</span>
-        </div>
-
-      </article>
-
-
-      <article class="lab"
-        data-region="Europe"
-        data-search="paris france negatif plus">
-
-        <div class="lab-location">
-          Paris · France
-        </div>
-
-        <div class="lab-name">
-          Negatif+
-        </div>
-
-        <div class="lab-description">
-          Professional film processing and scanning in the heart of Paris.
-        </div>
-
-        <div class="lab-tags">
-          <span class="tag">35mm</span>
-          <span class="tag">120</span>
-          <span class="tag">E-6</span>
-        </div>
-
-      </article>
-
-
-      <article class="lab"
-        data-region="Europe"
-        data-search="berlin germany safelight">
-
-        <div class="lab-location">
-          Berlin · Germany
-        </div>
-
-        <div class="lab-name">
-          Safelight Berlin
-        </div>
-
-        <div class="lab-description">
-          Independent film processing and scanning for Berlin photographers.
-        </div>
-
-        <div class="lab-tags">
-          <span class="tag">35mm</span>
-          <span class="tag">120</span>
-          <span class="tag">B&W</span>
-        </div>
-
-      </article>
-
-
-      <article class="lab"
-        data-region="Asia"
-        data-search="tokyo japan popeye camera film">
-
-        <div class="lab-location">
-          Tokyo · Japan
-        </div>
-
-        <div class="lab-name">
-          Popeye Camera
-        </div>
-
-        <div class="lab-description">
-          Tokyo destination for film cameras, photography and processing.
-        </div>
-
-        <div class="lab-tags">
-          <span class="tag">35mm</span>
-          <span class="tag">120</span>
-          <span class="tag">Camera</span>
-        </div>
-
-      </article>
-
-
-      <article class="lab"
-        data-region="Asia"
-        data-search="hong kong china film lab">
-
-        <div class="lab-location">
-          Hong Kong
-        </div>
-
-        <div class="lab-name">
-          The Film Lab
-        </div>
-
-        <div class="lab-description">
-          Local processing and scanning for analogue photographers.
-        </div>
-
-        <div class="lab-tags">
-          <span class="tag">35mm</span>
-          <span class="tag">120</span>
-          <span class="tag">Scan</span>
-        </div>
-
-      </article>
-
-
-      <article class="lab"
-        data-region="Australia"
-        data-search="melbourne australia film lab">
-
-        <div class="lab-location">
-          Melbourne · Australia
-        </div>
-
-        <div class="lab-name">
-          Film Never Die
-        </div>
-
-        <div class="lab-description">
-          Film processing, scanning and analogue photography culture.
-        </div>
-
-        <div class="lab-tags">
-          <span class="tag">35mm</span>
-          <span class="tag">120</span>
-          <span class="tag">Scan</span>
-        </div>
-
-      </article>
-
-
-      <article class="lab"
-        data-region="North America"
-        data-search="new york usa bleeker camera">
-
-        <div class="lab-location">
-          New York · USA
-        </div>
-
-        <div class="lab-name">
-          Bleeker Camera
-        </div>
-
-        <div class="lab-description">
-          Long-running New York destination for film photography.
-        </div>
-
-        <div class="lab-tags">
-          <span class="tag">35mm</span>
-          <span class="tag">120</span>
-          <span class="tag">B&W</span>
-        </div>
-
-      </article>
+      </div>
 
 
     </div>
@@ -616,6 +1109,7 @@
   </div>
 
 </section>
+
 
 
 <section class="about" id="about">
@@ -623,25 +1117,30 @@
   <div class="about-grid">
 
     <h2>
-      Made for people who still shoot film.
+      Travel for the culture,
+      not the checklist.
     </h2>
 
     <div>
 
       <p>
-        AnalogueCulture is an independent guide to the places
-        keeping analogue photography alive.
+        AnalogueCulture is being built for people who
+        like discovering cities slowly.
       </p>
 
       <p>
-        Whether you're travelling with a roll in your camera,
-        looking for somewhere to develop old negatives, or simply
-        hunting for the best photography shops in a new city,
-        this is where you start.
+        Film labs. Record shops. Listening bars.
+        Independent cafés. Photowalks. Record fairs.
+        Tiny gigs. Interesting neighbourhoods.
       </p>
 
       <p>
-        More cities. More labs. More analogue culture.
+        The places that make you think:
+        <em>I'm glad I found this.</em>
+      </p>
+
+      <p>
+        We're building a better way to find them.
       </p>
 
     </div>
@@ -651,96 +1150,160 @@
 </section>
 
 
+
 <footer>
 
-  <div>
+  <span>
     © 2026 AnalogueCulture
-  </div>
+  </span>
 
-  <div>
-    Shoot film. Go somewhere.
-  </div>
+  <span>
+    Go somewhere. Find something.
+  </span>
 
 </footer>
 
 
+
 <script>
 
-  const labs = document.querySelectorAll(".lab");
 
-  function searchLabs() {
-
-    const query =
-      document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
-
-    let visible = 0;
-
-    labs.forEach(lab => {
-
-      const searchable =
-        lab.dataset.search.toLowerCase();
-
-      if (searchable.includes(query)) {
-
-        lab.style.display = "";
-
-        visible++;
-
-      } else {
-
-        lab.style.display = "none";
-
-      }
-
-    });
-
-    document.getElementById("labCount").textContent = visible;
-
-  }
-
+function filter(type, button) {
 
   document
-    .getElementById("searchInput")
-    .addEventListener("keyup", searchLabs);
+    .querySelectorAll(".category")
+    .forEach(b => b.classList.remove("active"));
+
+  button.classList.add("active");
+
+  const cards =
+    document.querySelectorAll(".card");
+
+  let count = 0;
+
+  cards.forEach(card => {
+
+    if (
+      type === "all" ||
+      card.dataset.type === type
+    ) {
+
+      card.style.display = "";
+
+      count++;
+
+    } else {
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+  document.getElementById("resultCount")
+    .textContent = count + " places";
+
+}
 
 
-  function filterLabs(region, button) {
+function searchCity() {
 
+  const query =
     document
-      .querySelectorAll(".filter")
-      .forEach(btn => btn.classList.remove("active"));
+      .getElementById("search")
+      .value
+      .toLowerCase()
+      .trim();
 
-    button.classList.add("active");
+  const cards =
+    document.querySelectorAll(".card");
 
-    let visible = 0;
+  let count = 0;
 
-    labs.forEach(lab => {
+  cards.forEach(card => {
 
-      if (
-        region === "all" ||
-        lab.dataset.region === region
-      ) {
+    const city =
+      card.dataset.city.toLowerCase();
 
-        lab.style.display = "";
+    if (
+      query === "" ||
+      city.includes(query)
+    ) {
 
-        visible++;
+      card.style.display = "";
 
-      } else {
+      count++;
 
-        lab.style.display = "none";
+    } else {
 
-      }
+      card.style.display = "none";
 
+    }
+
+  });
+
+  document.getElementById("resultCount")
+    .textContent = count + " places";
+
+}
+
+
+function exploreCity() {
+
+  const city =
+    document
+      .getElementById("city")
+      .value
+      .toLowerCase()
+      .trim();
+
+  document
+    .getElementById("search")
+    .value = city;
+
+  searchCity();
+
+  document
+    .getElementById("discover")
+    .scrollIntoView({
+      behavior:"smooth"
     });
 
-    document.getElementById("labCount").textContent = visible;
+}
 
-  }
+
+document
+  .getElementById("search")
+  .addEventListener(
+    "keyup",
+    searchCity
+  );
+
+
+document
+  .querySelectorAll(".add")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      function() {
+
+        this.textContent = "✓ ADDED";
+
+        this.style.background =
+          "#151515";
+
+        this.style.color =
+          "white";
+
+      }
+    );
+
+  });
+
 
 </script>
+
 
 </body>
 </html>
