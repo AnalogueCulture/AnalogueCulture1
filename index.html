@@ -1,520 +1,821 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AnalogueCulture — The Global Analogue City Guide</title>
+<title>AnalogueCulture — Go Somewhere. Find Something.</title>
 
 <style>
 
-* {
+:root{
+  --paper:#eee9df;
+  --ink:#11110f;
+  --muted:#77736b;
+  --line:#c9c2b5;
+  --accent:#d94832;
+  --white:#f8f5ee;
+}
+
+*{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
-body {
-  background:#f2eee5;
-  color:#151515;
-  font-family:Arial, Helvetica, sans-serif;
+html{
+  scroll-behavior:smooth;
 }
 
-header {
-  height:76px;
-  border-bottom:1px solid #151515;
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+button,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* ---------------- NAV ---------------- */
+
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:70px;
+  padding:0 30px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 5vw;
-  position:sticky;
-  top:0;
-  background:#f2eee5;
-  z-index:50;
+  border-bottom:1px solid rgba(17,17,15,.25);
+  background:rgba(238,233,223,.94);
+  backdrop-filter:blur(12px);
+  z-index:100;
 }
 
-.logo {
-  font-size:21px;
+.logo{
+  font-size:20px;
   font-weight:800;
-  letter-spacing:-1px;
+  letter-spacing:-1.2px;
 }
 
-.logo span {
+.logo span{
   font-weight:400;
 }
 
-nav {
+.nav-right{
   display:flex;
+  align-items:center;
   gap:25px;
 }
 
-nav a {
-  color:#151515;
-  text-decoration:none;
-  font-size:13px;
-}
-
-nav a:hover {
-  text-decoration:underline;
-}
-
-
-/* HERO */
-
-.hero {
-  max-width:1250px;
-  margin:auto;
-  padding:105px 5vw 75px;
-}
-
-.eyebrow {
-  font-size:11px;
+.nav-link{
+  border:0;
+  background:none;
   text-transform:uppercase;
-  letter-spacing:2px;
-  font-weight:bold;
-  margin-bottom:25px;
+  letter-spacing:1.2px;
+  font-size:10px;
 }
 
-.hero h1 {
-  font-family:Georgia,serif;
-  font-weight:400;
-  font-size:clamp(58px,8vw,115px);
-  line-height:.88;
-  letter-spacing:-6px;
-  max-width:1000px;
-}
-
-.hero p {
-  margin-top:40px;
-  max-width:650px;
-  color:#555;
-  font-size:19px;
-  line-height:1.5;
-}
-
-
-/* CITY SELECTOR */
-
-.city-section {
-  padding:0 5vw 75px;
-  max-width:1250px;
-  margin:auto;
-}
-
-.city-label {
-  text-transform:uppercase;
-  font-size:11px;
-  letter-spacing:2px;
-  margin-bottom:15px;
-}
-
-.city-select {
-  width:100%;
-  height:68px;
-  border:1px solid #151515;
-  background:#fffdf8;
-  padding:0 20px;
-  font-size:18px;
-  outline:none;
-  cursor:pointer;
-}
-
-
-/* CATEGORY */
-
-.categories {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:18px;
-}
-
-.category {
-  border:1px solid #aaa;
-  background:transparent;
-  padding:9px 14px;
-  cursor:pointer;
-  font-size:12px;
-}
-
-.category.active,
-.category:hover {
-  background:#151515;
-  color:white;
-  border-color:#151515;
-}
-
-
-/* CITY HERO */
-
-.city-hero {
-  background:#151515;
-  color:white;
-  padding:85px 5vw;
-}
-
-.city-inner {
-  max-width:1250px;
-  margin:auto;
-}
-
-.city-kicker {
-  color:#999;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:11px;
-  margin-bottom:18px;
-}
-
-.city-title {
-  font-family:Georgia,serif;
-  font-size:clamp(60px,8vw,105px);
-  font-weight:400;
-  line-height:.85;
-  letter-spacing:-5px;
-}
-
-.city-description {
-  color:#aaa;
-  max-width:650px;
-  font-size:17px;
-  margin-top:30px;
-  line-height:1.5;
-}
-
-.city-stats {
-  display:flex;
-  gap:35px;
-  margin-top:45px;
-  flex-wrap:wrap;
-}
-
-.stat strong {
-  display:block;
-  font-family:Georgia,serif;
-  font-size:32px;
-  font-weight:400;
-}
-
-.stat span {
+.day-button{
+  border:1px solid var(--ink);
+  background:var(--ink);
+  color:var(--paper);
+  padding:10px 15px;
   font-size:10px;
   text-transform:uppercase;
   letter-spacing:1px;
-  color:#888;
+}
+
+.day-button:hover{
+  background:var(--accent);
+  border-color:var(--accent);
 }
 
 
-/* DISCOVER */
+/* ---------------- HERO ---------------- */
 
-.discover {
-  max-width:1250px;
-  margin:auto;
-  padding:90px 5vw;
+.hero{
+  min-height:100vh;
+  padding:130px 5vw 60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 
-.section-head {
+.hero-top{
   display:flex;
   justify-content:space-between;
-  align-items:end;
-  margin-bottom:35px;
+  align-items:flex-start;
 }
 
-.section-head h2 {
-  font-family:Georgia,serif;
-  font-size:52px;
+.kicker{
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:10px;
+  font-weight:bold;
+}
+
+.hero-location{
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.hero-title{
+  max-width:1100px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(65px,11vw,160px);
+  line-height:.83;
   font-weight:400;
+  letter-spacing:-9px;
 }
 
-.section-head span {
+.hero-title em{
+  color:var(--accent);
+  font-style:normal;
+}
+
+.hero-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:40px;
+}
+
+.hero-copy{
+  max-width:430px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:21px;
+  line-height:1.35;
+}
+
+.hero-select{
+  border:1px solid var(--ink);
+  background:transparent;
+  padding:14px 45px 14px 15px;
+  min-width:230px;
   font-size:12px;
-  color:#777;
+  text-transform:uppercase;
+  letter-spacing:1px;
 }
 
-.grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border-top:1px solid #151515;
-  border-left:1px solid #151515;
-}
 
-.card {
-  min-height:290px;
-  padding:27px;
-  border-right:1px solid #151515;
-  border-bottom:1px solid #151515;
-  cursor:pointer;
-  transition:.15s;
-}
+/* ---------------- INTRO STRIP ---------------- */
 
-.card:hover {
-  background:#e4ded2;
-}
-
-.card-type {
+.intro-strip{
+  background:var(--ink);
+  color:var(--paper);
+  padding:18px 5vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   font-size:10px;
   text-transform:uppercase;
   letter-spacing:1.5px;
-  color:#777;
-  margin-bottom:24px;
 }
 
-.card h3 {
-  font-family:Georgia,serif;
-  font-size:29px;
-  font-weight:400;
-  margin-bottom:8px;
-}
-
-.card-location {
-  font-size:12px;
-  margin-bottom:20px;
-}
-
-.card p {
-  color:#666;
-  font-size:14px;
-  line-height:1.5;
-}
-
-.tags {
-  margin-top:22px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-}
-
-.tag {
-  border:1px solid #aaa;
-  padding:4px 7px;
-  font-size:9px;
-  text-transform:uppercase;
+.intro-strip span:last-child{
+  color:#aaa69d;
 }
 
 
-/* DAY PLANNER */
+/* ---------------- CITY ---------------- */
 
-.planner {
-  background:#ddd5c6;
-  padding:95px 5vw;
-}
-
-.planner-inner {
-  max-width:1250px;
+.city{
+  padding:100px 5vw;
+  max-width:1500px;
   margin:auto;
 }
 
-.planner-kicker {
-  font-size:11px;
+.city-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:25px;
+  margin-bottom:50px;
+}
+
+.city-name{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(65px,9vw,125px);
+  font-weight:400;
+  letter-spacing:-6px;
+  line-height:.8;
+}
+
+.city-description{
+  max-width:390px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.4;
+}
+
+.filters{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:35px;
+}
+
+.filter{
+  border:1px solid var(--line);
+  background:transparent;
+  padding:9px 13px;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+}
+
+.filter.active,
+.filter:hover{
+  background:var(--ink);
+  border-color:var(--ink);
+  color:var(--paper);
+}
+
+
+/* ---------------- PLACES ---------------- */
+
+.places{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--ink);
+  border-left:1px solid var(--ink);
+}
+
+.place{
+  min-height:390px;
+  padding:25px;
+  border-right:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.2s;
+}
+
+.place:hover{
+  background:#e2dbce;
+}
+
+.place.hidden{
+  display:none;
+}
+
+.place-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+
+.place-number{
+  font-size:10px;
+  color:var(--muted);
+}
+
+.place-type{
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:var(--accent);
+  font-weight:bold;
+}
+
+.place h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:34px;
+  font-weight:400;
+  line-height:.95;
+  max-width:300px;
+  margin-top:30px;
+}
+
+.place-location{
+  margin-top:12px;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+}
+
+.place-description{
+  margin-top:25px;
+  max-width:330px;
+  color:#5e5a53;
+  font-size:13px;
+  line-height:1.55;
+}
+
+.place-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-top:35px;
+}
+
+.tags{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  border:1px solid var(--line);
+  padding:5px 7px;
+  font-size:8px;
+  text-transform:uppercase;
+}
+
+.add-place{
+  background:var(--ink);
+  color:var(--paper);
+  border:0;
+  padding:11px 12px;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.add-place:hover{
+  background:var(--accent);
+}
+
+.add-place.added{
+  background:var(--accent);
+}
+
+
+/* ---------------- DAY BUILDER ---------------- */
+
+.builder{
+  background:#d9d0c1;
+  padding:110px 5vw;
+}
+
+.builder-inner{
+  max-width:1500px;
+  margin:auto;
+}
+
+.builder-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:50px;
+  margin-bottom:55px;
+}
+
+.builder-kicker{
   text-transform:uppercase;
   letter-spacing:2px;
+  font-size:10px;
+  font-weight:bold;
   margin-bottom:20px;
 }
 
-.planner h2 {
-  font-family:Georgia,serif;
+.builder-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(60px,8vw,115px);
+  line-height:.8;
+  letter-spacing:-6px;
   font-weight:400;
-  font-size:clamp(55px,7vw,90px);
-  line-height:.9;
-  letter-spacing:-4px;
-  max-width:800px;
 }
 
-.planner-intro {
-  max-width:600px;
-  color:#555;
-  margin-top:25px;
+.builder-copy{
+  max-width:330px;
+  font-size:14px;
   line-height:1.5;
+  color:#625d55;
 }
 
-.planner-grid {
-  margin-top:55px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:#151515;
-  border:1px solid #151515;
+.empty{
+  border:1px dashed #9d9589;
+  padding:60px;
+  text-align:center;
+  color:#777067;
 }
 
-.day-card {
-  background:#ddd5c6;
-  min-height:270px;
-  padding:25px;
-}
-
-.time {
-  font-size:11px;
-  color:#777;
-  margin-bottom:12px;
-}
-
-.day-card h3 {
+.empty strong{
+  display:block;
   font-family:Georgia,serif;
-  font-size:27px;
+  font-size:30px;
   font-weight:400;
   margin-bottom:10px;
 }
 
-.day-card p {
-  color:#666;
-  font-size:13px;
-  line-height:1.5;
+.itinerary{
+  display:flex;
+  flex-direction:column;
+  border-top:1px solid var(--ink);
 }
 
-.add {
-  margin-top:25px;
-  border:1px solid #151515;
+.itinerary-item{
+  display:grid;
+  grid-template-columns:90px 1fr auto;
+  gap:25px;
+  align-items:center;
+  padding:22px 0;
+  border-bottom:1px solid var(--ink);
+}
+
+.itinerary-time{
+  font-family:Georgia,serif;
+  font-size:24px;
+}
+
+.itinerary-info h4{
+  font-family:Georgia,serif;
+  font-size:27px;
+  font-weight:400;
+}
+
+.itinerary-info p{
+  font-size:10px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-top:5px;
+}
+
+.itinerary-actions{
+  display:flex;
+  gap:5px;
+}
+
+.small-button{
+  width:32px;
+  height:32px;
+  border:1px solid var(--ink);
   background:transparent;
-  padding:8px 12px;
-  cursor:pointer;
+  font-size:13px;
+}
+
+.small-button:hover{
+  background:var(--ink);
+  color:var(--paper);
+}
+
+.builder-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:30px;
+}
+
+.clear-day{
+  border:0;
+  background:none;
+  text-decoration:underline;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.save-day{
+  background:var(--ink);
+  color:var(--paper);
+  border:0;
+  padding:15px 22px;
+  text-transform:uppercase;
+  letter-spacing:1px;
   font-size:10px;
 }
 
-.add:hover,
-.add.added {
-  background:#151515;
-  color:white;
+.save-day:hover{
+  background:var(--accent);
 }
 
 
-/* CITY LIST */
+/* ---------------- CITIES ---------------- */
 
-.cities {
-  background:#151515;
-  color:white;
-  padding:95px 5vw;
-}
-
-.cities-inner {
-  max-width:1250px;
-  margin:auto;
-}
-
-.cities h2 {
-  font-family:Georgia,serif;
-  font-size:65px;
-  font-weight:400;
-  line-height:.9;
-  margin-bottom:45px;
-}
-
-.city-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid #555;
-  border-left:1px solid #555;
-}
-
-.city-card {
-  padding:30px;
-  min-height:170px;
-  border-right:1px solid #555;
-  border-bottom:1px solid #555;
-  cursor:pointer;
-}
-
-.city-card:hover {
-  background:#222;
-}
-
-.city-card h3 {
-  font-family:Georgia,serif;
-  font-size:32px;
-  font-weight:400;
-}
-
-.city-card p {
-  margin-top:10px;
-  color:#888;
-  font-size:12px;
-}
-
-
-/* ABOUT */
-
-.about {
-  max-width:1250px;
-  margin:auto;
+.cities{
   padding:110px 5vw;
+  background:var(--ink);
+  color:var(--paper);
 }
 
-.about-grid {
+.cities-inner{
+  max-width:1500px;
+  margin:auto;
+}
+
+.cities-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(60px,8vw,110px);
+  font-weight:400;
+  line-height:.8;
+  letter-spacing:-6px;
+  margin-bottom:70px;
+}
+
+.city-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+}
+
+.city-choice{
+  border-top:1px solid #444;
+  padding:30px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-right:50px;
+}
+
+.city-choice:nth-child(odd){
+  border-right:1px solid #444;
+  padding-right:50px;
+}
+
+.city-choice button{
+  border:0;
+  background:none;
+  color:var(--paper);
+  font-family:Georgia,serif;
+  font-size:35px;
+}
+
+.city-choice span{
+  color:#777;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.city-choice:hover button{
+  color:var(--accent);
+}
+
+
+/* ---------------- ABOUT ---------------- */
+
+.about{
+  padding:120px 5vw;
+  max-width:1500px;
+  margin:auto;
+}
+
+.about-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:100px;
 }
 
-.about h2 {
+.about h2{
   font-family:Georgia,serif;
-  font-size:60px;
+  font-size:clamp(55px,7vw,95px);
+  line-height:.82;
   font-weight:400;
-  line-height:.9;
-  letter-spacing:-3px;
+  letter-spacing:-5px;
 }
 
-.about p {
-  color:#555;
-  font-size:17px;
-  line-height:1.6;
-  margin-bottom:20px;
+.about-copy{
+  max-width:500px;
+}
+
+.about-copy p{
+  font-family:Georgia,serif;
+  font-size:21px;
+  line-height:1.45;
+  margin-bottom:25px;
 }
 
 
-/* FOOTER */
+/* ---------------- MODAL ---------------- */
 
-footer {
-  border-top:1px solid #151515;
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(17,17,15,.72);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  z-index:200;
+}
+
+.modal.open{
+  display:flex;
+}
+
+.modal-box{
+  background:var(--paper);
+  width:min(850px,100%);
+  max-height:90vh;
+  overflow:auto;
+  padding:45px;
+  position:relative;
+}
+
+.modal-close{
+  position:absolute;
+  top:20px;
+  right:20px;
+  border:0;
+  background:none;
+  font-size:22px;
+}
+
+.modal-type{
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:10px;
+  font-weight:bold;
+}
+
+.modal h2{
+  font-family:Georgia,serif;
+  font-size:70px;
+  line-height:.85;
+  font-weight:400;
+  letter-spacing:-4px;
+  margin:20px 0;
+}
+
+.modal-location{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+}
+
+.modal-description{
+  max-width:600px;
+  font-family:Georgia,serif;
+  font-size:20px;
+  line-height:1.45;
+  margin:40px 0;
+}
+
+.modal-actions{
+  display:flex;
+  gap:10px;
+}
+
+.modal-add{
+  background:var(--ink);
+  color:var(--paper);
+  border:0;
+  padding:14px 18px;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.modal-map{
+  border:1px solid var(--ink);
+  padding:14px 18px;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+
+/* ---------------- FOOTER ---------------- */
+
+footer{
+  border-top:1px solid var(--ink);
   padding:25px 5vw;
   display:flex;
   justify-content:space-between;
-  color:#666;
-  font-size:11px;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
 }
 
 
-/* MOBILE */
+/* ---------------- MOBILE ---------------- */
 
-@media(max-width:850px) {
+@media(max-width:850px){
 
-  nav {
-    gap:12px;
+  .nav{
+    padding:0 18px;
   }
 
-  nav a:nth-child(2) {
+  .nav-link{
     display:none;
   }
 
-  .hero {
-    padding-top:65px;
+  .hero{
+    padding:110px 22px 45px;
+    min-height:90vh;
   }
 
-  .hero h1 {
-    letter-spacing:-3px;
-    font-size:62px;
+  .hero-top{
+    margin-bottom:70px;
   }
 
-  .grid {
+  .hero-title{
+    font-size:64px;
+    letter-spacing:-4px;
+  }
+
+  .hero-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .hero-copy{
+    font-size:18px;
+  }
+
+  .city{
+    padding:75px 22px;
+  }
+
+  .city-heading{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:30px;
+  }
+
+  .city-name{
+    font-size:70px;
+  }
+
+  .places{
     grid-template-columns:1fr;
   }
 
-  .planner-grid {
+  .place{
+    min-height:330px;
+  }
+
+  .builder{
+    padding:75px 22px;
+  }
+
+  .builder-top{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .builder-title{
+    font-size:65px;
+  }
+
+  .itinerary-item{
+    grid-template-columns:60px 1fr;
+  }
+
+  .itinerary-actions{
+    grid-column:2;
+  }
+
+  .builder-footer{
+    flex-direction:column;
+    gap:20px;
+    align-items:flex-start;
+  }
+
+  .city-list{
     grid-template-columns:1fr;
   }
 
-  .city-grid {
-    grid-template-columns:1fr 1fr;
+  .city-choice,
+  .city-choice:nth-child(odd){
+    margin-right:0;
+    padding-right:0;
+    border-right:0;
   }
 
-  .about-grid {
+  .about{
+    padding:80px 22px;
+  }
+
+  .about-grid{
     grid-template-columns:1fr;
-    gap:45px;
+    gap:60px;
   }
 
-  .about h2 {
-    font-size:50px;
+  .modal-box{
+    padding:30px 22px;
   }
 
-  footer {
+  .modal h2{
+    font-size:55px;
+  }
+
+  footer{
     flex-direction:column;
     gap:10px;
   }
@@ -524,142 +825,246 @@ footer {
 </style>
 </head>
 
-
 <body>
 
 
-<header>
+<!-- NAV -->
+
+<header class="nav">
 
   <div class="logo">
     Analogue<span>Culture</span>
   </div>
 
-  <nav>
-    <a href="#discover">Discover</a>
-    <a href="#planner">Day Planner</a>
-    <a href="#cities">Cities</a>
-    <a href="#about">About</a>
-  </nav>
+  <div class="nav-right">
+
+    <button class="nav-link"
+      onclick="scrollToSection('city')">
+      Explore
+    </button>
+
+    <button class="nav-link"
+      onclick="scrollToSection('cities')">
+      Cities
+    </button>
+
+    <button class="day-button"
+      onclick="scrollToSection('builder')">
+
+      My Day
+      <span id="dayCount">0</span>
+
+    </button>
+
+  </div>
 
 </header>
 
 
+<!-- HERO -->
 
 <section class="hero">
 
-  <div class="eyebrow">
-    The global guide to analogue culture
+  <div class="hero-top">
+
+    <div class="kicker">
+      The global guide to analogue culture
+    </div>
+
+    <div class="hero-location">
+      08 / 2026
+    </div>
+
   </div>
 
-  <h1>
+
+  <h1 class="hero-title">
+
     Go somewhere.<br>
-    Find something.
+
+    <em>Find something.</em>
+
   </h1>
 
-  <p>
-    Film labs. Record shops. Listening bars.
-    Camera stores. Photo spots. Events.
-    The places that make a city worth exploring.
-  </p>
+
+  <div class="hero-bottom">
+
+    <p class="hero-copy">
+
+      Film labs. Record shops. Listening bars.
+      Camera stores. Photo walks. Small places
+      worth leaving the hotel for.
+
+    </p>
+
+
+    <select
+      class="hero-select"
+      id="citySelect"
+      onchange="changeCity()">
+
+      <option value="tokyo">Tokyo, Japan</option>
+      <option value="paris">Paris, France</option>
+      <option value="london">London, United Kingdom</option>
+      <option value="berlin">Berlin, Germany</option>
+      <option value="melbourne">Melbourne, Australia</option>
+      <option value="newyork">New York, USA</option>
+      <option value="barcelona">Barcelona, Spain</option>
+      <option value="lisbon">Lisbon, Portugal</option>
+
+    </select>
+
+  </div>
 
 </section>
 
 
+<div class="intro-strip">
 
-<section class="city-section">
+  <span>
+    Currently exploring: <strong id="stripCity">Tokyo</strong>
+  </span>
 
-  <div class="city-label">
-    Choose a city
+  <span>
+    Don't see the city. Experience it.
+  </span>
+
+</div>
+
+
+<!-- CITY -->
+
+<section class="city" id="city">
+
+  <div class="city-heading">
+
+    <div class="city-name" id="cityName">
+      Tokyo
+    </div>
+
+    <p class="city-description" id="cityDescription">
+
+      A city where film, records, jazz kissas,
+      tiny bars and obsessive craftsmanship
+      sit comfortably alongside each other.
+
+    </p>
+
   </div>
 
-  <select class="city-select" id="citySelect"
-    onchange="changeCity()">
 
-    <option value="tokyo">Tokyo, Japan</option>
-    <option value="paris">Paris, France</option>
-    <option value="london">London, United Kingdom</option>
-    <option value="berlin">Berlin, Germany</option>
-    <option value="melbourne">Melbourne, Australia</option>
-    <option value="newyork">New York, USA</option>
-    <option value="barcelona">Barcelona, Spain</option>
-    <option value="lisbon">Lisbon, Portugal</option>
+  <div class="filters">
 
-  </select>
-
-
-  <div class="categories">
-
-    <button class="category active"
-      onclick="filterCategory('all',this)">
+    <button class="filter active"
+      onclick="filterPlaces('all',this)">
       Everything
     </button>
 
-    <button class="category"
-      onclick="filterCategory('film',this)">
+    <button class="filter"
+      onclick="filterPlaces('film',this)">
       Film
     </button>
 
-    <button class="category"
-      onclick="filterCategory('records',this)">
+    <button class="filter"
+      onclick="filterPlaces('vinyl',this)">
       Vinyl
     </button>
 
-    <button class="category"
-      onclick="filterCategory('listening',this)">
+    <button class="filter"
+      onclick="filterPlaces('listening',this)">
       Listening
     </button>
 
-    <button class="category"
-      onclick="filterCategory('photo',this)">
+    <button class="filter"
+      onclick="filterPlaces('photo',this)">
       Photography
     </button>
 
-    <button class="category"
-      onclick="filterCategory('events',this)">
+    <button class="filter"
+      onclick="filterPlaces('events',this)">
       Events
     </button>
 
   </div>
 
+
+  <div class="places" id="places"></div>
+
 </section>
 
 
+<!-- DAY BUILDER -->
 
-<section class="city-hero">
+<section class="builder" id="builder">
 
-  <div class="city-inner">
+  <div class="builder-inner">
 
-    <div class="city-kicker">
-      Your city guide
-    </div>
+    <div class="builder-top">
 
-    <div class="city-title" id="cityTitle">
-      Tokyo
-    </div>
+      <div>
 
-    <div class="city-description" id="cityDescription">
-      A city where film, records, jazz kissas,
-      tiny bars and obsessive craftsmanship
-      sit comfortably alongside each other.
-    </div>
+        <div class="builder-kicker">
+          Your itinerary
+        </div>
 
+        <h2 class="builder-title">
+          Build<br>
+          your day.
+        </h2>
 
-    <div class="city-stats">
-
-      <div class="stat">
-        <strong id="placeCount">6</strong>
-        <span>Places</span>
       </div>
 
-      <div class="stat">
-        <strong>5</strong>
-        <span>Categories</span>
-      </div>
 
-      <div class="stat">
-        <strong>1</strong>
-        <span>Day to build</span>
-      </div>
+      <p class="builder-copy">
+
+        Add places you like while exploring.
+        They'll appear here. Move them around
+        until you've built a day worth remembering.
+
+      </p>
+
+    </div>
+
+
+    <div id="emptyState" class="empty">
+
+      <strong>
+        Nothing planned yet.
+      </strong>
+
+      Start exploring and add somewhere
+      you'd like to go.
+
+    </div>
+
+
+    <div
+      class="itinerary"
+      id="itinerary">
+    </div>
+
+
+    <div
+      class="builder-footer"
+      id="builderFooter"
+      style="display:none">
+
+      <button
+        class="clear-day"
+        onclick="clearDay()">
+
+        Clear my day
+
+      </button>
+
+
+      <button
+        class="save-day"
+        onclick="saveDay()">
+
+        Save my day
+
+      </button>
 
     </div>
 
@@ -668,1101 +1073,56 @@ footer {
 </section>
 
 
-
-<section class="discover" id="discover">
-
-  <div class="section-head">
-
-    <h2>
-      Discover
-    </h2>
-
-    <span id="resultCount">
-      6 places
-    </span>
-
-  </div>
-
-
-  <div class="grid" id="cards">
-
-
-    <!-- TOKYO -->
-
-
-    <article class="card"
-      data-city="tokyo"
-      data-type="film">
-
-      <div class="card-type">
-        Film Lab
-      </div>
-
-      <h3>
-        Sourball Film Lab
-      </h3>
-
-      <div class="card-location">
-        Takadanobaba · Tokyo
-      </div>
-
-      <p>
-        Independent film processing destination
-        for analogue photographers.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Film</span>
-        <span class="tag">Processing</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="tokyo"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        Tower Vinyl Shibuya
-      </h3>
-
-      <div class="card-location">
-        Shibuya · Tokyo
-      </div>
-
-      <p>
-        Huge vinyl destination covering multiple
-        genres and Japanese releases.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Vinyl</span>
-        <span class="tag">Shibuya</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="tokyo"
-      data-type="listening">
-
-      <div class="card-type">
-        Listening Bar
-      </div>
-
-      <h3>
-        PASS
-      </h3>
-
-      <div class="card-location">
-        Shibuya · Tokyo
-      </div>
-
-      <p>
-        Contemporary Tokyo listening culture
-        with a serious music focus.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Hi-Fi</span>
-        <span class="tag">Music</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="tokyo"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        Face Records
-      </h3>
-
-      <div class="card-location">
-        Shibuya · Tokyo
-      </div>
-
-      <p>
-        Japanese destination for digging through
-        soul, jazz and classic records.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Soul</span>
-        <span class="tag">Jazz</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="tokyo"
-      data-type="listening">
-
-      <div class="card-type">
-        Listening Bar
-      </div>
-
-      <h3>
-        ROOT DOWN TOKYO
-      </h3>
-
-      <div class="card-location">
-        Sendagaya · Tokyo
-      </div>
-
-      <p>
-        Hi-Fi listening bar with cocktails
-        and a serious sound system.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Hi-Fi</span>
-        <span class="tag">Cocktails</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="tokyo"
-      data-type="film">
-
-      <div class="card-type">
-        Camera & Film
-      </div>
-
-      <h3>
-        Map Camera
-      </h3>
-
-      <div class="card-location">
-        Shinjuku · Tokyo
-      </div>
-
-      <p>
-        Major destination for new and used
-        cameras and photography equipment.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Cameras</span>
-        <span class="tag">Film</span>
-      </div>
-
-    </article>
-
-
-
-    <!-- PARIS -->
-
-
-    <article class="card"
-      data-city="paris"
-      data-type="film">
-
-      <div class="card-type">
-        Film
-      </div>
-
-      <h3>
-        Paris Film Lab
-      </h3>
-
-      <div class="card-location">
-        Paris · France
-      </div>
-
-      <p>
-        Film processing and scanning destination
-        for analogue photographers.
-      </p>
-
-      <div class="tags">
-        <span class="tag">35mm</span>
-        <span class="tag">120</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="paris"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        Paris Crate Dig
-      </h3>
-
-      <div class="card-location">
-        Paris · France
-      </div>
-
-      <p>
-        Independent digging across jazz,
-        soul, funk and electronic music.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Jazz</span>
-        <span class="tag">Soul</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="paris"
-      data-type="listening">
-
-      <div class="card-type">
-        Listening
-      </div>
-
-      <h3>
-        Paris Listening Room
-      </h3>
-
-      <div class="card-location">
-        Paris · France
-      </div>
-
-      <p>
-        Vinyl-focused evening destination
-        for serious music listeners.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Vinyl</span>
-        <span class="tag">Hi-Fi</span>
-      </div>
-
-    </article>
-
-
-
-    <!-- LONDON -->
-
-
-    <article class="card"
-      data-city="london"
-      data-type="film">
-
-      <div class="card-type">
-        Film Lab
-      </div>
-
-      <h3>
-        London Film Lab
-      </h3>
-
-      <div class="card-location">
-        East London · UK
-      </div>
-
-      <p>
-        Processing, scanning and film sales
-        near Brick Lane.
-      </p>
-
-      <div class="tags">
-        <span class="tag">C41</span>
-        <span class="tag">B&W</span>
-        <span class="tag">E6</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="london"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        Phonica Records
-      </h3>
-
-      <div class="card-location">
-        Soho · London
-      </div>
-
-      <p>
-        Essential stop for electronic music,
-        house and techno.
-      </p>
-
-      <div class="tags">
-        <span class="tag">House</span>
-        <span class="tag">Techno</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="london"
-      data-type="listening">
-
-      <div class="card-type">
-        Listening Bar
-      </div>
-
-      <h3>
-        Brilliant Corners
-      </h3>
-
-      <div class="card-location">
-        Dalston · London
-      </div>
-
-      <p>
-        Restaurant, bar and serious vinyl
-        listening destination.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Jazz</span>
-        <span class="tag">Vinyl</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="london"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop + Bar
-      </div>
-
-      <h3>
-        Next Door Records
-      </h3>
-
-      <div class="card-location">
-        London · UK
-      </div>
-
-      <p>
-        Record shop, café, bar, venue and
-        creative hangout.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Vinyl</span>
-        <span class="tag">Events</span>
-      </div>
-
-    </article>
-
-
-
-    <!-- BERLIN -->
-
-
-    <article class="card"
-      data-city="berlin"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        HHV Records
-      </h3>
-
-      <div class="card-location">
-        Friedrichshain · Berlin
-      </div>
-
-      <p>
-        Huge selection across electronic,
-        hip hop, jazz and experimental music.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Electronic</span>
-        <span class="tag">Hip Hop</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="berlin"
-      data-type="listening">
-
-      <div class="card-type">
-        Listening / Records
-      </div>
-
-      <h3>
-        Pastiche
-      </h3>
-
-      <div class="card-location">
-        Neukölln · Berlin
-      </div>
-
-      <p>
-        Hi-Fi listening venue, café, record shop
-        and cultural event space.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Hi-Fi</span>
-        <span class="tag">Events</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="berlin"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        Rough Trade Berlin
-      </h3>
-
-      <div class="card-location">
-        Neukölln · Berlin
-      </div>
-
-      <p>
-        Records, listening parties, album
-        releases and cultural events.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Vinyl</span>
-        <span class="tag">Events</span>
-      </div>
-
-    </article>
-
-
-
-    <!-- MELBOURNE -->
-
-
-    <article class="card"
-      data-city="melbourne"
-      data-type="film">
-
-      <div class="card-type">
-        Film + Camera
-      </div>
-
-      <h3>
-        FilmNeverDie
-      </h3>
-
-      <div class="card-location">
-        Melbourne · Australia
-      </div>
-
-      <p>
-        Film cameras, processing and a community
-        around analogue photography.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Film</span>
-        <span class="tag">Events</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="melbourne"
-      data-type="film">
-
-      <div class="card-type">
-        Film Lab
-      </div>
-
-      <h3>
-        Irohas Photo Lab
-      </h3>
-
-      <div class="card-location">
-        Melbourne · Australia
-      </div>
-
-      <p>
-        Film processing and scanning for
-        analogue photographers.
-      </p>
-
-      <div class="tags">
-        <span class="tag">C41</span>
-        <span class="tag">E6</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="melbourne"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        Rocksteady Records
-      </h3>
-
-      <div class="card-location">
-        Melbourne · Australia
-      </div>
-
-      <p>
-        Independent Melbourne record destination
-        with decades of experience.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Vinyl</span>
-        <span class="tag">Independent</span>
-      </div>
-
-    </article>
-
-
-
-    <!-- NEW YORK -->
-
-
-    <article class="card"
-      data-city="newyork"
-      data-type="film">
-
-      <div class="card-type">
-        Film
-      </div>
-
-      <h3>
-        Kodak Film Lab
-      </h3>
-
-      <div class="card-location">
-        New York · USA
-      </div>
-
-      <p>
-        Professional film processing ecosystem
-        in the heart of New York.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Film</span>
-        <span class="tag">Professional</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="newyork"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        New York Crate Dig
-      </h3>
-
-      <div class="card-location">
-        New York · USA
-      </div>
-
-      <p>
-        Independent record culture spanning
-        jazz, soul, rock and electronic music.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Vinyl</span>
-        <span class="tag">Jazz</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="newyork"
-      data-type="listening">
-
-      <div class="card-type">
-        Listening / Events
-      </div>
-
-      <h3>
-        Metrograph
-      </h3>
-
-      <div class="card-location">
-        Manhattan · New York
-      </div>
-
-      <p>
-        Independent cinema and cultural destination
-        with film and music events.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Cinema</span>
-        <span class="tag">Events</span>
-      </div>
-
-    </article>
-
-
-
-    <!-- BARCELONA -->
-
-
-    <article class="card"
-      data-city="barcelona"
-      data-type="film">
-
-      <div class="card-type">
-        Film Lab + Shop
-      </div>
-
-      <h3>
-        REVELAB Studio
-      </h3>
-
-      <div class="card-location">
-        Barcelona · Spain
-      </div>
-
-      <p>
-        Analogue development, scanning, film
-        sales, printing and workshops.
-      </p>
-
-      <div class="tags">
-        <span class="tag">35mm</span>
-        <span class="tag">120</span>
-        <span class="tag">Workshops</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="barcelona"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        Barcelona Crate Dig
-      </h3>
-
-      <div class="card-location">
-        Barcelona · Spain
-      </div>
-
-      <p>
-        Independent record culture across
-        electronic, soul and jazz.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Vinyl</span>
-        <span class="tag">Electronic</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="barcelona"
-      data-type="events">
-
-      <div class="card-type">
-        Photography
-      </div>
-
-      <h3>
-        Analogue Workshops
-      </h3>
-
-      <div class="card-location">
-        Barcelona · Spain
-      </div>
-
-      <p>
-        Workshops, film photography and
-        analogue creative culture.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Film</span>
-        <span class="tag">Workshops</span>
-      </div>
-
-    </article>
-
-
-
-    <!-- LISBON -->
-
-
-    <article class="card"
-      data-city="lisbon"
-      data-type="film">
-
-      <div class="card-type">
-        Film
-      </div>
-
-      <h3>
-        Lisbon Film Lab
-      </h3>
-
-      <div class="card-location">
-        Lisbon · Portugal
-      </div>
-
-      <p>
-        Independent analogue photography and
-        film processing destination.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Film</span>
-        <span class="tag">35mm</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="lisbon"
-      data-type="records">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        Lisbon Crate Dig
-      </h3>
-
-      <div class="card-location">
-        Lisbon · Portugal
-      </div>
-
-      <p>
-        Independent shops covering Portuguese,
-        jazz, soul and electronic records.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Vinyl</span>
-        <span class="tag">Local</span>
-      </div>
-
-    </article>
-
-
-    <article class="card"
-      data-city="lisbon"
-      data-type="listening">
-
-      <div class="card-type">
-        Listening
-      </div>
-
-      <h3>
-        Lisbon Listening Room
-      </h3>
-
-      <div class="card-location">
-        Lisbon · Portugal
-      </div>
-
-      <p>
-        A place to slow down, drink something
-        and listen to records.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Hi-Fi</span>
-        <span class="tag">Vinyl</span>
-      </div>
-
-    </article>
-
-
-  </div>
-
-</section>
-
-
-
-<section class="planner" id="planner">
-
-  <div class="planner-inner">
-
-    <div class="planner-kicker">
-      AnalogueCulture Day Planner
-    </div>
-
-    <h2>
-      Build a day<br>
-      worth remembering.
-    </h2>
-
-    <p class="planner-intro">
-      Pick places from the guide and build your own
-      analogue day. Your itinerary lives here.
-    </p>
-
-
-    <div class="planner-grid">
-
-
-      <div class="day-card">
-
-        <div class="time">
-          10:00
-        </div>
-
-        <h3>
-          Start slowly.
-        </h3>
-
-        <p>
-          Coffee, breakfast and a walk through
-          somewhere interesting.
-        </p>
-
-        <button class="add">
-          + ADD
-        </button>
-
-      </div>
-
-
-      <div class="day-card">
-
-        <div class="time">
-          12:00
-        </div>
-
-        <h3>
-          Go digging.
-        </h3>
-
-        <p>
-          Find records, cameras, books or
-          something you didn't know existed.
-        </p>
-
-        <button class="add">
-          + ADD
-        </button>
-
-      </div>
-
-
-      <div class="day-card">
-
-        <div class="time">
-          15:00
-        </div>
-
-        <h3>
-          Shoot something.
-        </h3>
-
-        <p>
-          Put a roll in the camera and walk
-          somewhere you've never been.
-        </p>
-
-        <button class="add">
-          + ADD
-        </button>
-
-      </div>
-
-
-      <div class="day-card">
-
-        <div class="time">
-          20:00
-        </div>
-
-        <h3>
-          Listen.
-        </h3>
-
-        <p>
-          Finish with a listening bar, gig,
-          cinema or tiny neighbourhood bar.
-        </p>
-
-        <button class="add">
-          + ADD
-        </button>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
+<!-- CITIES -->
 
 <section class="cities" id="cities">
 
   <div class="cities-inner">
 
-    <h2>
+    <h2 class="cities-title">
       Eight cities.<br>
-      One culture.
+      Infinite ways<br>
+      to wander.
     </h2>
 
 
-    <div class="city-grid">
-
-
-      <div class="city-card"
-        onclick="selectCity('tokyo')">
-        <h3>Tokyo</h3>
-        <p>Japan</p>
-      </div>
-
-
-      <div class="city-card"
-        onclick="selectCity('paris')">
-        <h3>Paris</h3>
-        <p>France</p>
-      </div>
-
-
-      <div class="city-card"
-        onclick="selectCity('london')">
-        <h3>London</h3>
-        <p>United Kingdom</p>
-      </div>
-
-
-      <div class="city-card"
-        onclick="selectCity('berlin')">
-        <h3>Berlin</h3>
-        <p>Germany</p>
-      </div>
-
-
-      <div class="city-card"
-        onclick="selectCity('melbourne')">
-        <h3>Melbourne</h3>
-        <p>Australia</p>
-      </div>
-
-
-      <div class="city-card"
-        onclick="selectCity('newyork')">
-        <h3>New York</h3>
-        <p>USA</p>
-      </div>
-
-
-      <div class="city-card"
-        onclick="selectCity('barcelona')">
-        <h3>Barcelona</h3>
-        <p>Spain</p>
-      </div>
-
-
-      <div class="city-card"
-        onclick="selectCity('lisbon')">
-        <h3>Lisbon</h3>
-        <p>Portugal</p>
-      </div>
-
-
-    </div>
+    <div class="city-list" id="cityList"></div>
 
   </div>
 
 </section>
 
 
+<!-- ABOUT -->
 
-<section class="about" id="about">
+<section class="about">
 
   <div class="about-grid">
 
     <h2>
-      Travel for the culture,
-      not the checklist.
+      Travel for<br>
+      the culture.
     </h2>
 
-    <div>
+
+    <div class="about-copy">
 
       <p>
-        AnalogueCulture is a guide to the places that
-        make a city feel alive.
-      </p>
-
-      <p>
-        Film labs. Record shops. Listening bars.
-        Camera stores. Independent cinemas.
-        Photo walks. Events.
+        AnalogueCulture is a guide to the places
+        that make a city feel alive.
       </p>
 
       <p>
         Not the obvious tourist itinerary.
-        The places you are glad someone told you about.
+        The record shop down the side street.
+        The tiny listening bar. The film lab.
+        The cinema showing something you've
+        never heard of.
       </p>
 
       <p>
-        And eventually, a way to build an entire
-        day around them.
+        Find something interesting.
+        Then build a day around it.
       </p>
 
     </div>
@@ -1770,7 +1130,6 @@ footer {
   </div>
 
 </section>
-
 
 
 <footer>
@@ -1786,56 +1145,124 @@ footer {
 </footer>
 
 
+<!-- PLACE MODAL -->
+
+<div
+  class="modal"
+  id="modal"
+  onclick="closeModal(event)">
+
+  <div
+    class="modal-box"
+    onclick="event.stopPropagation()">
+
+    <button
+      class="modal-close"
+      onclick="closeModal()">
+      ×
+    </button>
+
+    <div
+      class="modal-type"
+      id="modalType">
+    </div>
+
+    <h2 id="modalTitle"></h2>
+
+    <div
+      class="modal-location"
+      id="modalLocation">
+    </div>
+
+    <p
+      class="modal-description"
+      id="modalDescription">
+    </p>
+
+    <div class="modal-actions">
+
+      <button
+        class="modal-add"
+        id="modalAdd">
+        Add to my day
+      </button>
+
+      <a
+        class="modal-map"
+        id="modalMap"
+        target="_blank">
+        Open maps
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <script>
 
 
-const cityData = {
+/* =====================================================
+   ANALOGUECULTURE DATA
+   ===================================================== */
 
-  tokyo: {
-    title:"Tokyo",
+
+const cities = {
+
+  tokyo:{
+    name:"Tokyo",
+    country:"Japan",
     description:
       "A city where film, records, jazz kissas, tiny bars and obsessive craftsmanship sit comfortably alongside each other."
   },
 
-  paris: {
-    title:"Paris",
+  paris:{
+    name:"Paris",
+    country:"France",
     description:
       "Film, photography, records, independent culture and neighbourhoods made for wandering."
   },
 
-  london: {
-    title:"London",
+  london:{
+    name:"London",
+    country:"United Kingdom",
     description:
       "A sprawling ecosystem of film labs, record shops, listening bars, independent cinemas and music culture."
   },
 
-  berlin: {
-    title:"Berlin",
+  berlin:{
+    name:"Berlin",
+    country:"Germany",
     description:
       "Electronic music, vinyl, experimental culture, photography and places that stay interesting after dark."
   },
 
-  melbourne: {
-    title:"Melbourne",
+  melbourne:{
+    name:"Melbourne",
+    country:"Australia",
     description:
-      "One of the world's strongest independent scenes for film photography, records, coffee and live music."
+      "A city built around independent music, coffee, film photography, records and creative culture."
   },
 
-  newyork: {
-    title:"New York",
+  newyork:{
+    name:"New York",
+    country:"USA",
     description:
       "Film, vinyl, independent cinema, photography and music culture packed into neighbourhoods worth exploring."
   },
 
-  barcelona: {
-    title:"Barcelona",
+  barcelona:{
+    name:"Barcelona",
+    country:"Spain",
     description:
       "Mediterranean streets, analogue photography, independent music and a culture built around being outside."
   },
 
-  lisbon: {
-    title:"Lisbon",
+  lisbon:{
+    name:"Lisbon",
+    country:"Portugal",
     description:
       "A slower city of photography, records, small bars, music and neighbourhoods made for getting lost."
   }
@@ -1843,130 +1270,1026 @@ const cityData = {
 };
 
 
+const places = [
+
+/* TOKYO */
+
+{
+ id:"tokyo-sourball",
+ city:"tokyo",
+ type:"film",
+ category:"Film Lab",
+ name:"Sourball Film Lab",
+ location:"Takadanobaba · Tokyo",
+ description:"Independent film processing and scanning for photographers who still shoot on film.",
+ tags:["Film","Processing"],
+ map:"https://www.google.com/maps/search/?api=1&query=Sourball+Film+Lab+Tokyo"
+},
+
+{
+ id:"tokyo-face",
+ city:"tokyo",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"Face Records",
+ location:"Shibuya · Tokyo",
+ description:"A Tokyo institution for digging through soul, jazz, funk and Japanese pressings.",
+ tags:["Vinyl","Jazz","Soul"],
+ map:"https://www.google.com/maps/search/?api=1&query=Face+Records+Shibuya+Tokyo"
+},
+
+{
+ id:"tokyo-map",
+ city:"tokyo",
+ type:"photo",
+ category:"Camera Shop",
+ name:"Map Camera",
+ location:"Shinjuku · Tokyo",
+ description:"One of Tokyo's great destinations for new and used cameras, lenses and photography equipment.",
+ tags:["Cameras","Film"],
+ map:"https://www.google.com/maps/search/?api=1&query=Map+Camera+Shinjuku"
+},
+
+{
+ id:"tokyo-tower",
+ city:"tokyo",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"Tower Vinyl",
+ location:"Shibuya · Tokyo",
+ description:"A huge vinyl destination with Japanese releases and an enormous range of genres.",
+ tags:["Vinyl","Shibuya"],
+ map:"https://www.google.com/maps/search/?api=1&query=Tower+Vinyl+Shibuya"
+},
+
+{
+ id:"tokyo-pass",
+ city:"tokyo",
+ type:"listening",
+ category:"Listening Bar",
+ name:"PASS",
+ location:"Shibuya · Tokyo",
+ description:"A contemporary Tokyo listening space where the music is the point.",
+ tags:["Hi-Fi","Music"],
+ map:"https://www.google.com/maps/search/?api=1&query=PASS+Shibuya+Tokyo"
+},
+
+{
+ id:"tokyo-rootdown",
+ city:"tokyo",
+ type:"listening",
+ category:"Listening Bar",
+ name:"ROOT DOWN",
+ location:"Tokyo",
+ description:"A serious listening bar built around sound, records and cocktails.",
+ tags:["Hi-Fi","Vinyl"],
+ map:"https://www.google.com/maps/search/?api=1&query=ROOT+DOWN+Tokyo"
+},
+
+
+/* PARIS */
+
+{
+ id:"paris-film",
+ city:"paris",
+ type:"film",
+ category:"Film",
+ name:"Paris Film Lab",
+ location:"Paris · France",
+ description:"A destination for analogue photographers looking for film processing and scanning.",
+ tags:["Film","Processing"],
+ map:"https://www.google.com/maps/search/?api=1&query=Paris+Film+Lab"
+},
+
+{
+ id:"paris-sound",
+ city:"paris",
+ type:"listening",
+ category:"Listening / Coffee",
+ name:"Sound & Coffee",
+ location:"Paris · France",
+ description:"A place where vinyl, hi-fi and coffee meet in a distinctly Parisian setting.",
+ tags:["Vinyl","Hi-Fi"],
+ map:"https://www.google.com/maps/search/?api=1&query=Sound+%26+Coffee+Paris"
+},
+
+{
+ id:"paris-vinyl",
+ city:"paris",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"Betino's Record Shop",
+ location:"Paris · France",
+ description:"Independent record digging across soul, funk, jazz and electronic music.",
+ tags:["Vinyl","Soul"],
+ map:"https://www.google.com/maps/search/?api=1&query=Betino%27s+Record+Shop+Paris"
+},
+
+
+/* LONDON */
+
+{
+ id:"london-film",
+ city:"london",
+ type:"film",
+ category:"Film Lab",
+ name:"London Film Lab",
+ location:"London · UK",
+ description:"Film processing and scanning for C41, black & white, E6 and other analogue formats.",
+ tags:["C41","B&W","E6"],
+ map:"https://www.google.com/maps/search/?api=1&query=London+Film+Lab"
+},
+
+{
+ id:"london-phonica",
+ city:"london",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"Phonica Records",
+ location:"Soho · London",
+ description:"Essential London digging for electronic music, house, techno and beyond.",
+ tags:["House","Techno","Vinyl"],
+ map:"https://www.google.com/maps/search/?api=1&query=Phonica+Records+London"
+},
+
+{
+ id:"london-brilliant",
+ city:"london",
+ type:"listening",
+ category:"Listening Bar",
+ name:"Brilliant Corners",
+ location:"Dalston · London",
+ description:"A restaurant and bar with a serious vinyl listening culture and an exceptional sound system.",
+ tags:["Jazz","Vinyl","Hi-Fi"],
+ map:"https://www.google.com/maps/search/?api=1&query=Brilliant+Corners+London"
+},
+
+{
+ id:"london-nextdoor",
+ city:"london",
+ type:"events",
+ category:"Records + Events",
+ name:"Next Door Records",
+ location:"London · UK",
+ description:"Record shop, café, bar, venue and creative hangout.",
+ tags:["Vinyl","Events"],
+ map:"https://www.google.com/maps/search/?api=1&query=Next+Door+Records+London"
+},
+
+
+/* BERLIN */
+
+{
+ id:"berlin-hhv",
+ city:"berlin",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"HHV",
+ location:"Friedrichshain · Berlin",
+ description:"A huge independent destination covering electronic music, hip hop, jazz and experimental records.",
+ tags:["Electronic","Hip Hop"],
+ map:"https://www.google.com/maps/search/?api=1&query=HHV+Records+Berlin"
+},
+
+{
+ id:"berlin-unkompress",
+ city:"berlin",
+ type:"listening",
+ category:"Listening Bar",
+ name:"Unkompress",
+ location:"Berlin · Germany",
+ description:"A vinyl-focused listening space built around careful sound and considered music selection.",
+ tags:["Vinyl","Hi-Fi"],
+ map:"https://www.google.com/maps/search/?api=1&query=Unkompress+Berlin"
+},
+
+{
+ id:"berlin-pastiche",
+ city:"berlin",
+ type:"events",
+ category:"Culture / Events",
+ name:"Pastiche",
+ location:"Neukölln · Berlin",
+ description:"A cultural space bringing together music, records, food and events.",
+ tags:["Music","Events"],
+ map:"https://www.google.com/maps/search/?api=1&query=Pastiche+Berlin"
+},
+
+
+/* MELBOURNE */
+
+{
+ id:"mel-filmneverdie",
+ city:"melbourne",
+ type:"film",
+ category:"Film / Camera",
+ name:"FilmNeverDie",
+ location:"Melbourne · Australia",
+ description:"Film cameras, analogue photography and a community built around shooting film.",
+ tags:["Film","Cameras"],
+ map:"https://www.google.com/maps/search/?api=1&query=FilmNeverDie+Melbourne"
+},
+
+{
+ id:"mel-irohas",
+ city:"melbourne",
+ type:"film",
+ category:"Film Lab",
+ name:"Irohas Photo Lab",
+ location:"Melbourne · Australia",
+ description:"Film processing and scanning for analogue photographers.",
+ tags:["C41","Film"],
+ map:"https://www.google.com/maps/search/?api=1&query=Irohas+Photo+Lab+Melbourne"
+},
+
+{
+ id:"mel-rocksteady",
+ city:"melbourne",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"Rocksteady Records",
+ location:"Melbourne · Australia",
+ description:"Independent Melbourne record digging with a deep catalogue and local following.",
+ tags:["Vinyl","Independent"],
+ map:"https://www.google.com/maps/search/?api=1&query=Rocksteady+Records+Melbourne"
+},
+
+
+/* NEW YORK */
+
+{
+ id:"ny-bh",
+ city:"newyork",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"Human Head Records",
+ location:"Brooklyn · New York",
+ description:"Independent Brooklyn record culture spanning electronic, experimental and leftfield music.",
+ tags:["Vinyl","Brooklyn"],
+ map:"https://www.google.com/maps/search/?api=1&query=Human+Head+Records+Brooklyn"
+},
+
+{
+ id:"ny-roughtrade",
+ city:"newyork",
+ type:"events",
+ category:"Records + Events",
+ name:"Rough Trade NYC",
+ location:"New York · USA",
+ description:"Records, live music, releases and events in one of the city's best-known music spaces.",
+ tags:["Vinyl","Events"],
+ map:"https://www.google.com/maps/search/?api=1&query=Rough+Trade+NYC"
+},
+
+{
+ id:"ny-kinokuniya",
+ city:"newyork",
+ type:"photo",
+ category:"Books / Photography",
+ name:"Kinokuniya",
+ location:"Bryant Park · New York",
+ description:"Japanese books, photography publications, magazines and visual culture.",
+ tags:["Books","Photography"],
+ map:"https://www.google.com/maps/search/?api=1&query=Kinokuniya+New+York"
+},
+
+
+/* BARCELONA */
+
+{
+ id:"barcelona-revelab",
+ city:"barcelona",
+ type:"film",
+ category:"Film Lab",
+ name:"REVELAB Studio",
+ location:"Barcelona · Spain",
+ description:"Development, scanning, film sales, printing and analogue photography workshops.",
+ tags:["35mm","120","Workshops"],
+ map:"https://www.google.com/maps/search/?api=1&query=REVELAB+Studio+Barcelona"
+},
+
+{
+ id:"barcelona-vinyl",
+ city:"barcelona",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"Discos Revolver",
+ location:"Barcelona · Spain",
+ description:"A Barcelona record institution with a broad selection and plenty of digging potential.",
+ tags:["Vinyl","Independent"],
+ map:"https://www.google.com/maps/search/?api=1&query=Discos+Revolver+Barcelona"
+},
+
+{
+ id:"barcelona-photo",
+ city:"barcelona",
+ type:"photo",
+ category:"Photography",
+ name:"The Folio Club",
+ location:"Barcelona · Spain",
+ description:"Photography books, exhibitions and visual culture.",
+ tags:["Photography","Books"],
+ map:"https://www.google.com/maps/search/?api=1&query=The+Folio+Club+Barcelona"
+},
+
+
+/* LISBON */
+
+{
+ id:"lisbon-colorfoto",
+ city:"lisbon",
+ type:"film",
+ category:"Film Lab",
+ name:"Colorfoto",
+ location:"Lisbon · Portugal",
+ description:"A long-running destination for photography, printing and analogue processing.",
+ tags:["Film","Photography"],
+ map:"https://www.google.com/maps/search/?api=1&query=Colorfoto+Lisbon"
+},
+
+{
+ id:"lisbon-discomundo",
+ city:"lisbon",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"Disco Móvel",
+ location:"Lisbon · Portugal",
+ description:"Independent record digging in one of Europe's great slow-travel cities.",
+ tags:["Vinyl","Local"],
+ map:"https://www.google.com/maps/search/?api=1&query=Disco+Movel+Lisbon"
+},
+
+{
+ id:"lisbon-flur",
+ city:"lisbon",
+ type:"vinyl",
+ category:"Record Shop",
+ name:"Flur Discos",
+ location:"Lisbon · Portugal",
+ description:"A Lisbon institution for electronic, experimental and independent music.",
+ tags:["Electronic","Vinyl"],
+ map:"https://www.google.com/maps/search/?api=1&query=Flur+Discos+Lisbon"
+}
+
+];
+
+
+/* =====================================================
+   STATE
+   ===================================================== */
+
+
 let currentCity = "tokyo";
-let currentCategory = "all";
+
+let currentFilter = "all";
+
+let myDay = [];
+
+let selectedPlace = null;
 
 
-function selectCity(city) {
+/* =====================================================
+   RENDER CITY
+   ===================================================== */
 
-  currentCity = city;
 
-  document.getElementById("citySelect").value = city;
+function renderCity(){
 
-  updateCity();
+  const city = cities[currentCity];
 
-  window.scrollTo({
-    top:document.querySelector(".city-hero").offsetTop - 70,
-    behavior:"smooth"
-  });
+  document.getElementById("cityName").textContent =
+    city.name;
+
+  document.getElementById("stripCity").textContent =
+    city.name;
+
+  document.getElementById("cityDescription").textContent =
+    city.description;
+
+  renderPlaces();
+
+  renderCities();
 
 }
 
 
-function changeCity() {
+/* =====================================================
+   RENDER PLACES
+   ===================================================== */
+
+
+function renderPlaces(){
+
+  const container =
+    document.getElementById("places");
+
+  container.innerHTML = "";
+
+  const filtered = places.filter(place => {
+
+    return place.city === currentCity &&
+      (currentFilter === "all" ||
+       place.type === currentFilter);
+
+  });
+
+
+  filtered.forEach((place,index)=>{
+
+    const article =
+      document.createElement("article");
+
+    article.className = "place";
+
+    const alreadyAdded =
+      myDay.includes(place.id);
+
+
+    article.innerHTML = `
+
+      <div>
+
+        <div class="place-top">
+
+          <span class="place-number">
+            ${String(index+1).padStart(2,"0")}
+          </span>
+
+          <span class="place-type">
+            ${place.category}
+          </span>
+
+        </div>
+
+        <h3>
+          ${place.name}
+        </h3>
+
+        <div class="place-location">
+          ${place.location}
+        </div>
+
+        <p class="place-description">
+          ${place.description}
+        </p>
+
+      </div>
+
+
+      <div class="place-bottom">
+
+        <div class="tags">
+
+          ${place.tags.map(tag =>
+            `<span class="tag">${tag}</span>`
+          ).join("")}
+
+        </div>
+
+
+        <button
+          class="add-place ${alreadyAdded ? "added" : ""}"
+          onclick="addToDay('${place.id}')">
+
+          ${alreadyAdded
+            ? "✓ Added"
+            : "+ My Day"}
+
+        </button>
+
+      </div>
+
+    `;
+
+
+    article.addEventListener("click",(event)=>{
+
+      if(event.target.tagName === "BUTTON") return;
+
+      openPlace(place.id);
+
+    });
+
+
+    container.appendChild(article);
+
+  });
+
+
+  if(filtered.length === 0){
+
+    container.innerHTML = `
+      <div class="empty" style="grid-column:1/-1">
+        <strong>No places yet.</strong>
+        We're still building this part of the city.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   CITY SELECTOR
+   ===================================================== */
+
+
+function changeCity(){
 
   currentCity =
     document.getElementById("citySelect").value;
 
-  updateCity();
-
-}
-
-
-function updateCity() {
-
-  const data = cityData[currentCity];
-
-  document.getElementById("cityTitle")
-    .textContent = data.title;
-
-  document.getElementById("cityDescription")
-    .textContent = data.description;
-
-  applyFilters();
-
-}
-
-
-function filterCategory(category, button) {
-
-  currentCategory = category;
+  currentFilter = "all";
 
   document
-    .querySelectorAll(".category")
-    .forEach(b =>
-      b.classList.remove("active")
-    );
+    .querySelectorAll(".filter")
+    .forEach((button,index)=>{
+      button.classList.toggle(
+        "active",
+        index === 0
+      );
+    });
+
+  renderCity();
+
+  document
+    .getElementById("city")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function selectCity(city){
+
+  currentCity = city;
+
+  document.getElementById("citySelect").value =
+    city;
+
+  currentFilter = "all";
+
+  document
+    .querySelectorAll(".filter")
+    .forEach((button,index)=>{
+      button.classList.toggle(
+        "active",
+        index === 0
+      );
+    });
+
+  renderCity();
+
+  document
+    .getElementById("city")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   FILTER
+   ===================================================== */
+
+
+function filterPlaces(type,button){
+
+  currentFilter = type;
+
+  document
+    .querySelectorAll(".filter")
+    .forEach(b=>{
+      b.classList.remove("active");
+    });
 
   button.classList.add("active");
 
-  applyFilters();
+  renderPlaces();
 
 }
 
 
-function applyFilters() {
+/* =====================================================
+   MY DAY
+   ===================================================== */
 
-  const cards =
-    document.querySelectorAll(".card");
 
-  let count = 0;
+function addToDay(id){
 
-  cards.forEach(card => {
+  const index =
+    myDay.indexOf(id);
 
-    const cityMatch =
-      card.dataset.city === currentCity;
+  if(index === -1){
 
-    const categoryMatch =
-      currentCategory === "all" ||
-      card.dataset.type === currentCategory;
+    myDay.push(id);
 
-    if(cityMatch && categoryMatch) {
+  }else{
 
-      card.style.display = "";
+    myDay.splice(index,1);
 
-      count++;
+  }
 
-    } else {
+  localStorage.setItem(
+    "analogueculture-day",
+    JSON.stringify(myDay)
+  );
 
-      card.style.display = "none";
+  renderPlaces();
 
-    }
+  renderDay();
+
+  updateDayCount();
+
+}
+
+
+function renderDay(){
+
+  const itinerary =
+    document.getElementById("itinerary");
+
+  const empty =
+    document.getElementById("emptyState");
+
+  const footer =
+    document.getElementById("builderFooter");
+
+
+  itinerary.innerHTML = "";
+
+
+  if(myDay.length === 0){
+
+    empty.style.display = "block";
+
+    footer.style.display = "none";
+
+    return;
+
+  }
+
+
+  empty.style.display = "none";
+
+  footer.style.display = "flex";
+
+
+  myDay.forEach((id,index)=>{
+
+    const place =
+      places.find(p => p.id === id);
+
+    if(!place) return;
+
+
+    const item =
+      document.createElement("div");
+
+    item.className =
+      "itinerary-item";
+
+
+    const hour =
+      10 + (index * 2);
+
+    const time =
+      String(hour).padStart(2,"0") + ":00";
+
+
+    item.innerHTML = `
+
+      <div class="itinerary-time">
+        ${time}
+      </div>
+
+      <div class="itinerary-info">
+
+        <h4>
+          ${place.name}
+        </h4>
+
+        <p>
+          ${place.category} · ${place.location}
+        </p>
+
+      </div>
+
+
+      <div class="itinerary-actions">
+
+        <button
+          class="small-button"
+          onclick="moveItem(${index},-1)">
+          ↑
+        </button>
+
+        <button
+          class="small-button"
+          onclick="moveItem(${index},1)">
+          ↓
+        </button>
+
+        <button
+          class="small-button"
+          onclick="removeFromDay(${index})">
+          ×
+        </button>
+
+      </div>
+
+    `;
+
+
+    itinerary.appendChild(item);
 
   });
 
-  document.getElementById("resultCount")
-    .textContent = count + " places";
+}
 
-  document.getElementById("placeCount")
-    .textContent = count;
+
+function moveItem(index,direction){
+
+  const newIndex =
+    index + direction;
+
+  if(
+    newIndex < 0 ||
+    newIndex >= myDay.length
+  ) return;
+
+
+  const temp =
+    myDay[index];
+
+  myDay[index] =
+    myDay[newIndex];
+
+  myDay[newIndex] =
+    temp;
+
+
+  saveState();
+
+  renderDay();
+
+  renderPlaces();
 
 }
 
 
-document
-  .querySelectorAll(".add")
-  .forEach(button => {
+function removeFromDay(index){
 
-    button.addEventListener("click", function() {
+  myDay.splice(index,1);
 
-      this.classList.toggle("added");
+  saveState();
 
-      this.textContent =
-        this.classList.contains("added")
-        ? "✓ ADDED TO DAY"
-        : "+ ADD";
+  renderDay();
+
+  renderPlaces();
+
+  updateDayCount();
+
+}
+
+
+function clearDay(){
+
+  if(myDay.length === 0) return;
+
+  if(
+    !confirm("Clear your entire day?")
+  ) return;
+
+  myDay = [];
+
+  saveState();
+
+  renderDay();
+
+  renderPlaces();
+
+  updateDayCount();
+
+}
+
+
+function saveDay(){
+
+  localStorage.setItem(
+    "analogueculture-saved",
+    new Date().toISOString()
+  );
+
+  alert(
+    "Your day has been saved on this device."
+  );
+
+}
+
+
+function saveState(){
+
+  localStorage.setItem(
+    "analogueculture-day",
+    JSON.stringify(myDay)
+  );
+
+}
+
+
+function updateDayCount(){
+
+  document.getElementById("dayCount")
+    .textContent = myDay.length;
+
+}
+
+
+/* =====================================================
+   PLACE MODAL
+   ===================================================== */
+
+
+function openPlace(id){
+
+  const place =
+    places.find(p=>p.id===id);
+
+  if(!place) return;
+
+  selectedPlace = id;
+
+  document.getElementById("modalType")
+    .textContent = place.category;
+
+  document.getElementById("modalTitle")
+    .textContent = place.name;
+
+  document.getElementById("modalLocation")
+    .textContent = place.location;
+
+  document.getElementById("modalDescription")
+    .textContent = place.description;
+
+  document.getElementById("modalMap")
+    .href = place.map;
+
+
+  const addButton =
+    document.getElementById("modalAdd");
+
+
+  addButton.textContent =
+    myDay.includes(id)
+      ? "✓ Added to my day"
+      : "+ Add to my day";
+
+
+  addButton.onclick = function(){
+
+    addToDay(id);
+
+    addButton.textContent =
+      myDay.includes(id)
+        ? "✓ Added to my day"
+        : "+ Add to my day";
+
+  };
+
+
+  document
+    .getElementById("modal")
+    .classList.add("open");
+
+}
+
+
+function closeModal(event){
+
+  if(
+    !event ||
+    event.target === document.getElementById("modal")
+  ){
+
+    document
+      .getElementById("modal")
+      .classList.remove("open");
+
+  }
+
+}
+
+
+/* =====================================================
+   CITIES LIST
+   ===================================================== */
+
+
+function renderCities(){
+
+  const container =
+    document.getElementById("cityList");
+
+  container.innerHTML = "";
+
+
+  Object.entries(cities)
+    .forEach(([key,city])=>{
+
+      const row =
+        document.createElement("div");
+
+      row.className =
+        "city-choice";
+
+
+      row.innerHTML = `
+
+        <button
+          onclick="selectCity('${key}')">
+
+          ${city.name}
+
+        </button>
+
+        <span>
+          ${city.country}
+        </span>
+
+      `;
+
+
+      container.appendChild(row);
 
     });
 
-  });
+}
 
 
-updateCity();
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+
+function scrollToSection(id){
+
+  document
+    .getElementById(id)
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   LOAD
+   ===================================================== */
+
+
+function loadSavedDay(){
+
+  try{
+
+    const saved =
+      JSON.parse(
+        localStorage.getItem(
+          "analogueculture-day"
+        )
+      );
+
+    if(Array.isArray(saved)){
+
+      myDay =
+        saved.filter(id =>
+          places.some(p=>p.id===id)
+        );
+
+    }
+
+  }catch(error){
+
+    myDay = [];
+
+  }
+
+}
+
+
+loadSavedDay();
+
+renderCity();
+
+renderDay();
+
+updateDayCount();
+
 
 </script>
 
-
 </body>
 </html>
-```
