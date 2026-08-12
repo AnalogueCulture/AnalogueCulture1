@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AnalogueCulture — A Guide to the Good Stuff</title>
+<title>AnalogueCulture — The Global Analogue City Guide</title>
 
 <style>
 
@@ -31,7 +31,7 @@ header {
   position:sticky;
   top:0;
   background:#f2eee5;
-  z-index:20;
+  z-index:50;
 }
 
 .logo {
@@ -46,7 +46,7 @@ header {
 
 nav {
   display:flex;
-  gap:28px;
+  gap:25px;
 }
 
 nav a {
@@ -65,19 +65,19 @@ nav a:hover {
 .hero {
   max-width:1250px;
   margin:auto;
-  padding:100px 5vw 85px;
+  padding:105px 5vw 75px;
 }
 
 .eyebrow {
   font-size:11px;
   text-transform:uppercase;
   letter-spacing:2px;
-  margin-bottom:25px;
   font-weight:bold;
+  margin-bottom:25px;
 }
 
 .hero h1 {
-  font-family:Georgia, serif;
+  font-family:Georgia,serif;
   font-weight:400;
   font-size:clamp(58px,8vw,115px);
   line-height:.88;
@@ -87,53 +87,41 @@ nav a:hover {
 
 .hero p {
   margin-top:40px;
+  max-width:650px;
+  color:#555;
   font-size:19px;
   line-height:1.5;
-  max-width:600px;
-  color:#5c5c5c;
 }
 
 
-/* SEARCH */
+/* CITY SELECTOR */
 
-.search-area {
+.city-section {
+  padding:0 5vw 75px;
   max-width:1250px;
   margin:auto;
-  padding:0 5vw 80px;
 }
 
-.search {
+.city-label {
+  text-transform:uppercase;
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+.city-select {
+  width:100%;
   height:68px;
   border:1px solid #151515;
-  display:flex;
   background:#fffdf8;
-}
-
-.search input {
-  flex:1;
-  border:0;
-  outline:0;
-  background:transparent;
-  padding:0 22px;
-  font-size:16px;
-}
-
-.search button {
-  width:150px;
-  border:0;
-  border-left:1px solid #151515;
-  background:#151515;
-  color:white;
+  padding:0 20px;
+  font-size:18px;
+  outline:none;
   cursor:pointer;
-  font-weight:bold;
-}
-
-.search button:hover {
-  background:#333;
 }
 
 
-/* CATEGORY NAV */
+/* CATEGORY */
 
 .categories {
   display:flex;
@@ -144,8 +132,8 @@ nav a:hover {
 
 .category {
   border:1px solid #aaa;
-  padding:9px 14px;
   background:transparent;
+  padding:9px 14px;
   cursor:pointer;
   font-size:12px;
 }
@@ -158,65 +146,62 @@ nav a:hover {
 }
 
 
-/* FEATURE */
+/* CITY HERO */
 
-.feature {
+.city-hero {
   background:#151515;
   color:white;
   padding:85px 5vw;
 }
 
-.feature-inner {
+.city-inner {
   max-width:1250px;
   margin:auto;
 }
 
-.feature-label {
-  color:#aaa;
+.city-kicker {
+  color:#999;
   text-transform:uppercase;
   letter-spacing:2px;
   font-size:11px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
-.feature h2 {
+.city-title {
   font-family:Georgia,serif;
+  font-size:clamp(60px,8vw,105px);
   font-weight:400;
-  font-size:clamp(45px,6vw,80px);
-  line-height:.95;
-  max-width:800px;
+  line-height:.85;
+  letter-spacing:-5px;
 }
 
-.feature p {
+.city-description {
   color:#aaa;
-  max-width:600px;
-  margin-top:25px;
+  max-width:650px;
   font-size:17px;
+  margin-top:30px;
+  line-height:1.5;
 }
 
-.city-search {
-  margin-top:40px;
+.city-stats {
   display:flex;
-  gap:10px;
+  gap:35px;
+  margin-top:45px;
+  flex-wrap:wrap;
 }
 
-.city-search input {
-  height:54px;
-  width:300px;
-  padding:0 15px;
-  border:1px solid #555;
-  background:#222;
-  color:white;
+.stat strong {
+  display:block;
+  font-family:Georgia,serif;
+  font-size:32px;
+  font-weight:400;
 }
 
-.city-search button {
-  height:54px;
-  padding:0 25px;
-  background:white;
-  color:#151515;
-  border:0;
-  font-weight:bold;
-  cursor:pointer;
+.stat span {
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#888;
 }
 
 
@@ -237,7 +222,7 @@ nav a:hover {
 
 .section-head h2 {
   font-family:Georgia,serif;
-  font-size:50px;
+  font-size:52px;
   font-weight:400;
 }
 
@@ -254,7 +239,7 @@ nav a:hover {
 }
 
 .card {
-  min-height:260px;
+  min-height:290px;
   padding:27px;
   border-right:1px solid #151515;
   border-bottom:1px solid #151515;
@@ -263,7 +248,7 @@ nav a:hover {
 }
 
 .card:hover {
-  background:#e5dfd2;
+  background:#e4ded2;
 }
 
 .card-type {
@@ -271,13 +256,13 @@ nav a:hover {
   text-transform:uppercase;
   letter-spacing:1.5px;
   color:#777;
-  margin-bottom:25px;
+  margin-bottom:24px;
 }
 
 .card h3 {
   font-family:Georgia,serif;
-  font-weight:400;
   font-size:29px;
+  font-weight:400;
   margin-bottom:8px;
 }
 
@@ -307,11 +292,11 @@ nav a:hover {
 }
 
 
-/* PLANNER */
+/* DAY PLANNER */
 
 .planner {
-  background:#ded7c9;
-  padding:90px 5vw;
+  background:#ddd5c6;
+  padding:95px 5vw;
 }
 
 .planner-inner {
@@ -319,18 +304,27 @@ nav a:hover {
   margin:auto;
 }
 
+.planner-kicker {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
 .planner h2 {
   font-family:Georgia,serif;
-  font-size:65px;
   font-weight:400;
-  line-height:.95;
-  max-width:700px;
+  font-size:clamp(55px,7vw,90px);
+  line-height:.9;
+  letter-spacing:-4px;
+  max-width:800px;
 }
 
 .planner-intro {
-  max-width:580px;
-  margin-top:25px;
+  max-width:600px;
   color:#555;
+  margin-top:25px;
+  line-height:1.5;
 }
 
 .planner-grid {
@@ -343,45 +337,100 @@ nav a:hover {
 }
 
 .day-card {
-  background:#ded7c9;
-  min-height:260px;
+  background:#ddd5c6;
+  min-height:270px;
   padding:25px;
 }
 
 .time {
   font-size:11px;
   color:#777;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
 .day-card h3 {
   font-family:Georgia,serif;
-  font-size:25px;
+  font-size:27px;
   font-weight:400;
   margin-bottom:10px;
 }
 
 .day-card p {
-  font-size:13px;
   color:#666;
+  font-size:13px;
+  line-height:1.5;
 }
 
 .add {
   margin-top:25px;
   border:1px solid #151515;
-  padding:8px 12px;
   background:transparent;
+  padding:8px 12px;
   cursor:pointer;
-  font-size:11px;
+  font-size:10px;
 }
 
-.add:hover {
+.add:hover,
+.add.added {
   background:#151515;
   color:white;
 }
 
 
-/* PHILOSOPHY */
+/* CITY LIST */
+
+.cities {
+  background:#151515;
+  color:white;
+  padding:95px 5vw;
+}
+
+.cities-inner {
+  max-width:1250px;
+  margin:auto;
+}
+
+.cities h2 {
+  font-family:Georgia,serif;
+  font-size:65px;
+  font-weight:400;
+  line-height:.9;
+  margin-bottom:45px;
+}
+
+.city-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #555;
+  border-left:1px solid #555;
+}
+
+.city-card {
+  padding:30px;
+  min-height:170px;
+  border-right:1px solid #555;
+  border-bottom:1px solid #555;
+  cursor:pointer;
+}
+
+.city-card:hover {
+  background:#222;
+}
+
+.city-card h3 {
+  font-family:Georgia,serif;
+  font-size:32px;
+  font-weight:400;
+}
+
+.city-card p {
+  margin-top:10px;
+  color:#888;
+  font-size:12px;
+}
+
+
+/* ABOUT */
 
 .about {
   max-width:1250px;
@@ -399,7 +448,8 @@ nav a:hover {
   font-family:Georgia,serif;
   font-size:60px;
   font-weight:400;
-  line-height:.95;
+  line-height:.9;
+  letter-spacing:-3px;
 }
 
 .about p {
@@ -417,17 +467,21 @@ footer {
   padding:25px 5vw;
   display:flex;
   justify-content:space-between;
-  font-size:11px;
   color:#666;
+  font-size:11px;
 }
 
 
 /* MOBILE */
 
-@media(max-width:800px) {
+@media(max-width:850px) {
 
   nav {
     gap:12px;
+  }
+
+  nav a:nth-child(2) {
+    display:none;
   }
 
   .hero {
@@ -447,6 +501,10 @@ footer {
     grid-template-columns:1fr;
   }
 
+  .city-grid {
+    grid-template-columns:1fr 1fr;
+  }
+
   .about-grid {
     grid-template-columns:1fr;
     gap:45px;
@@ -454,14 +512,6 @@ footer {
 
   .about h2 {
     font-size:50px;
-  }
-
-  .city-search {
-    flex-direction:column;
-  }
-
-  .city-search input {
-    width:100%;
   }
 
   footer {
@@ -487,6 +537,7 @@ footer {
   <nav>
     <a href="#discover">Discover</a>
     <a href="#planner">Day Planner</a>
+    <a href="#cities">Cities</a>
     <a href="#about">About</a>
   </nav>
 
@@ -497,7 +548,7 @@ footer {
 <section class="hero">
 
   <div class="eyebrow">
-    A guide to the good stuff
+    The global guide to analogue culture
   </div>
 
   <h1>
@@ -506,61 +557,66 @@ footer {
   </h1>
 
   <p>
-    AnalogueCulture is a global guide to film, music,
-    independent shops, listening bars, events and the
-    places worth discovering when you're somewhere new.
+    Film labs. Record shops. Listening bars.
+    Camera stores. Photo spots. Events.
+    The places that make a city worth exploring.
   </p>
 
 </section>
 
 
 
-<section class="search-area">
+<section class="city-section">
 
-  <div class="search">
-
-    <input
-      id="search"
-      placeholder="Where are you going?"
-    >
-
-    <button onclick="searchCity()">
-      EXPLORE
-    </button>
-
+  <div class="city-label">
+    Choose a city
   </div>
+
+  <select class="city-select" id="citySelect"
+    onchange="changeCity()">
+
+    <option value="tokyo">Tokyo, Japan</option>
+    <option value="paris">Paris, France</option>
+    <option value="london">London, United Kingdom</option>
+    <option value="berlin">Berlin, Germany</option>
+    <option value="melbourne">Melbourne, Australia</option>
+    <option value="newyork">New York, USA</option>
+    <option value="barcelona">Barcelona, Spain</option>
+    <option value="lisbon">Lisbon, Portugal</option>
+
+  </select>
 
 
   <div class="categories">
 
     <button class="category active"
-      onclick="filter('all',this)">
+      onclick="filterCategory('all',this)">
       Everything
     </button>
 
     <button class="category"
-      onclick="filter('film',this)">
-      Film Labs
+      onclick="filterCategory('film',this)">
+      Film
     </button>
 
     <button class="category"
-      onclick="filter('records',this)">
-      Record Shops
+      onclick="filterCategory('records',this)">
+      Vinyl
     </button>
 
     <button class="category"
-      onclick="filter('listening',this)">
-      Listening Bars
+      onclick="filterCategory('listening',this)">
+      Listening
     </button>
 
     <button class="category"
-      onclick="filter('events',this)">
+      onclick="filterCategory('photo',this)">
+      Photography
+    </button>
+
+    <button class="category"
+      onclick="filterCategory('events',this)">
       Events
-    </button>
-
-    <button class="category"
-      onclick="filter('photo',this)">
-      Photo Spots
     </button>
 
   </div>
@@ -569,34 +625,41 @@ footer {
 
 
 
-<section class="feature">
+<section class="city-hero">
 
-  <div class="feature-inner">
+  <div class="city-inner">
 
-    <div class="feature-label">
-      Your city, differently
+    <div class="city-kicker">
+      Your city guide
     </div>
 
-    <h2>
-      Don't just visit a city.<br>
-      Get into it.
-    </h2>
+    <div class="city-title" id="cityTitle">
+      Tokyo
+    </div>
 
-    <p>
-      Find the places that don't necessarily appear
-      on a standard tourist itinerary.
-    </p>
+    <div class="city-description" id="cityDescription">
+      A city where film, records, jazz kissas,
+      tiny bars and obsessive craftsmanship
+      sit comfortably alongside each other.
+    </div>
 
-    <div class="city-search">
 
-      <input
-        id="city"
-        placeholder="Try Tokyo, Paris, Melbourne..."
-      >
+    <div class="city-stats">
 
-      <button onclick="exploreCity()">
-        EXPLORE CITY
-      </button>
+      <div class="stat">
+        <strong id="placeCount">6</strong>
+        <span>Places</span>
+      </div>
+
+      <div class="stat">
+        <strong>5</strong>
+        <span>Categories</span>
+      </div>
+
+      <div class="stat">
+        <strong>1</strong>
+        <span>Day to build</span>
+      </div>
 
     </div>
 
@@ -615,7 +678,7 @@ footer {
     </h2>
 
     <span id="resultCount">
-      12 places
+      6 places
     </span>
 
   </div>
@@ -624,109 +687,197 @@ footer {
   <div class="grid" id="cards">
 
 
+    <!-- TOKYO -->
+
+
     <article class="card"
-      data-type="film"
-      data-city="dublin">
+      data-city="tokyo"
+      data-type="film">
 
       <div class="card-type">
         Film Lab
       </div>
 
       <h3>
-        The Darkroom
+        Sourball Film Lab
       </h3>
 
       <div class="card-location">
-        Dublin · Ireland
+        Takadanobaba · Tokyo
       </div>
 
       <p>
-        Develop and scan your rolls before
-        heading back out into the city.
+        Independent film processing destination
+        for analogue photographers.
       </p>
 
       <div class="tags">
-        <span class="tag">35mm</span>
-        <span class="tag">120</span>
-        <span class="tag">Scan</span>
+        <span class="tag">Film</span>
+        <span class="tag">Processing</span>
       </div>
 
     </article>
 
 
-
     <article class="card"
-      data-type="records"
-      data-city="tokyo">
+      data-city="tokyo"
+      data-type="records">
 
       <div class="card-type">
         Record Shop
       </div>
 
       <h3>
-        City Crate Dig
+        Tower Vinyl Shibuya
       </h3>
 
       <div class="card-location">
-        Tokyo · Japan
+        Shibuya · Tokyo
       </div>
 
       <p>
-        Dig through Japanese pressings,
-        jazz, rock and forgotten records.
+        Huge vinyl destination covering multiple
+        genres and Japanese releases.
       </p>
 
       <div class="tags">
-        <span class="tag">Jazz</span>
-        <span class="tag">Rock</span>
         <span class="tag">Vinyl</span>
+        <span class="tag">Shibuya</span>
       </div>
 
     </article>
 
 
-
     <article class="card"
-      data-type="listening"
-      data-city="london">
+      data-city="tokyo"
+      data-type="listening">
 
       <div class="card-type">
         Listening Bar
       </div>
 
       <h3>
-        The Listening Room
+        PASS
       </h3>
 
       <div class="card-location">
-        London · United Kingdom
+        Shibuya · Tokyo
       </div>
 
       <p>
-        Vinyl, cocktails and a serious sound
-        system. Come to listen.
+        Contemporary Tokyo listening culture
+        with a serious music focus.
       </p>
 
       <div class="tags">
         <span class="tag">Hi-Fi</span>
-        <span class="tag">Vinyl</span>
+        <span class="tag">Music</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="tokyo"
+      data-type="records">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        Face Records
+      </h3>
+
+      <div class="card-location">
+        Shibuya · Tokyo
+      </div>
+
+      <p>
+        Japanese destination for digging through
+        soul, jazz and classic records.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Soul</span>
+        <span class="tag">Jazz</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="tokyo"
+      data-type="listening">
+
+      <div class="card-type">
+        Listening Bar
+      </div>
+
+      <h3>
+        ROOT DOWN TOKYO
+      </h3>
+
+      <div class="card-location">
+        Sendagaya · Tokyo
+      </div>
+
+      <p>
+        Hi-Fi listening bar with cocktails
+        and a serious sound system.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Hi-Fi</span>
         <span class="tag">Cocktails</span>
       </div>
 
     </article>
 
 
-
     <article class="card"
-      data-type="photo"
-      data-city="paris">
+      data-city="tokyo"
+      data-type="film">
 
       <div class="card-type">
-        Photo Spot
+        Camera & Film
       </div>
 
       <h3>
-        Canal Saint-Martin
+        Map Camera
+      </h3>
+
+      <div class="card-location">
+        Shinjuku · Tokyo
+      </div>
+
+      <p>
+        Major destination for new and used
+        cameras and photography equipment.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Cameras</span>
+        <span class="tag">Film</span>
+      </div>
+
+    </article>
+
+
+
+    <!-- PARIS -->
+
+
+    <article class="card"
+      data-city="paris"
+      data-type="film">
+
+      <div class="card-type">
+        Film
+      </div>
+
+      <h3>
+        Paris Film Lab
       </h3>
 
       <div class="card-location">
@@ -734,129 +885,8 @@ footer {
       </div>
 
       <p>
-        Bridges, reflections, old façades and
-        plenty of reasons to keep your camera out.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Street</span>
-        <span class="tag">35mm</span>
-      </div>
-
-    </article>
-
-
-
-    <article class="card"
-      data-type="records"
-      data-city="melbourne">
-
-      <div class="card-type">
-        Record Shop
-      </div>
-
-      <h3>
-        Melbourne Crate Dig
-      </h3>
-
-      <div class="card-location">
-        Melbourne · Australia
-      </div>
-
-      <p>
-        Independent record shops, listening rooms
-        and a serious vinyl culture.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Indie</span>
-        <span class="tag">Soul</span>
-        <span class="tag">Rock</span>
-      </div>
-
-    </article>
-
-
-
-    <article class="card"
-      data-type="listening"
-      data-city="tokyo">
-
-      <div class="card-type">
-        Listening Bar
-      </div>
-
-      <h3>
-        Tokyo Jazz Kissa
-      </h3>
-
-      <div class="card-location">
-        Tokyo · Japan
-      </div>
-
-      <p>
-        Sit down. Order a drink. Put your phone
-        away. Listen to the record.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Jazz</span>
-        <span class="tag">Hi-Fi</span>
-      </div>
-
-    </article>
-
-
-
-    <article class="card"
-      data-type="events"
-      data-city="london">
-
-      <div class="card-type">
-        Event
-      </div>
-
-      <h3>
-        Record Fair
-      </h3>
-
-      <div class="card-location">
-        London · United Kingdom
-      </div>
-
-      <p>
-        Spend the afternoon digging through
-        crates and meeting other collectors.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Vinyl</span>
-        <span class="tag">Saturday</span>
-      </div>
-
-    </article>
-
-
-
-    <article class="card"
-      data-type="film"
-      data-city="melbourne">
-
-      <div class="card-type">
-        Film Lab
-      </div>
-
-      <h3>
-        Film Never Die
-      </h3>
-
-      <div class="card-location">
-        Melbourne · Australia
-      </div>
-
-      <p>
-        Processing, scanning and analogue
-        photography culture.
+        Film processing and scanning destination
+        for analogue photographers.
       </p>
 
       <div class="tags">
@@ -867,107 +897,290 @@ footer {
     </article>
 
 
-
     <article class="card"
-      data-type="photo"
-      data-city="tokyo">
-
-      <div class="card-type">
-        Photo Spot
-      </div>
-
-      <h3>
-        Shimokitazawa
-      </h3>
-
-      <div class="card-location">
-        Tokyo · Japan
-      </div>
-
-      <p>
-        Vintage shops, tiny bars, record stores
-        and endless street photography.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Street</span>
-        <span class="tag">Culture</span>
-      </div>
-
-    </article>
-
-
-
-    <article class="card"
-      data-type="records"
-      data-city="barcelona">
+      data-city="paris"
+      data-type="records">
 
       <div class="card-type">
         Record Shop
       </div>
 
       <h3>
-        Barcelona Dig
+        Paris Crate Dig
       </h3>
 
       <div class="card-location">
-        Barcelona · Spain
+        Paris · France
       </div>
 
       <p>
-        Independent record shops and deep crates
-        away from the obvious tourist route.
+        Independent digging across jazz,
+        soul, funk and electronic music.
       </p>
 
       <div class="tags">
-        <span class="tag">Electronic</span>
-        <span class="tag">Funk</span>
+        <span class="tag">Jazz</span>
+        <span class="tag">Soul</span>
       </div>
 
     </article>
 
 
-
     <article class="card"
-      data-type="events"
-      data-city="tokyo">
+      data-city="paris"
+      data-type="listening">
 
       <div class="card-type">
-        Event
+        Listening
       </div>
 
       <h3>
-        Vinyl Night
+        Paris Listening Room
       </h3>
 
       <div class="card-location">
-        Tokyo · Japan
+        Paris · France
       </div>
 
       <p>
-        Selector-led evening built around
-        records and proper sound.
+        Vinyl-focused evening destination
+        for serious music listeners.
       </p>
 
       <div class="tags">
         <span class="tag">Vinyl</span>
-        <span class="tag">DJ</span>
+        <span class="tag">Hi-Fi</span>
       </div>
 
     </article>
 
 
 
+    <!-- LONDON -->
+
+
     <article class="card"
-      data-type="photo"
-      data-city="melbourne">
+      data-city="london"
+      data-type="film">
 
       <div class="card-type">
-        Photo Spot
+        Film Lab
       </div>
 
       <h3>
-        Brunswick
+        London Film Lab
+      </h3>
+
+      <div class="card-location">
+        East London · UK
+      </div>
+
+      <p>
+        Processing, scanning and film sales
+        near Brick Lane.
+      </p>
+
+      <div class="tags">
+        <span class="tag">C41</span>
+        <span class="tag">B&W</span>
+        <span class="tag">E6</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="london"
+      data-type="records">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        Phonica Records
+      </h3>
+
+      <div class="card-location">
+        Soho · London
+      </div>
+
+      <p>
+        Essential stop for electronic music,
+        house and techno.
+      </p>
+
+      <div class="tags">
+        <span class="tag">House</span>
+        <span class="tag">Techno</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="london"
+      data-type="listening">
+
+      <div class="card-type">
+        Listening Bar
+      </div>
+
+      <h3>
+        Brilliant Corners
+      </h3>
+
+      <div class="card-location">
+        Dalston · London
+      </div>
+
+      <p>
+        Restaurant, bar and serious vinyl
+        listening destination.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Jazz</span>
+        <span class="tag">Vinyl</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="london"
+      data-type="records">
+
+      <div class="card-type">
+        Record Shop + Bar
+      </div>
+
+      <h3>
+        Next Door Records
+      </h3>
+
+      <div class="card-location">
+        London · UK
+      </div>
+
+      <p>
+        Record shop, café, bar, venue and
+        creative hangout.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Vinyl</span>
+        <span class="tag">Events</span>
+      </div>
+
+    </article>
+
+
+
+    <!-- BERLIN -->
+
+
+    <article class="card"
+      data-city="berlin"
+      data-type="records">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        HHV Records
+      </h3>
+
+      <div class="card-location">
+        Friedrichshain · Berlin
+      </div>
+
+      <p>
+        Huge selection across electronic,
+        hip hop, jazz and experimental music.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Electronic</span>
+        <span class="tag">Hip Hop</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="berlin"
+      data-type="listening">
+
+      <div class="card-type">
+        Listening / Records
+      </div>
+
+      <h3>
+        Pastiche
+      </h3>
+
+      <div class="card-location">
+        Neukölln · Berlin
+      </div>
+
+      <p>
+        Hi-Fi listening venue, café, record shop
+        and cultural event space.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Hi-Fi</span>
+        <span class="tag">Events</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="berlin"
+      data-type="records">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        Rough Trade Berlin
+      </h3>
+
+      <div class="card-location">
+        Neukölln · Berlin
+      </div>
+
+      <p>
+        Records, listening parties, album
+        releases and cultural events.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Vinyl</span>
+        <span class="tag">Events</span>
+      </div>
+
+    </article>
+
+
+
+    <!-- MELBOURNE -->
+
+
+    <article class="card"
+      data-city="melbourne"
+      data-type="film">
+
+      <div class="card-type">
+        Film + Camera
+      </div>
+
+      <h3>
+        FilmNeverDie
       </h3>
 
       <div class="card-location">
@@ -975,13 +1188,345 @@ footer {
       </div>
 
       <p>
-        Cafés, independent shops, music culture
-        and streets worth wandering.
+        Film cameras, processing and a community
+        around analogue photography.
       </p>
 
       <div class="tags">
-        <span class="tag">Street</span>
-        <span class="tag">Culture</span>
+        <span class="tag">Film</span>
+        <span class="tag">Events</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="melbourne"
+      data-type="film">
+
+      <div class="card-type">
+        Film Lab
+      </div>
+
+      <h3>
+        Irohas Photo Lab
+      </h3>
+
+      <div class="card-location">
+        Melbourne · Australia
+      </div>
+
+      <p>
+        Film processing and scanning for
+        analogue photographers.
+      </p>
+
+      <div class="tags">
+        <span class="tag">C41</span>
+        <span class="tag">E6</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="melbourne"
+      data-type="records">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        Rocksteady Records
+      </h3>
+
+      <div class="card-location">
+        Melbourne · Australia
+      </div>
+
+      <p>
+        Independent Melbourne record destination
+        with decades of experience.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Vinyl</span>
+        <span class="tag">Independent</span>
+      </div>
+
+    </article>
+
+
+
+    <!-- NEW YORK -->
+
+
+    <article class="card"
+      data-city="newyork"
+      data-type="film">
+
+      <div class="card-type">
+        Film
+      </div>
+
+      <h3>
+        Kodak Film Lab
+      </h3>
+
+      <div class="card-location">
+        New York · USA
+      </div>
+
+      <p>
+        Professional film processing ecosystem
+        in the heart of New York.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Film</span>
+        <span class="tag">Professional</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="newyork"
+      data-type="records">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        New York Crate Dig
+      </h3>
+
+      <div class="card-location">
+        New York · USA
+      </div>
+
+      <p>
+        Independent record culture spanning
+        jazz, soul, rock and electronic music.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Vinyl</span>
+        <span class="tag">Jazz</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="newyork"
+      data-type="listening">
+
+      <div class="card-type">
+        Listening / Events
+      </div>
+
+      <h3>
+        Metrograph
+      </h3>
+
+      <div class="card-location">
+        Manhattan · New York
+      </div>
+
+      <p>
+        Independent cinema and cultural destination
+        with film and music events.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Cinema</span>
+        <span class="tag">Events</span>
+      </div>
+
+    </article>
+
+
+
+    <!-- BARCELONA -->
+
+
+    <article class="card"
+      data-city="barcelona"
+      data-type="film">
+
+      <div class="card-type">
+        Film Lab + Shop
+      </div>
+
+      <h3>
+        REVELAB Studio
+      </h3>
+
+      <div class="card-location">
+        Barcelona · Spain
+      </div>
+
+      <p>
+        Analogue development, scanning, film
+        sales, printing and workshops.
+      </p>
+
+      <div class="tags">
+        <span class="tag">35mm</span>
+        <span class="tag">120</span>
+        <span class="tag">Workshops</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="barcelona"
+      data-type="records">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        Barcelona Crate Dig
+      </h3>
+
+      <div class="card-location">
+        Barcelona · Spain
+      </div>
+
+      <p>
+        Independent record culture across
+        electronic, soul and jazz.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Vinyl</span>
+        <span class="tag">Electronic</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="barcelona"
+      data-type="events">
+
+      <div class="card-type">
+        Photography
+      </div>
+
+      <h3>
+        Analogue Workshops
+      </h3>
+
+      <div class="card-location">
+        Barcelona · Spain
+      </div>
+
+      <p>
+        Workshops, film photography and
+        analogue creative culture.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Film</span>
+        <span class="tag">Workshops</span>
+      </div>
+
+    </article>
+
+
+
+    <!-- LISBON -->
+
+
+    <article class="card"
+      data-city="lisbon"
+      data-type="film">
+
+      <div class="card-type">
+        Film
+      </div>
+
+      <h3>
+        Lisbon Film Lab
+      </h3>
+
+      <div class="card-location">
+        Lisbon · Portugal
+      </div>
+
+      <p>
+        Independent analogue photography and
+        film processing destination.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Film</span>
+        <span class="tag">35mm</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="lisbon"
+      data-type="records">
+
+      <div class="card-type">
+        Record Shop
+      </div>
+
+      <h3>
+        Lisbon Crate Dig
+      </h3>
+
+      <div class="card-location">
+        Lisbon · Portugal
+      </div>
+
+      <p>
+        Independent shops covering Portuguese,
+        jazz, soul and electronic records.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Vinyl</span>
+        <span class="tag">Local</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-city="lisbon"
+      data-type="listening">
+
+      <div class="card-type">
+        Listening
+      </div>
+
+      <h3>
+        Lisbon Listening Room
+      </h3>
+
+      <div class="card-location">
+        Lisbon · Portugal
+      </div>
+
+      <p>
+        A place to slow down, drink something
+        and listen to records.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Hi-Fi</span>
+        <span class="tag">Vinyl</span>
       </div>
 
     </article>
@@ -997,8 +1542,8 @@ footer {
 
   <div class="planner-inner">
 
-    <div class="feature-label">
-      AnalogueCulture Planner
+    <div class="planner-kicker">
+      AnalogueCulture Day Planner
     </div>
 
     <h2>
@@ -1007,9 +1552,8 @@ footer {
     </h2>
 
     <p class="planner-intro">
-      Pick a city and build your own analogue day —
-      coffee, cameras, records, food, photography,
-      drinks, music and everything in between.
+      Pick places from the guide and build your own
+      analogue day. Your itinerary lives here.
     </p>
 
 
@@ -1027,12 +1571,12 @@ footer {
         </h3>
 
         <p>
-          Find a good coffee and walk around
-          the neighbourhood.
+          Coffee, breakfast and a walk through
+          somewhere interesting.
         </p>
 
         <button class="add">
-          + ADD PLACE
+          + ADD
         </button>
 
       </div>
@@ -1049,12 +1593,12 @@ footer {
         </h3>
 
         <p>
-          Find the independent record shop,
-          camera store or bookshop.
+          Find records, cameras, books or
+          something you didn't know existed.
         </p>
 
         <button class="add">
-          + ADD PLACE
+          + ADD
         </button>
 
       </div>
@@ -1067,16 +1611,16 @@ footer {
         </div>
 
         <h3>
-          Get lost.
+          Shoot something.
         </h3>
 
         <p>
-          Put a roll in the camera and explore
+          Put a roll in the camera and walk
           somewhere you've never been.
         </p>
 
         <button class="add">
-          + ADD PLACE
+          + ADD
         </button>
 
       </div>
@@ -1093,14 +1637,91 @@ footer {
         </h3>
 
         <p>
-          Finish the day at a listening bar,
-          gig or tiny neighbourhood bar.
+          Finish with a listening bar, gig,
+          cinema or tiny neighbourhood bar.
         </p>
 
         <button class="add">
-          + ADD PLACE
+          + ADD
         </button>
 
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section class="cities" id="cities">
+
+  <div class="cities-inner">
+
+    <h2>
+      Eight cities.<br>
+      One culture.
+    </h2>
+
+
+    <div class="city-grid">
+
+
+      <div class="city-card"
+        onclick="selectCity('tokyo')">
+        <h3>Tokyo</h3>
+        <p>Japan</p>
+      </div>
+
+
+      <div class="city-card"
+        onclick="selectCity('paris')">
+        <h3>Paris</h3>
+        <p>France</p>
+      </div>
+
+
+      <div class="city-card"
+        onclick="selectCity('london')">
+        <h3>London</h3>
+        <p>United Kingdom</p>
+      </div>
+
+
+      <div class="city-card"
+        onclick="selectCity('berlin')">
+        <h3>Berlin</h3>
+        <p>Germany</p>
+      </div>
+
+
+      <div class="city-card"
+        onclick="selectCity('melbourne')">
+        <h3>Melbourne</h3>
+        <p>Australia</p>
+      </div>
+
+
+      <div class="city-card"
+        onclick="selectCity('newyork')">
+        <h3>New York</h3>
+        <p>USA</p>
+      </div>
+
+
+      <div class="city-card"
+        onclick="selectCity('barcelona')">
+        <h3>Barcelona</h3>
+        <p>Spain</p>
+      </div>
+
+
+      <div class="city-card"
+        onclick="selectCity('lisbon')">
+        <h3>Lisbon</h3>
+        <p>Portugal</p>
       </div>
 
 
@@ -1124,23 +1745,24 @@ footer {
     <div>
 
       <p>
-        AnalogueCulture is being built for people who
-        like discovering cities slowly.
+        AnalogueCulture is a guide to the places that
+        make a city feel alive.
       </p>
 
       <p>
         Film labs. Record shops. Listening bars.
-        Independent cafés. Photowalks. Record fairs.
-        Tiny gigs. Interesting neighbourhoods.
+        Camera stores. Independent cinemas.
+        Photo walks. Events.
       </p>
 
       <p>
-        The places that make you think:
-        <em>I'm glad I found this.</em>
+        Not the obvious tourist itinerary.
+        The places you are glad someone told you about.
       </p>
 
       <p>
-        We're building a better way to find them.
+        And eventually, a way to build an entire
+        day around them.
       </p>
 
     </div>
@@ -1168,14 +1790,123 @@ footer {
 <script>
 
 
-function filter(type, button) {
+const cityData = {
+
+  tokyo: {
+    title:"Tokyo",
+    description:
+      "A city where film, records, jazz kissas, tiny bars and obsessive craftsmanship sit comfortably alongside each other."
+  },
+
+  paris: {
+    title:"Paris",
+    description:
+      "Film, photography, records, independent culture and neighbourhoods made for wandering."
+  },
+
+  london: {
+    title:"London",
+    description:
+      "A sprawling ecosystem of film labs, record shops, listening bars, independent cinemas and music culture."
+  },
+
+  berlin: {
+    title:"Berlin",
+    description:
+      "Electronic music, vinyl, experimental culture, photography and places that stay interesting after dark."
+  },
+
+  melbourne: {
+    title:"Melbourne",
+    description:
+      "One of the world's strongest independent scenes for film photography, records, coffee and live music."
+  },
+
+  newyork: {
+    title:"New York",
+    description:
+      "Film, vinyl, independent cinema, photography and music culture packed into neighbourhoods worth exploring."
+  },
+
+  barcelona: {
+    title:"Barcelona",
+    description:
+      "Mediterranean streets, analogue photography, independent music and a culture built around being outside."
+  },
+
+  lisbon: {
+    title:"Lisbon",
+    description:
+      "A slower city of photography, records, small bars, music and neighbourhoods made for getting lost."
+  }
+
+};
+
+
+let currentCity = "tokyo";
+let currentCategory = "all";
+
+
+function selectCity(city) {
+
+  currentCity = city;
+
+  document.getElementById("citySelect").value = city;
+
+  updateCity();
+
+  window.scrollTo({
+    top:document.querySelector(".city-hero").offsetTop - 70,
+    behavior:"smooth"
+  });
+
+}
+
+
+function changeCity() {
+
+  currentCity =
+    document.getElementById("citySelect").value;
+
+  updateCity();
+
+}
+
+
+function updateCity() {
+
+  const data = cityData[currentCity];
+
+  document.getElementById("cityTitle")
+    .textContent = data.title;
+
+  document.getElementById("cityDescription")
+    .textContent = data.description;
+
+  applyFilters();
+
+}
+
+
+function filterCategory(category, button) {
+
+  currentCategory = category;
 
   document
     .querySelectorAll(".category")
-    .forEach(b => b.classList.remove("active"));
+    .forEach(b =>
+      b.classList.remove("active")
+    );
 
   button.classList.add("active");
 
+  applyFilters();
+
+}
+
+
+function applyFilters() {
+
   const cards =
     document.querySelectorAll(".card");
 
@@ -1183,10 +1914,14 @@ function filter(type, button) {
 
   cards.forEach(card => {
 
-    if (
-      type === "all" ||
-      card.dataset.type === type
-    ) {
+    const cityMatch =
+      card.dataset.city === currentCity;
+
+    const categoryMatch =
+      currentCategory === "all" ||
+      card.dataset.type === currentCategory;
+
+    if(cityMatch && categoryMatch) {
 
       card.style.display = "";
 
@@ -1203,104 +1938,31 @@ function filter(type, button) {
   document.getElementById("resultCount")
     .textContent = count + " places";
 
-}
-
-
-function searchCity() {
-
-  const query =
-    document
-      .getElementById("search")
-      .value
-      .toLowerCase()
-      .trim();
-
-  const cards =
-    document.querySelectorAll(".card");
-
-  let count = 0;
-
-  cards.forEach(card => {
-
-    const city =
-      card.dataset.city.toLowerCase();
-
-    if (
-      query === "" ||
-      city.includes(query)
-    ) {
-
-      card.style.display = "";
-
-      count++;
-
-    } else {
-
-      card.style.display = "none";
-
-    }
-
-  });
-
-  document.getElementById("resultCount")
-    .textContent = count + " places";
+  document.getElementById("placeCount")
+    .textContent = count;
 
 }
-
-
-function exploreCity() {
-
-  const city =
-    document
-      .getElementById("city")
-      .value
-      .toLowerCase()
-      .trim();
-
-  document
-    .getElementById("search")
-    .value = city;
-
-  searchCity();
-
-  document
-    .getElementById("discover")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-document
-  .getElementById("search")
-  .addEventListener(
-    "keyup",
-    searchCity
-  );
 
 
 document
   .querySelectorAll(".add")
   .forEach(button => {
 
-    button.addEventListener(
-      "click",
-      function() {
+    button.addEventListener("click", function() {
 
-        this.textContent = "✓ ADDED";
+      this.classList.toggle("added");
 
-        this.style.background =
-          "#151515";
+      this.textContent =
+        this.classList.contains("added")
+        ? "✓ ADDED TO DAY"
+        : "+ ADD";
 
-        this.style.color =
-          "white";
-
-      }
-    );
+    });
 
   });
 
+
+updateCity();
 
 </script>
 
